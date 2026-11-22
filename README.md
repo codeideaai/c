@@ -2,7 +2,7 @@
 
 This is _The Little Book of C_.
 
-[English website](https://codeideaai.github.io/c/) · [简体中文版](https://codeideaai.github.io/c/zh/)
+[简体中文版](https://codeideaai.github.io/c/) · [English website](https://codeideaai.github.io/c/en/)
 
 ## Formats
 

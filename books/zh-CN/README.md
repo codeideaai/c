@@ -4,6 +4,9 @@
 v0.5.0，通过机器翻译生成。示例代码、章节锚点和原作署名随网页保留。
 译文与原作均采用 [CC BY-NC-SA 4.0](../../LICENSE)。
 
+[中文首页](https://codeideaai.github.io/c/) · [English](https://codeideaai.github.io/c/en/)。
+原中文首页 `/c/zh/` 和中英文正文链接仍可直接访问。
+
 `translations.json` 保存英文段落与简体中文译文。段落中的 `⟦0⟧` 等标记
 代表内联 HTML 标签、代码或其他不可翻译内容。修订译文时应保留这些标记。
 修改译文后，在仓库根目录运行以下命令更新 GitHub Pages 文件。
@@ -14,5 +17,5 @@ python3 tools/build_chinese_site.py
 ```
 
 生成器以 Quarto 渲染的英文 HTML 为输入。如果重新渲染英文，用同一命令
-恢复英文页面的语言链接并重新生成 `docs/zh/`。英文原文变更后，需要先为
+恢复默认中文首页、独立英文首页和语言切换链接。英文原文变更后，需要先为
 新增或修改的段落补充译文。PDF、EPUB 和 LaTeX 下载使用原作的英文版本。

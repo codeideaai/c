@@ -14,7 +14,11 @@ from lxml import etree, html
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 CATALOG = ROOT / "books/zh-CN/translations.json"
-PAGES = {"index.html": "zh/index.html", "books/en-US/book.html": "zh/book.html"}
+HOME = "index.html"
+ENGLISH_HOME = "en/index.html"
+ENGLISH_BOOK = "books/en-US/book.html"
+CHINESE_HOME_ALIAS = "zh/index.html"
+CHINESE_BOOK = "zh/book.html"
 INLINE = {"a", "abbr", "b", "br", "code", "em", "i", "img", "kbd", "s",
           "small", "span", "strong", "sub", "sup", "u", "wbr"}
 SKIP = {"pre", "script", "style", "svg", "code", "kbd", "samp", "template"}
@@ -188,30 +192,41 @@ def replace_segment(element, start, inline, markup):
 
 
 def originals():
-    for source in PAGES:
-        data = (DOCS / source).read_text(encoding="utf-8")
+    root = (DOCS / HOME).read_text(encoding="utf-8")
+    # Quarto renders the English landing page at the root. Between Quarto
+    # builds, the retained English landing page is the translation source.
+    home_source = HOME if html.document_fromstring(root).get("lang") == "en" else ENGLISH_HOME
+    for source, english, chinese_pages in (
+        (home_source, ENGLISH_HOME, (HOME, CHINESE_HOME_ALIAS)),
+        (ENGLISH_BOOK, ENGLISH_BOOK, (CHINESE_BOOK,)),
+    ):
+        data = root if source == HOME else (DOCS / source).read_text(encoding="utf-8")
         data = re.sub(r'<nav class="edition-switch"[^>]*>.*?</nav>\n?', "", data, flags=re.S)
         data = re.sub(r'<script src="(?:\.\./)*edition-switch\.js" defer></script>\n?', "", data)
-        yield source, data
+        yield source, english, chinese_pages, data
 
 
-def rebase(document, source, destination):
+def rebase(document, source, destination, routes, search_offset):
     origin = posixpath.dirname(source) or "."
-    target = posixpath.dirname(destination)
+    target = posixpath.dirname(destination) or "."
     for element in document.xpath("//*[@href or @src]"):
         for attribute in ("href", "src"):
             url = urlsplit(element.get(attribute, ""))
             if not url.path or url.scheme or url.netloc or url.path.startswith("/"):
                 continue
             resolved = posixpath.normpath(posixpath.join(origin, url.path))
-            resolved = PAGES.get("index.html" if resolved == "." else resolved, resolved)
+            resolved = routes.get(HOME if resolved == "." else resolved, resolved)
             relative = posixpath.relpath(resolved, target)
             element.set(attribute, urlunsplit(("", "", relative, url.query, url.fragment)))
-    document.xpath('//meta[@name="quarto:offset"]')[0].set("content", "./")
+    document.xpath('//meta[@name="quarto:offset"]')[0].set("content", search_offset)
 
 
 def chooser(source, destination, chinese=False, sidebar=False):
-    href = posixpath.relpath(destination, posixpath.dirname(source) or ".")
+    target = posixpath.dirname(source) or "."
+    if destination.endswith("index.html"):
+        href = posixpath.relpath(posixpath.dirname(destination) or ".", target) + "/"
+    else:
+        href = posixpath.relpath(destination, target)
     label = "English" if chinese else "简体中文"
     language = "en" if chinese else "zh-CN"
     aria = "语言切换" if chinese else "Language switch"
@@ -271,14 +286,14 @@ def build():
         except KeyError:
             raise ValueError(f"missing Chinese translation for {key!r}") from None
 
-    for source, data in originals():
-        destination = PAGES[source]
+    for source, english, chinese_pages, data in originals():
         document = html.document_fromstring(data)
         localize(document, lookup)
-        rebase(document, source, destination)
         document.set("lang", "zh-CN")
         document.set("xml:lang", "zh-CN")
-        document.find(".//title").text = "C 语言小书" if source == "index.html" else "教程正文 – C 语言小书"
+        document.find(".//title").text = (
+            "C 语言小书" if english == ENGLISH_HOME else "教程正文 – C 语言小书"
+        )
         for element in document.xpath("//*[@aria-label or @title]"):
             for attribute in ("aria-label", "title"):
                 if element.get(attribute) in UI:
@@ -287,16 +302,36 @@ def build():
         config = json.loads(options.text)
         config["language"] = {key: UI.get(value, value) for key, value in config["language"].items()}
         options.text = json.dumps(config, ensure_ascii=False, indent=2)
-        search.extend(search_entries(document, destination))
         main = document.find(".//main")
         main.insert(0, html.fragment_fromstring(
             '<p class="small text-body-secondary">简体中文机器翻译 · 原著 Duc-Tam Nguyen · '
             '<a href="https://github.com/little-book-of/c">英文原作</a> · '
             '<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>'))
-        chinese = edition_controls(serialize(document), destination, source, chinese=True)
-        output[destination] = "<!DOCTYPE html>\n" + clean_generated_html(chinese) + "\n"
-        output[source] = edition_controls(data, source, destination)
+
+        for chinese in chinese_pages:
+            page = copy.deepcopy(document)
+            chinese_home = CHINESE_HOME_ALIAS if chinese == CHINESE_HOME_ALIAS else HOME
+            routes = {HOME: chinese_home, ENGLISH_HOME: chinese_home, ENGLISH_BOOK: CHINESE_BOOK}
+            rebase(page, source, chinese, routes, "./zh/" if chinese == HOME else "./")
+            if chinese != HOME:
+                search.extend(search_entries(page, chinese))
+            markup = edition_controls(serialize(page), chinese, english, chinese=True)
+            output[chinese] = "<!DOCTYPE html>\n" + clean_generated_html(markup) + "\n"
+
+        if source == HOME:
+            english_page = html.document_fromstring(data)
+            rebase(english_page, source, english, {HOME: ENGLISH_HOME}, "../")
+            data = "<!DOCTYPE html>\n" + clean_generated_html(serialize(english_page)) + "\n"
+        elif source == ENGLISH_BOOK:
+            data = re.sub(r'href="\.\./\.\./(?:index\.html)?"', 'href="../../en/index.html"', data)
+            data = re.sub(r'(<a href="\.\./\.\./en/index\.html">[^<]+</a>)[ \t]+$', r"\1", data, flags=re.M)
+        output[english] = edition_controls(data, english, chinese_pages[0])
+
     output["zh/search.json"] = json.dumps(search, ensure_ascii=False, indent=2) + "\n"
+    english_search = (DOCS / "search.json").read_text(encoding="utf-8")
+    output["search.json"] = re.sub(
+        r'("(?:href|objectID)": ")index\.html(?=[#"])', r'\1en/index.html', english_search,
+    )
 
     for relative_path, content in output.items():
         path = DOCS / relative_path
