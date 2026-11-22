@@ -571,8 +571,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="writing-and-running-your-first-program" class="level3">
 <h3 class="anchored" data-anchor-id="writing-and-running-your-first-program">3. 编写并运行第一个 C 程序</h3>
-<p>现在你的编译器已准备就绪，是时候编写你的第一个真正的 C 程序了。这就是奇迹发生的地方，你将编写纯文本，将其编译成机器指令，然后观察你的计算机准确地遵循你的命令。</p>
-<p>C 不会隐藏幕后发生的事情。每一步，编写、编译、链接、运行，都是可见的并在你的控制之下。</p>
+<p>编译器准备好后，就可以写第一个 C 程序了。先把源代码写成纯文本，再将它编译为机器指令，最后运行程序，看看计算机如何执行这些指令。</p>
+<p>在 C 中，从编写源代码到编译、链接和运行，每个步骤都可以单独观察和控制。</p>
 <section id="tiny-code-2" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-2">代码示例</h4>
 <p>创建一个名为 <code>hello.c</code> 的新文件并输入以下代码：</p>
@@ -623,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="anatomy-of-a-c-program" class="level3">
 <h3 class="anchored" data-anchor-id="anatomy-of-a-c-program">4. C 程序的组成</h3>
-<p>现在你的第一个程序已经运行，让我们打开它看看里面。每个 C 程序都遵循清晰的结构，一组规则告诉<em>你</em>和<em>编译器</em>每个部分的含义。尽早理解这种结构将帮助你充满信心地阅读、编写和调试代码。</p>
+<p>第一个程序已经能运行了，现在来看看它由哪些部分组成。C 的语法规则既让<em>读者</em>看懂每一部分的用途，也让<em>编译器</em>知道该怎样处理它。熟悉这种结构，读写和调试代码都会更容易。</p>
 <section id="tiny-code-3" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-3">代码示例</h4>
 <p>这是同一个程序，带有解释每个部分的注释：</p>
@@ -684,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="using-headers-and-the-preprocessor" class="level3">
 <h3 class="anchored" data-anchor-id="using-headers-and-the-preprocessor">5. 头文件与预处理器</h3>
-<p>每个 C 程序在开始运行之前就开始了，有一个叫做 <em> 预处理器 </em> 的东西。在编译器将代码转换为机器指令之前，预处理器会对其进行准备：它提取文件、替换宏并设置程序所需的一切。这一步是 <code>#include &lt;stdio.h&gt;</code> 发挥作用的原因，也是理解大型 C 项目如何组织的关键。</p>
+<p>编译源代码之前，<em>预处理器</em>会先处理文件包含、宏展开等指令。<code>#include &lt;stdio.h&gt;</code> 就是在这一步起作用的。理解预处理，也就更容易看懂大型 C 项目怎样组织源文件和头文件。</p>
 <section id="tiny-code-4" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-4">代码示例</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span><span class="pp">   </span><span class="co">// include the standard input/output header</span></span>
@@ -757,7 +757,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="compiling-linking-and-executing" class="level3">
 <h3 class="anchored" data-anchor-id="compiling-linking-and-executing">6. 编译、链接与运行</h3>
-<p>当你按 <em> Enter </em> 编译 C 程序时，幕后会发生很多事情。你的源代码在成为可运行的可执行文件之前会经历几个阶段。理解这些步骤至关重要，它将编译错误从神秘变成简单、可修复的线索。</p>
+<p>输入编译命令并按下 <em>Enter</em> 后，源代码要经过多个阶段才会变成可执行文件。了解每个阶段的职责，就能根据错误信息判断问题出在哪里。</p>
 <section id="tiny-code-5" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-5">代码示例</h4>
 <p>让我们从一个熟悉的程序开始：</p>
@@ -788,7 +788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-c</span> hello.c</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong> 链接 </strong> 链接器将所有目标文件和库组合成一个最终的可执行文件。例如， <code>printf</code> 来自 C 标准库 ( <code>libc</code> )，因此链接器将你的代码连接到它。命令：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> hello.o <span class="at">-o</span> hello</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong> 执行 </strong> 链接后，你的二进制文件 ( <code>hello</code> ) 将由操作系统加载并由 CPU 执行。命令：</p>
+<li><p><strong>运行。</strong> 链接完成后，操作系统加载可执行文件（<code>hello</code>），由 CPU 执行其中的指令。运行命令如下：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./hello</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
@@ -836,7 +836,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="common-errors-and-warnings" class="level3">
 <h3 class="anchored" data-anchor-id="common-errors-and-warnings">7. 常见错误和警告</h3>
-<p>没有一个 C 程序员能够避免错误。事实上，编译器的消息是你最好的老师。每个警告或错误都是编译器表达“这里有些东西还没有意义”的方式。尽早学习阅读并修复它们将为你节省数小时的时间，并使调试成为你过程中自然的一部分。</p>
+<p>写 C 时遇到错误很正常。编译器的警告和错误信息通常会指出问题位置，给出排查线索。越早熟悉这些信息，往后定位和修复问题就越省时间。</p>
 <section id="tiny-code-6" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-6">代码示例</h4>
 <p>让我们看几个例子：</p>
@@ -867,10 +867,10 @@ error_demo.c:4:13: error: expected ‘;' before ‘printf'</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">"Value: </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> number<span class="op">);</span> <span class="co">// error: ‘number' undeclared</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong> 链接器错误 </strong> 编译成功，但由于缺少某些内容而链接失败。示例：</p>
 <pre><code>undefined reference to `greet'</code></pre>
-<p>这意味着编译器看到了声明，但找不到实际的函数定义。</p></li>
+<p>源文件中有函数声明，但链接器找不到对应的函数定义。</p></li>
 <li><p><strong> 警告 </strong> 警告不会停止编译，但它们通常指出潜在的错误。示例：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">warning:</span> variable ‘x<span class="st">' set but not used</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>始终注意警告，干净的构建（<code>no warnings</code>）是高质量代码的标志。</p></li>
+<p>留意构建警告。<code>no warnings</code> 等选项可以让编译器报告更多值得检查的问题。</p></li>
 </ol>
 </section>
 <section id="why-it-matters-6" class="level4">
@@ -910,7 +910,7 @@ error_demo.c:4:13: error: expected ‘;' before ‘printf'</code></pre>
 </section>
 <section id="command-line-basics-for-c-developers" class="level3">
 <h3 class="anchored" data-anchor-id="command-line-basics-for-c-developers">8. C 开发入门的命令行操作</h3>
-<p>C诞生于Unix世界，命令行是它天然的家。如果你可以在终端中轻松移动，你将了解你的工具正在做什么，直接编译、链接和运行程序。本节为你提供像真正的系统程序员一样构建和探索 C 项目所需的基本命令。</p>
+<p>C 诞生于 Unix，许多 C 工具也通过命令行使用。熟悉终端操作后，你可以直接编译、链接和运行程序，看清每个工具做了什么。本节介绍构建和查看 C 项目常用的命令。</p>
 <section id="tiny-code-7" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-7">代码示例</h4>
 <p>让我们首先使用一个简单的文件 <code>hello.c</code> 快速回顾一下：</p>
@@ -992,7 +992,7 @@ error_demo.c:4:13: error: expected ‘;' before ‘printf'</code></pre>
 </section>
 <section id="setting-up-a-minimal-project-structure" class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-a-minimal-project-structure">9. 搭建最小项目结构</h3>
-<p>随着你的 C 程序的增长，你将很快超出单文件“hello.c”样式。真实的项目由多个源文件、头文件（有时还包括库）组成。清晰的文件夹结构使你的工作保持干净、易于构建和维护。在本部分中，你将创建一个小型的、有组织的布局，与专业人士使用的结构相同。</p>
+<p>程序稍大一点，所有代码就很难继续放在一个 hello.c 里。实际项目通常由多个源文件、头文件组成，有时还依赖外部库。清楚的目录结构便于构建和维护。本节会搭一个简小的目录结构作为起点。</p>
 <section id="tiny-code-8" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-8">代码示例</h4>
 <p>这是一个最小的项目布局：</p>
@@ -1083,7 +1083,7 @@ error_demo.c:4:13: error: expected ‘;' before ‘printf'</code></pre>
 <h1>第 2 章 语言基础</h1>
 <section id="data-types-and-variables" class="level3">
 <h3 class="anchored" data-anchor-id="data-types-and-variables">11. 数据类型与变量</h3>
-<p>在 C 中，一切都从类型开始。 <strong>类型</strong>告诉编译器要保留多少内存、如何解释存储在那里的位以及允许哪些操作。理解类型是编写安全高效的 C 程序的基础，它是你如何准确地说计算机的母语的基础。</p>
+<p>C 用<strong>类型</strong>告诉编译器要为对象留多少空间、如何解释其中的比特，以及允许做哪些操作。理解类型，是写出安全高效的 C 程序的基础。</p>
 <section id="tiny-code-9" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-9">代码示例</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb76"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -1200,7 +1200,7 @@ Weight: 68.4</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> count <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>   <span class="co">// initialization</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>多重声明：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb81"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> y <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> z <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>必须声明变量 <em>之前</em> 你使用它们，它们的类型不能改变。</p>
+<p>变量<em>在使用前</em>必须先声明，声明确定的类型在该变量的作用域内不会改变。</p>
 </section>
 <section id="why-it-matters-9" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-9">为什么重要</h4>
@@ -1234,7 +1234,7 @@ Weight: 68.4</code></pre>
 </section>
 <section id="constants-literals-and-enumerations" class="level3">
 <h3 class="anchored" data-anchor-id="constants-literals-and-enumerations">12. 常量、字面量与枚举</h3>
-<p>C 程序通常依赖于在整个代码中使用的永不改变的值、数字、字符或命名常量。你可以给它们起有意义的名称，并保持程序的可读性、安全性和易于维护性，而不是到处散布魔数。</p>
+<p>程序中经常用到不随运行而改变的数字、字符和其他值。把有业务含义的固定值命名，就不用在各处散落难以理解的魔数，也更便于查阅和维护。</p>
 <section id="tiny-code-10" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-10">代码示例</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb84"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -1258,7 +1258,7 @@ Direction EAST has value: 1</code></pre>
 <section id="constants-in-c" class="level4">
 <h4 class="anchored" data-anchor-id="constants-in-c">C 中的常量</h4>
 <ol type="1">
-<li><p><strong>预处理器常数 (<code>#define</code>)</strong> 这些被替换了 <em>之前</em> 编译。将它们视为文本替换，而不是变量。</p>
+<li><p><strong>预处理器常量（<code>#define</code>）</strong>。它们在<em>编译之前</em>展开，相当于对源代码进行替换，并不声明变量。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb86"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MAX_USERS </span><span class="dv">100</span></span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">"Max users: </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> MAX_USERS<span class="op">);</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
@@ -1282,7 +1282,7 @@ Direction EAST has value: 1</code></pre>
 </section>
 <section id="enumerations" class="level4">
 <h4 class="anchored" data-anchor-id="enumerations">枚举</h4>
-<p><strong>枚举</strong>（<em>枚举</em>的缩写）定义了一组命名整数常量。它们使你的代码自我记录并防止原始数字出现错误。</p>
+<p><strong>enum</strong> 是 <em>enumeration（枚举）</em> 的缩写，用来定义一组有名称的整数常量。名称能说明值的含义，减少直接使用数字引起的错误。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb89"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> TrafficLight <span class="op">{</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>    RED<span class="op">,</span>     <span class="co">// 0</span></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>    YELLOW<span class="op">,</span>  <span class="co">// 1</span></span>
@@ -1316,7 +1316,7 @@ Direction EAST has value: 1</code></pre>
 <section id="try-it-yourself-10" class="level4">
 <h4 class="anchored" data-anchor-id="try-it-yourself-10">动手练习</h4>
 <ol type="1">
-<li><p>将旧程序中的每个数值字面量替换为 <code>#define</code> 或 <code>const</code>。示例：</p>
+<li><p>在旧程序中找出有明确用途的数值字面量，用 <code>#define</code> 或 <code>const</code> 定义有意义的名称，例如：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb91"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MAX_SCORE </span><span class="dv">100</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">float</span> TAX_RATE <span class="op">=</span> <span class="fl">0.08</span><span class="op">;</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>创建 <code>enum</code> 表示一周中的几天，并打印 <code>MONDAY</code> 和 <code>FRIDAY</code>。</p></li>
@@ -1330,7 +1330,7 @@ Direction EAST has value: 1</code></pre>
 </section>
 <section id="operators-and-expressions" class="level3">
 <h3 class="anchored" data-anchor-id="operators-and-expressions">13. 运算符与表达式</h3>
-<p>运算符是 C 中计算的构建块。它们使你可以用简洁的表达式执行算术、比较值、操作位和组合逻辑。一旦你了解了运算符的工作原理以及它们如何通过 <em> 优先级 </em> 和 <em> 关联性 </em> 进行交互，你就可以编写出清晰、高效的代码，其行为完全符合你的预期。</p>
+<p>用运算符可以做算术、比较、位运算和逻辑组合。一个表达式里有多个运算符时，<em>优先级</em>和<em>结合性</em>决定表达式怎样分组。理解这些规则，就能写出含义明确的表达式。</p>
 <section id="tiny-code-11" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-11">代码示例</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb93"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -1614,7 +1614,7 @@ a after += 5: 15</code></pre>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> result <span class="op">=</span> num <span class="op">&amp;</span> mask<span class="op">;</span>  <span class="co">// checks if the 2nd bit is set</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="precedence-and-associativity" class="level4">
-<h4 class="anchored" data-anchor-id="precedence-and-associativity">优先级和关联性</h4>
+<h4 class="anchored" data-anchor-id="precedence-and-associativity">优先级与结合性</h4>
 <p>当你编写复杂表达式时，C 遵循运算符优先级规则。例如：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb98"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> result <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span><span class="op">;</span> <span class="co">// result is 14, not 20</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>*</code> 的优先级高于 <code>+</code>，因此它先运行。</p>
@@ -1626,7 +1626,7 @@ a after += 5: 15</code></pre>
 <p>运算符是<strong>逻辑与机器</strong>的交汇处。它们将数学思想和控制决策转化为 CPU 直接执行的指令。了解表达式的构建和计算方式可以帮助你：</p>
 <ul>
 <li>编写紧凑、高效的代码</li>
-<li>避免优先顺序错误</li>
+<li>避免误读运算符的优先级。</li>
 <li>准确控制程序的计算内容</li>
 </ul>
 <p>在低级工作中（如按位运算或嵌入式系统），掌握运算符至关重要。</p>
@@ -1655,7 +1655,7 @@ a after += 5: 15</code></pre>
 </section>
 <section id="control-flow-if-else-switch" class="level3">
 <h3 class="anchored" data-anchor-id="control-flow-if-else-switch">14. 控制流：if、else 和 switch</h3>
-<p>当程序可以 <em> 决定 </em> 时，当它们可以根据数据或条件选择一条路径或另一条路径时，程序就会变得强大。在 C 语言中，<strong> 控制流 </strong> 语句为你提供了这种能力。它们决定你的程序如何在代码的不同部分中移动。</p>
+<p>程序可以根据条件<em>作出选择</em>。C 的<strong>控制流</strong>语句决定接下来执行哪一段代码。</p>
 <section id="tiny-code-12" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-12">代码示例</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb101"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -1791,7 +1791,7 @@ a after += 5: 15</code></pre>
 </section>
 <section id="loops-for-while-do-while" class="level3">
 <h3 class="anchored" data-anchor-id="loops-for-while-do-while">15. 循环：for、while 和 do-while</h3>
-<p>有时，你需要程序一次又一次地重复某些操作、计算、打印语句或检查。你不必多次复制同一行代码，而是使用 <strong> 循环 </strong>。循环使你的程序高效、紧凑，并且能够处理任何大小的动态数据。</p>
+<p>想重复计算、输出或检查某项条件时，可以用<strong>循环</strong>。同一段代码写一次，就能处理运行时才知道长度的数据。</p>
 <section id="the-for-loop" class="level4">
 <h4 class="anchored" data-anchor-id="the-for-loop"><code>for</code>循环</h4>
 <p><code>for</code> 循环重复代码块固定次数。</p>
@@ -1822,7 +1822,7 @@ a after += 5: 15</code></pre>
 </section>
 <section id="the-do-while-loop" class="level4">
 <h4 class="anchored" data-anchor-id="the-do-while-loop"><code>do-while</code>循环</h4>
-<p>的 <code>do-while</code> 循环保证至少执行一次，因为条件已检查 <em>之后</em> 身体。</p>
+<p><code>do-while</code> 循环至少执行一次，因为它在<em>执行完循环体之后</em>才检查条件。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb115"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> <span class="op">{</span></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"Running once! i = </span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> i<span class="op">);</span></span>
@@ -1915,7 +1915,7 @@ i=3, j=2</code></pre>
 </section>
 <section id="why-it-matters-13" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-13">为什么重要</h4>
-<p>循环是 <strong>重复引擎</strong> 在每个 C 程序中。它们使以下成为可能：</p>
+<p><strong>循环用来重复执行代码</strong>。借助循环可以：</p>
 <ul>
 <li>处理数组、文件和数据列表</li>
 <li>运行迭代直到满足条件的算法</li>
@@ -1941,7 +1941,7 @@ i=3, j=2</code></pre>
 </section>
 <section id="functions-and-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="functions-and-parameters">16. 函数与参数</h3>
-<p>函数是你将程序分解为更小、可重用的部分的方法。每个函数执行一项特定任务，你可以在需要时调用它，传入数据（参数），并获取一些内容（返回值）。函数使你的代码组织有序、可测试且更易于理解。</p>
+<p>函数把程序拆成可复用的小单元，每个单元负责一项任务。调用时可以传入实参，有些函数还会返回结果。这种拆分让代码更容易理解和测试。</p>
 <section id="the-structure-of-a-function" class="level4">
 <h4 class="anchored" data-anchor-id="the-structure-of-a-function">函数的结构</h4>
 <p>C 中的函数有四个主要部分：</p>
@@ -2098,7 +2098,7 @@ Quotient: 2.00</code></pre>
 <span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> x<span class="op">);</span></span>
 <span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>你无法在 <code>example()</code> 之外访问 <code>x</code>。</p></li>
-<li><p><strong> 文件作用域（全局变量） </strong> 在所有函数之外声明。声明后可在文件中的任何位置访问。</p>
+<li><p><strong>文件作用域（全局变量）</strong>。名称在函数外声明，自声明处起在本翻译单元内可见。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb135"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> counter <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">// global variable</span></span>
 <span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> increment<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
@@ -2248,7 +2248,7 @@ Accessing global variable in main: 10</code></pre>
 </section>
 <section id="return-values-and-function-signatures" class="level3">
 <h3 class="anchored" data-anchor-id="return-values-and-function-signatures">18. 返回值与函数签名</h3>
-<p>函数不仅执行任务，还常常 <em> 将结果 </em> 传达给调用者。他们通过 <strong> 返回值 </strong> 来做到这一点。每个 C 函数都有一个 <strong> 签名 </strong>，一个定义其返回类型、名称和参数的声明。熟悉签名和返回值可以帮助你编写干净、可预测和模块化的程序。</p>
+<p>函数执行任务后，可以<em>把结果交还给调用方</em>。这个结果叫<strong>返回值</strong>。本节用<strong>函数签名</strong>指函数声明中描述的名称、返回类型和参数信息。理解这些信息有助于设计清晰的模块接口。</p>
 <section id="function-signatures-explained" class="level4">
 <h4 class="anchored" data-anchor-id="function-signatures-explained">函数签名解释</h4>
 <p>函数签名如下所示：</p>
@@ -2361,7 +2361,7 @@ Is sum even? Yes</code></pre>
 </section>
 <section id="why-it-matters-16" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-16">为什么重要</h4>
-<p>返回值是函数 <em> 与 </em> 进行通信的方式。通过设计清晰且有意义的签名：</p>
+<p>函数通过返回值与调用方<em>交换结果</em>。设计好函数签名，就能：</p>
 <ul>
 <li>你让你的代码<strong>可预测</strong>，每个函数都有一个定义的目的和输出。</li>
 <li>编译器可以 <strong> 检查正确性 </strong>，不匹配的类型会引发警告。</li>
@@ -2383,7 +2383,7 @@ Is sum even? Yes</code></pre>
 </section>
 <section id="static-vs-dynamic-linking-of-code-units" class="level3">
 <h3 class="anchored" data-anchor-id="static-vs-dynamic-linking-of-code-units">19. 静态链接与动态链接</h3>
-<p>当你的程序超出单个文件时，你开始将多个<em>代码单元</em>链接在一起，函数和数据位于不同的文件中。此链接步骤决定你的程序如何组合和共享代码。在 C 中主要有两种方法： <strong> 静态链接 </strong> 和 <strong> 动态链接 </strong>。理解两者对于构建现实世界的软件至关重要。</p>
+<p>当程序拆成多个<em>代码单元</em>，链接步骤负责把跨文件的函数和数据引用对应起来。C 项目常用<strong>静态链接</strong>和<strong>动态链接</strong>。两者决定库代码如何与程序组合，以及多个程序能否共享同一份库。</p>
 <section id="the-big-picture" class="level4">
 <h4 class="anchored" data-anchor-id="the-big-picture">大局观</h4>
 <p>当你编译 C 程序时：</p>
@@ -2421,7 +2421,7 @@ Is sum even? Yes</code></pre>
 <p>示例：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb153"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> main.c <span class="at">-o</span> app_dynamic <span class="at">-lm</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>这里，<code>-lm</code>告诉链接器使用共享的<strong>数学库</strong>（<code>libm.so</code>）。</p>
-<p>你的程序将库 <em> 与 </em> 分开，并在执行时加载它。</p>
+<p>库文件与程序<em>分开存放</em>，由系统在程序运行时加载。</p>
 <p><strong> 优点：</strong></p>
 <ul>
 <li>较小的可执行文件</li>
@@ -2497,7 +2497,7 @@ Multiply: 20</code></pre>
 <h4 class="anchored" data-anchor-id="try-it-yourself-17">动手练习</h4>
 <ol type="1">
 <li>如上创建 <code>mathutils.c</code> 和 <code>mathutils.h</code>。</li>
-<li>静态编译和动态编译；使用 <code>ls -lh</code> 比较文件大小。</li>
+<li>分别生成静态链接和动态链接的版本，再用 <code>ls -lh</code> 比较文件大小。</li>
 <li>将 <code>libmathutils.so</code> 移出目录并运行 <code>./dynamic_app</code>，注意缺少库错误。</li>
 <li>添加<code>export LD_LIBRARY_PATH=.</code>并再次运行。</li>
 <li>修改 <code>multiply()</code> 以打印消息，仅重新编译 <em> </em> 共享库，并看到更改立即生效。</li>
@@ -2507,7 +2507,7 @@ Multiply: 20</code></pre>
 </section>
 <section id="practice-build-a-simple-calculator" class="level3">
 <h3 class="anchored" data-anchor-id="practice-build-a-simple-calculator">20. 练习：实现简易计算器</h3>
-<p>现在你已经了解了函数、变量、循环、控制流和链接，是时候将所有内容整合在一起了。你将构建一个简单的计算器，使用干净的模块化代码执行基本算术。这个小项目将强化第 11 章到第 19 章的所有内容：数据类型、运算符、控制流和可重用函数。</p>
+<p>这个练习会把变量、函数、循环、控制流和链接结合起来，写一个能做基本算术的简易计算器。借此复习第 11 至 19 节的数据类型、运算符、控制流和函数复用。</p>
 <section id="project-overview" class="level4">
 <h4 class="anchored" data-anchor-id="project-overview">项目概况</h4>
 <p>你将编写一个计算器：</p>
@@ -2670,7 +2670,7 @@ Goodbye!</code></pre>
 <h1>第 3 章 内存管理</h1>
 <section id="understanding-memory-layout-stack-heap-data-code" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-memory-layout-stack-heap-data-code">21. 内存布局：栈、堆、数据段与代码段</h3>
-<p>在掌握指针或动态内存之前，你需要了解 <strong> 在运行的 C 程序中内存是如何组织的 </strong>。 C 为你提供了很少有语言允许的控制级别，但为了安全地使用它，你必须知道数据所在的位置以及在那里停留的时间。</p>
+<p>学指针和动态内存之前，先看看<strong>运行中的 C 程序怎样布置内存</strong>。要正确使用数据，需要知道它放在哪里，以及它能被访问多久。</p>
 <section id="the-memory-segments" class="level4">
 <h4 class="anchored" data-anchor-id="the-memory-segments">内存段</h4>
 <p>当程序运行时，其内存分为几个关键部分：</p>
@@ -2782,7 +2782,7 @@ Heap variable address:       0x561ce774b2a0</code></pre>
 <li><p><strong> BSS（由符号开始的块）</strong></p>
 <ul>
 <li>保存未初始化的全局/静态变量。</li>
-<li>运行时自动零初始化。</li>
+<li>未显式初始化时按静态存储期对象的规则进行零初始化。</li>
 </ul></li>
 <li><p><strong> 栈 </strong></p>
 <ul>
@@ -2798,7 +2798,7 @@ Heap variable address:       0x561ce774b2a0</code></pre>
 </section>
 <section id="why-it-matters-19" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-19">为什么重要</h4>
-<p>每次编写变量时，无论是否有意识，你都在决定 <em> </em> 在内存中的位置。了解此布局可以帮助你：</p>
+<p>每次定义变量时，它的声明及使用方式都会决定<em>它放在内存的哪里</em>。了解这些布局有助于：</p>
 <ul>
 <li>调试内存错误（段错误、泄漏、损坏）。</li>
 <li>关于性能和函数调用的原因。</li>
@@ -2821,7 +2821,7 @@ Heap variable address:       0x561ce774b2a0</code></pre>
 </section>
 <section id="pointers-and-addresses" class="level3">
 <h3 class="anchored" data-anchor-id="pointers-and-addresses">22. 指针与地址</h3>
-<p>指针是 C 编程的核心。它们使你能够直接访问内存，以及读取、写入和操作存储在程序中任何位置的数据的能力。了解指针会改变你对变量、函数和数据结构的看法。</p>
+<p>指针是 C 编程的基础。它可以让你间接读取或修改有效对象，也可以用来组织数据结构和间接调用函数。</p>
 <p>如果不掌握指针，就无法真正掌握 C。</p>
 <section id="what-is-a-pointer" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-pointer">什么是指针？</h4>
@@ -2948,7 +2948,7 @@ New value of number: 20</code></pre>
 </section>
 <section id="arrays-and-pointer-arithmetic" class="level3">
 <h3 class="anchored" data-anchor-id="arrays-and-pointer-arithmetic">23. 数组与指针运算</h3>
-<p><strong>数组</strong>是包含相同类型元素的连续存储单元块。数组和指针在 C 中紧密相连，事实上，数组的名称通常表现为指向其第一个元素的指针。了解数组和指针运算如何协同工作是编写快速、内存高效的程序的关键。</p>
+<p><strong>数组</strong>的元素类型相同，在内存中连续存放。多数表达式中的数组会转换为指向首元素的指针。理解数组和指针运算的关系，有助于高效、正确地访问元素。</p>
 <section id="declaring-and-using-arrays" class="level4">
 <h4 class="anchored" data-anchor-id="declaring-and-using-arrays">声明和使用数组</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb174"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -2971,7 +2971,7 @@ numbers[4] = 50</code></pre>
 <p>这里：</p>
 <ul>
 <li><code>numbers</code> 是一个由五个整数组成的数组。</li>
-<li>每个元素都被存储 <strong>记忆中彼此相邻</strong>.</li>
+<li>数组的各个元素<strong>在内存中连续存放</strong>。</li>
 <li>编译器知道每个<code>int</code>占用相同的字节数，因此它可以使用指针运算快速找到<code>numbers[i]</code>。</li>
 </ul>
 </section>
@@ -3084,7 +3084,7 @@ Addresses in memory:
 </section>
 <section id="why-it-matters-21" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-21">为什么重要</h4>
-<p>数组和指针组成 <strong>C数据结构基础</strong>。你将使用它们来构建：</p>
+<p>数组和指针是<strong>构建 C 数据结构的基础</strong>。可以用它们实现：</p>
 <ul>
 <li>字符串（<code>char</code>的数组）</li>
 <li>矩阵（数组的数组）</li>
@@ -3106,7 +3106,7 @@ Addresses in memory:
 </section>
 <section id="strings-as-character-arrays" class="level3">
 <h3 class="anchored" data-anchor-id="strings-as-character-arrays">24. 字符串与字符数组</h3>
-<p>在 C 中， <strong> 字符串 </strong> 只是一个以特殊空字符 <code>'\0'</code> 结尾的字符数组。与高级语言不同，C 没有内置的字符串类型，只有数组和指针。这种简单性使你可以完全控制文本数据，但也需要小心：每个字符串操作都必须遵守内存限制和空终止符。</p>
+<p>C 的<strong>字符串</strong>是一段以空字符 <code>'\0'</code> 结束的字符序列。C 没有独立的内置字符串类型，通常用字符数组存放字符串，用指针访问。处理字符串时既要给结尾的空字符留出空间，也要遵守数组边界。</p>
 <section id="how-strings-work" class="level4">
 <h4 class="anchored" data-anchor-id="how-strings-work">弦乐的工作原理</h4>
 <p>像 C 中的 <code>"Hello"</code> 这样的字符串在内部表示为：</p>
@@ -3283,7 +3283,7 @@ Modified string: C+anguage</code></pre>
 <p>字符串是 C 语言中 <strong> 文本处理、文件处理和用户界面 </strong> 的基础。因为它们只是字符数组，所以理解字符串会迫使你思考：</p>
 <ul>
 <li><strong> 内存布局 </strong></li>
-<li><strong> 空终止</strong></li>
+<li><strong>以空字符结尾</strong></li>
 <li><strong> 缓冲区大小和安全性 </strong></li>
 </ul>
 <p>一旦你内部化了 C 如何在字节级别处理文本，你就可以构建真正的解析器、文件读取器和命令行工具。</p>
@@ -3466,11 +3466,11 @@ After realloc: 5 10 15 20 25</code></pre>
 Heap    →   grows upward
 Data    →   global/static variables
 Code    →   program instructions</code></pre>
-<p><code>malloc</code> 分配成功后会返回指向一块内存的指针。这块内存通常来自<strong>堆</strong>，需要在不再使用时释放。</p>
+<p><code>malloc</code> 分配成功后会返回指向内存块的指针。该内存通常来自<strong>堆</strong>，不再使用时需要释放。</p>
 </section>
 <section id="why-it-matters-23" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-23">为什么重要</h4>
-<p>动态内存是 <strong>所有真实系统编程的支柱</strong>。没有它，你将无法构建：</p>
+<p><strong>动态内存分配是系统编程的一项基础能力</strong>。以下场景都可能用到它：</p>
 <ul>
 <li>可变大小的数组</li>
 <li>链表、树、图</li>
@@ -3577,7 +3577,7 @@ Code    →   program instructions</code></pre>
 <p>下面的示例读取了未初始化的对象，其中保存的值不可依赖：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb212"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="op">*</span>arr <span class="op">=</span> malloc<span class="op">(</span><span class="dv">5</span> <span class="op">*</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span>
 <span id="cb212-2"><a href="#cb212-2" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> arr<span class="op">[</span><span class="dv">2</span><span class="op">]);</span> <span class="co">// ❌ uninitialized read</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>malloc()</code> <strong> 不会 </strong> 清零内存，如果需要清除数据，请使用<code>calloc()</code>。</p>
+<p><code>malloc()</code> <strong>不会</strong>把内存清零。需要以零初始化时，可用 <code>calloc()</code>。</p>
 </section>
 <section id="common-causes-of-undefined-behavior" class="level4">
 <h4 class="anchored" data-anchor-id="common-causes-of-undefined-behavior">未定义行为的常见原因</h4>
@@ -3603,7 +3603,7 @@ Code    →   program instructions</code></pre>
 <tr class="even">
 <td>释放后使用</td>
 <td>解引用已释放的指针</td>
-<td>崩溃或无声的腐败</td>
+<td>崩溃或无提示的数据损坏</td>
 </tr>
 <tr class="odd">
 <td>空指针解引用</td>
@@ -3698,11 +3698,11 @@ Code    →   program instructions</code></pre>
 <tbody>
 <tr class="odd">
 <td><code>const int *p;</code></td>
-<td>指向<strong>常量数据</strong>，数据不能改变</td>
+<td>指向<strong>只读数据</strong>的指针。可改变指针指向，不能通过该指针修改数据。</td>
 </tr>
 <tr class="even">
 <td><code>int *const p;</code></td>
-<td><strong> 常量指针</strong>，指针不能改变，数据可以</td>
+<td><strong>常量指针</strong>的指向不能改变，但可以通过它修改数据。</td>
 </tr>
 <tr class="odd">
 <td><code>const int *const p;</code></td>
@@ -3722,7 +3722,7 @@ Code    →   program instructions</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb215"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> print_message<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>msg<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb215-2"><a href="#cb215-2" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%s\n</span><span class="st">"</span><span class="op">,</span> msg<span class="op">);</span></span>
 <span id="cb215-3"><a href="#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>这里，<code>msg</code>是只读的；该函数无法修改它指向的字符串。</p>
+<p>这里的 <code>msg</code> 指向以 const 限定的字符。函数不能通过这个指针修改字符串内容。</p>
 </section>
 <section id="tiny-code-25" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-25">代码示例</h4>
@@ -3762,7 +3762,7 @@ Value: 15</code></pre>
 <p>在以下情况下使用 <code>volatile</code>：</p>
 <ul>
 <li>变量可以通过 <strong> 硬件 </strong>（例如内存映射 I/O 寄存器）进行更改。</li>
-<li>变量可以被 <strong> 另一个线程 </strong> 或 <strong> 信号处理函数 </strong> 修改。</li>
+<li>变量可能被<strong>另一个线程</strong>或<strong>信号处理函数</strong>修改。这两类场景的同步规则不同。</li>
 <li>你需要每次强制读取<strong>实际内存读取</strong>，而不是缓存值。</li>
 </ul>
 <p>示例：</p>
@@ -3809,7 +3809,7 @@ Value: 15</code></pre>
 </section>
 <section id="function-pointers-and-callbacks" class="level3">
 <h3 class="anchored" data-anchor-id="function-pointers-and-callbacks">28. 函数指针与回调</h3>
-<p>C 中的函数也是值，它们存在于内存中并且像变量一样有地址。 <strong>函数指针</strong>是存储函数地址的指针，允许你间接调用该函数。这个想法为 C 中的回调、事件系统、自定义排序器和插件架构提供了支持。</p>
+<p>C 函数有地址。<strong>函数指针</strong>保存这个地址，程序可以通过它间接调用函数。回调、事件处理、自定义排序规则和插件接口都可以用到函数指针。</p>
 <section id="what-is-a-function-pointer" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-function-pointer">什么是函数指针？</h4>
 <p>就像<code>int *</code>指向一个整数一样，<strong>函数指针</strong>指向一个函数。</p>
@@ -3930,7 +3930,7 @@ ops[2](4, 2) = 8</code></pre>
 </section>
 <section id="deep-vs-shallow-copies" class="level3">
 <h3 class="anchored" data-anchor-id="deep-vs-shallow-copies">29. 深拷贝与浅拷贝</h3>
-<p>当你在 C 中将一个变量分配给另一个变量时，你通常会复制 <em> 地址 </em>，而不是 <em> 实际数据 </em>。在使用指针、数组和动态分配的结构时，<strong>浅拷贝</strong>和<strong>深拷贝</strong>之间的区别变得至关重要。了解它可以帮助你防止内存损坏、重复释放和神秘的错误。</p>
+<p>给指针赋值时，复制的是<em>地址</em>，并不会复制它指向的<em>实际数据</em>。带指针成员的结构体也要区分<strong>浅拷贝</strong>和<strong>深拷贝</strong>，否则多个副本可能意外共享数据，甚至重复释放同一块内存。</p>
 <section id="the-core-idea" class="level4">
 <h4 class="anchored" data-anchor-id="the-core-idea">核心理念</h4>
 <ul>
@@ -4092,7 +4092,7 @@ Deep copy result: name=Clice age=25</code></pre>
 <ul>
 <li>管理动态数组和链表</li>
 <li>设计安全返回或复制数据的 API</li>
-<li>为结构编写自定义复制构造函数</li>
+<li>为结构体编写专用复制函数</li>
 </ul>
 </section>
 <section id="try-it-yourself-27" class="level4">
@@ -4109,8 +4109,8 @@ Deep copy result: name=Clice age=25</code></pre>
 </section>
 <section id="practice-manual-memory-management" class="level3">
 <h3 class="anchored" data-anchor-id="practice-manual-memory-management">30. 练习：手动管理内存</h3>
-<p>现在你已经了解了内存的工作原理、栈与堆、分配、释放、泄漏、深拷贝与浅拷贝，是时候练习 <strong> 手动控制内存 </strong> 了。本练习将 <code>malloc</code>、 <code>free</code>、指针和结构管理结合在一个真实的、可运行的程序中。</p>
-<p>你将构建一个存储和操作动态分配记录的小型系统，这是对数据库或对象系统如何管理 C 内存的小型模拟。</p>
+<p>前面介绍了栈、堆、分配与释放，也区分了浅拷贝和深拷贝。本节用一个完整程序练习<strong>手动管理内存</strong>，把 <code>malloc</code>、<code>free</code>、指针和结构体结合起来。</p>
+<p>你会写一个小程序来保存和操作动态分配的记录，以此了解 C 中数据库和对象系统的一些内存管理做法。</p>
 <section id="goal" class="level4">
 <h4 class="anchored" data-anchor-id="goal">目标</h4>
 <p>创建一个简单的“学生记录管理器”，可以：</p>
@@ -4266,8 +4266,8 @@ All memory released.</code></pre>
 <h1>第 4 章 数据组织</h1>
 <section id="structures-and-nested-structures" class="level3">
 <h3 class="anchored" data-anchor-id="structures-and-nested-structures">31. 结构体与嵌套结构体</h3>
-<p>现实世界的程序通常处理相关数据组，而不仅仅是单个变量。例如，一个人有姓名、年龄和地址。你可以使用 <code>struct</code> <strong> 将它们组合成一个结构 </strong>，而不是杂乱地处理单独的变量。</p>
-<p><code>struct</code> 是 C 中最强大的功能之一，它允许你定义自己的数据类型，对信息进行逻辑有效的分组。</p>
+<p>姓名、年龄和住址都可以描述同一个人。把这些相关数据通过 <code>struct</code> <strong>组织成一个结构体</strong>，就不用分别维护一组独立变量。</p>
+<p><code>struct</code> 让你定义自己的数据类型，将有逻辑关联的信息组织在一起。</p>
 <section id="what-is-a-structure" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-structure">什么是结构？</h4>
 <p><strong> 结构</strong> 是一种用户定义的类型，它在一个名称下保存不同类型的变量。</p>
@@ -4276,7 +4276,7 @@ All memory released.</code></pre>
 <span id="cb245-3"><a href="#cb245-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> age<span class="op">;</span></span>
 <span id="cb245-4"><a href="#cb245-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> height<span class="op">;</span></span>
 <span id="cb245-5"><a href="#cb245-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>这为 <code>Person</code> 对象声明了一个 <em> 模板 </em>。它还没有创建实际数据，只是创建蓝图。</p>
+<p>这段声明为 <code>Person</code> 对象定义了<em>结构体类型</em>。它只描述成员有哪些，还没有创建该类型的对象。</p>
 </section>
 <section id="declaring-and-using-structures" class="level4">
 <h4 class="anchored" data-anchor-id="declaring-and-using-structures">声明和使用结构</h4>
@@ -4437,7 +4437,7 @@ Alice, 26 years old, born on 01/02/2000, height 1.68m</code></pre>
 <section id="unions-and-type-reuse" class="level3">
 <h3 class="anchored" data-anchor-id="unions-and-type-reuse">32. 联合体与存储复用</h3>
 <p>有时需要一个变量在不同时刻存放<em>不同类型的数据</em>，并且只为其中一种数据保留空间。此时可以用<strong>联合体</strong>。</p>
-<p><code>union</code> 允许多个字段共享 <em> 相同的内存位置 </em>。它是一个节省空间的功能，也是实现类型灵活性、变体数据甚至低级二进制操作的强大工具。</p>
+<p><code>union</code> 允许多个成员<em>共用同一块存储</em>。这样可以节省空间，也适合表达变体数据或处理底层二进制表示。</p>
 <section id="what-is-a-union" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-union">什么是联盟？</h4>
 <p><strong>联合体</strong>和结构体一样有具名成员。区别在于<em>联合体的所有成员共用同一块存储</em>，通常只把最近写入的那个成员视为当前有效成员。</p>
@@ -4575,7 +4575,7 @@ Union size: 20 bytes</code></pre>
 <pre><code>STRING: C Language
 INT: 123
 FLOAT: 9.81</code></pre>
-<p>这就是你如何将联合体的灵活性与了解当前有效成员的安全性结合起来。</p>
+<p>这样既能让联合体复用存储，又能根据标签知道哪个成员当前有效。</p>
 </section>
 <section id="why-it-matters-30" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-30">为什么重要</h4>
@@ -4605,8 +4605,8 @@ FLOAT: 9.81</code></pre>
 </section>
 <section id="typedef-and-code-clarity" class="level3">
 <h3 class="anchored" data-anchor-id="typedef-and-code-clarity">33. 用 typedef 提升代码可读性</h3>
-<p>C 使你能够使用 <code>typedef</code> 关键字创建自己的类型名称。它不会在运行时创建新类型，而是创建 <strong> 别名 </strong>，使你的代码更清晰、更具表现力且更易于维护。</p>
-<p>如果 <code>struct</code>、 <code>enum</code> 或指针语法曾经感觉混乱，<code>typedef</code> 是你最好的朋友。</p>
+<p><code>typedef</code> 关键字可以为已有类型定义<strong>别名</strong>。适当命名能让复杂声明更清楚，也便于维护。</p>
+<p>如果 <code>struct</code>、<code>enum</code> 或指针声明太难读，可以用 <code>typedef</code> 给相关类型起一个更容易理解的名字。</p>
 <section id="what-is-typedef" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-typedef">什么是<code>typedef</code>？</h4>
 <p><code>typedef</code> 给现有类型一个新名称。它就像复杂或常用声明的 <em> 昵称 </em>。</p>
@@ -4787,7 +4787,7 @@ FLOAT: 9.81</code></pre>
 </section>
 <section id="bitfields-and-memory-packing" class="level3">
 <h3 class="anchored" data-anchor-id="bitfields-and-memory-packing">34. 位域与紧凑的内存布局</h3>
-<p>C 允许你使用 <strong> 位域 </strong> 将数据布局控制到 <em> 位级别 </em>。它们允许你在结构内紧凑地存储小值，非常适合标志、配置寄存器或通信协议。与 <em> 打包 </em> 相结合，你可以将数据压缩到最小的空间，同时仍然保持易于符号操作。</p>
+<p>C 用<strong>位域</strong>在结构体中<em>按位</em>组织小整数。例如状态标志、配置寄存器或协议字段。配合<em>紧凑布局</em>可以节省空间，仍可通过成员名访问各个字段。</p>
 <section id="what-is-a-bitfield" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-bitfield">什么是位域？</h4>
 <p><strong> 位域 </strong> 允许你定义为 <code>struct</code> 内的字段分配的确切位数。</p>
@@ -4820,7 +4820,7 @@ FLOAT: 9.81</code></pre>
 <p>输出：</p>
 <pre><code>Connected: 1, Active: 1
 Error now: 1</code></pre>
-<p>尽管有 4 个成员，但整个结构通常只占用 1 个字节。</p>
+<p>示例中有 4 个位域。在示例所用的紧凑布局下，结构体可只占 1 字节，实际大小取决于类型和编译器的布局规则。</p>
 </section>
 <section id="tiny-code-32" class="level4">
 <h4 class="anchored" data-anchor-id="tiny-code-32">代码示例</h4>
@@ -4872,7 +4872,7 @@ Updated binary: 00000111</code></pre>
 <span id="cb288-7"><a href="#cb288-7" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Device <span class="op">{</span></span>
 <span id="cb288-8"><a href="#cb288-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> Sensor sensors<span class="op">[</span><span class="dv">2</span><span class="op">];</span></span>
 <span id="cb288-9"><a href="#cb288-9" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>现在，每个传感器条目都整齐地装入一个字节中。</p>
+<p>按这个示例的布局，每条传感器记录可以放进一个字节。实际布局取决于编译器和目标平台。</p>
 </section>
 <section id="memory-packing" class="level4">
 <h4 class="anchored" data-anchor-id="memory-packing">内存打包</h4>
@@ -4943,7 +4943,7 @@ Updated binary: 00000111</code></pre>
 </section>
 <section id="enumerations-revisited" class="level3">
 <h3 class="anchored" data-anchor-id="enumerations-revisited">35. 深入理解枚举</h3>
-<p>在学习常量时，你已经简单地见过 <code>enum</code>，但现在是时候将它用作 <strong> 一流的设计工具 </strong> 了。枚举为整数值集提供名称，使代码更易于阅读、维护和调试。它们还可以与前面部分中的 <code>struct</code>、 <code>union</code> 和 <code>bitfield</code> 图案完美搭配。</p>
+<p>学常量时已经见过 <code>enum</code>，这次把它当作<strong>设计工具</strong>来用。枚举给一组相关整数值起名，使代码更容易理解、维护和调试。它还可以和前面学过的 <code>struct</code>、<code>union</code>、<code>bitfield</code> 结合。</p>
 <section id="what-is-an-enumeration" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-an-enumeration">什么是枚举？</h4>
 <p><strong> 枚举 </strong> ( <code>enum</code> ) 定义一个类型，其值仅限于特定的命名常量列表。</p>
@@ -5059,8 +5059,8 @@ Rectangle 3.00x4.00</code></pre>
 </section>
 <section id="underlying-types-in-modern-c-c23" class="level4">
 <h4 class="anchored" data-anchor-id="underlying-types-in-modern-c-c23">现代 C (C23) 中的基础类型</h4>
-<p>在 C23 中，枚举的基础类型是指用于表示内存中枚举值的整数类型。在 C23 之前，此类型是实现定义的，可以是能够保存所有枚举器值的任何整数类型，通常为 <code>int</code>。使用 C23，程序员现在可以使用语法 <code>enum name : type</code> 显式指定底层类型，从而允许精确控制存储大小和符号（例如 <code>enum color : unsigned char</code>）。</p>
-<p>这可以实现更高效的内存使用和跨平台的可预测行为，特别是在嵌入式系统中或与硬件连接时。具有固定基础类型的枚举与该类型兼容，并且必须容纳所有枚举器值；否则，会出现编译时错误。</p>
+<p>枚举的底层类型决定枚举值的存储表示。C23 之前，兼容的整数类型由实现决定，通常是 <code>int</code>，并且要能表示所有枚举成员的值。C23 可以用 <code>enum name : type</code> 显式指定底层类型，从而控制存储大小和有无符号，例如 <code>enum color : unsigned char</code>。</p>
+<p>明确底层类型有助于控制存储大小，并使跨平台行为更容易预测，例如嵌入式开发或硬件接口。带固定底层类型的枚举与该类型兼容，每个枚举成员的值都必须能由它表示，否则编译器应给出诊断。</p>
 <p>示例：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb300"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb300-1"><a href="#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> color <span class="op">:</span> <span class="dt">unsigned</span> <span class="dt">char</span> <span class="op">{</span></span>
 <span id="cb300-2"><a href="#cb300-2" aria-hidden="true" tabindex="-1"></a>    RED<span class="op">,</span></span>
@@ -5074,7 +5074,7 @@ Rectangle 3.00x4.00</code></pre>
 <ul>
 <li>用有意义的名称替换“魔数”。</li>
 <li>简化调试和日志记录。</li>
-<li>启用编译时检查，你不能轻易分配无效常量。</li>
+<li>枚举常量让可选值有明确的名称，编译器也更容易就不匹配的值给出诊断。</li>
 <li>与结构、联合体和位域干净地组合来表达状态机或协议。</li>
 </ul>
 <p>它们还提高了可移植性，你的程序逻辑由 <strong> 意图 </strong> 描述，而不是任意数字。</p>
@@ -5093,7 +5093,7 @@ Rectangle 3.00x4.00</code></pre>
 </section>
 <section id="linked-lists-from-scratch" class="level3">
 <h3 class="anchored" data-anchor-id="linked-lists-from-scratch">36. 从零实现链表</h3>
-<p>现在你了解了如何使用 <code>struct</code> 对数据进行分组，是时候将其设为 <strong> 动态 </strong> 了。 <strong>链表</strong>是 C 语言中最基本的数据结构之一，完全由指针和结构体构建。它教你内存、指针和迭代是如何工作的。</p>
+<p>前面已经用 <code>struct</code> 把数据组织成一组。接下来让这组数据可以<strong>动态增减</strong>。<strong>链表</strong>由结构体和指针组成，可以用它理解节点怎样在内存中连接，以及如何遍历它们。</p>
 <section id="what-is-a-linked-list" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-linked-list">什么是链表？</h4>
 <p><strong>链表</strong>是节点的集合，其中每个节点存储：</p>
@@ -5276,7 +5276,7 @@ Rectangle 3.00x4.00</code></pre>
 </section>
 <section id="stacks-and-queues-with-structs" class="level3">
 <h3 class="anchored" data-anchor-id="stacks-and-queues-with-structs">37. 用结构体实现栈和队列</h3>
-<p>你已经学习了如何构建<strong>链表</strong>，现在你将使用该基础来创建两个经典数据结构：<strong>栈</strong>（LIFO，后进先出）和<strong>队列</strong>（FIFO，先进先出）。两者对于现实世界的程序都是必不可少的，从解析表达式到管理任务和内核调度。</p>
+<p>前面实现了<strong>链表</strong>，接下来用它实现两种经典数据结构：后进先出的<strong>栈</strong>（LIFO），以及先进先出的<strong>队列</strong>（FIFO）。表达式解析、任务管理和内核调度都用得上它们。</p>
 <section id="the-stack" class="level4">
 <h4 class="anchored" data-anchor-id="the-stack">1. 栈</h4>
 <p><strong> 栈</strong> 就像一堆盘子。你添加到顶部（<em>push</em>），并从顶部删除（<em>pop</em>）。</p>
@@ -5507,7 +5507,7 @@ Remaining: 3</code></pre>
 </section>
 <section id="why-it-matters-35" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-35">为什么重要</h4>
-<p>栈和队列行为的基础 <strong>每个主要系统抽象</strong>:</p>
+<p><strong>许多系统机制</strong>都采用栈或队列的访问顺序：</p>
 <ul>
 <li>CPU调度</li>
 <li>IO缓冲</li>
@@ -5531,7 +5531,7 @@ Remaining: 3</code></pre>
 </section>
 <section id="hash-tables-and-function-pointers" class="level3">
 <h3 class="anchored" data-anchor-id="hash-tables-and-function-pointers">38. 哈希表与函数指针</h3>
-<p>哈希表是计算中最重要的数据结构之一，快速、灵活且基础。它们通过哈希函数将 <em> 键 </em> 映射到 <em> 值 </em>，为你提供 <strong> 平均 O(1) </strong> 查找、插入和删除。在本节中，你将使用 <strong> 结构 </strong>、 <strong> 数组 </strong> 和 <strong> 函数指针 </strong> 进行哈希和比较操作，从头开始构建一个简单的哈希表。</p>
+<p>哈希表通过哈希函数索引<em>键</em>，并为每个键保存对应的<em>值</em>。在散列均匀等条件下，查找、插入和删除的平均复杂度为 <strong>O(1)</strong>。本节用<strong>结构体</strong>和<strong>数组</strong>实现一个简单版本，再通过<strong>函数指针</strong>传入哈希和比较函数。</p>
 <section id="what-is-a-hash-table" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-a-hash-table">什么是哈希表？</h4>
 <p><strong>哈希表</strong>将数据存储为键值对。当你插入密钥时：</p>
@@ -5540,7 +5540,7 @@ Remaining: 3</code></pre>
 <li>数据存储在数组的该槽中。</li>
 <li>当你稍后搜索时，密钥会再次被散列以找到相同的索引。</li>
 </ol>
-<p>如果多个键映射到同一个槽，则称为 <strong> 冲突 </strong>，由 <em> 链接 </em> （链表）或 <em> 开放寻址 </em> 处理。</p>
+<p>多个键映射到同一个槽时，就发生<strong>哈希冲突</strong>。可以用<em>链地址法（链表）</em>或<em>开放寻址</em>处理。</p>
 </section>
 <section id="simple-design" class="level4">
 <h4 class="anchored" data-anchor-id="simple-design">简单的设计</h4>
@@ -5705,12 +5705,12 @@ Remaining: 3</code></pre>
 <li>实现 <strong> rehash() </strong>，在 75% 满时将表大小加倍。</li>
 <li>将函数指针替换为宏以进行性能比较。</li>
 </ol>
-<p>哈希表是 C 语言展示其全部威力的地方：原始指针、函数间接寻址和动态内存，所有这些一起工作以实现极快的查找。接下来，你将进一步深化这些想法并探索如何模拟 <strong>C语言的面向对象设计</strong> 使用结构体、函数指针和封装。</p>
+<p>哈希表把指针、通过指针调用函数和动态内存结合起来，实现快速查找。接下来会用结构体、函数指针和封装，继续学习<strong>如何在 C 中进行面向对象设计</strong>。</p>
 </section>
 </section>
 <section id="minimal-object-oriented-design-in-c" class="level3">
 <h3 class="anchored" data-anchor-id="minimal-object-oriented-design-in-c">39. 用 C 实现简单的面向对象设计</h3>
-<p>C 没有类或继承，但它通过约定为你提供了 <strong> 结构体 </strong>、 <strong> 函数指针 </strong> 和 <strong> 封装 </strong>。有了这些，你可以构建简单、快速、明确的 <em> 面向对象风格 </em> 系统。你将学习如何设计“拥有” <strong> 数据和行为 </strong> 的数据结构，例如轻量级对象。</p>
+<p>C 没有类和继承，可以用<strong>结构体</strong>与<strong>函数指针</strong>，再<strong>通过接口约定封装实现细节</strong>。本节用这种<em>面向对象风格</em>把<strong>数据和行为</strong>组织在一起。</p>
 <section id="the-core-idea-1" class="level4">
 <h4 class="anchored" data-anchor-id="the-core-idea-1">核心理念</h4>
 <p>在面向对象的设计中，对象结合了：</p>
@@ -5887,7 +5887,7 @@ Rectangle (3.00x4.00) area=12.00</code></pre>
 <section id="benefits" class="level4">
 <h4 class="anchored" data-anchor-id="benefits">好处</h4>
 <ul>
-<li>在接口和实现之间提供<strong>清晰的分离</strong>。</li>
+<li>让接口与实现<strong>清楚分离</strong>。</li>
 <li>启用 <strong> 运行时调度 </strong>（函数行为取决于类型）。</li>
 <li>保持代码模块化，函数可以对抽象“对象”进行操作。</li>
 <li>用于 Linux 内核、GTK 和 SQLite 等主要 C 项目。</li>
@@ -5912,12 +5912,12 @@ Rectangle (3.00x4.00) area=12.00</code></pre>
 <li>尝试为 <code>Animal</code> → <code>Dog</code>、 <code>Cat</code> 和 <code>speak()</code> 函数设计一个小型“界面”。</li>
 </ol>
 <p>有了结构体和函数指针，C 就成为一个最小但功能强大的 <strong> 对象系统 </strong>。你现在拥有设计可重用、模块化代码所需的一切，同时又不会失去 C 语言永恒的清晰度和效率。</p>
-<p>接下来，你将通过将所有这些想法放在一起来完成本章：构建一个小型的、 <strong>C语言的现实世界系统</strong>，你自己的 <strong>小型图书馆系统</strong>，具有数据结构、内存管理和模块化设计。</p>
+<p>本章最后会<strong>用 C 实现一个小型应用</strong>：<strong>图书管理系统</strong>。这个项目会综合使用数据结构、内存管理和模块化设计。</p>
 </section>
 </section>
 <section id="practice-build-a-tiny-library-system" class="level3">
 <h3 class="anchored" data-anchor-id="practice-build-a-tiny-library-system">40. 练习：搭建小型图书管理系统</h3>
-<p>现在，你已经学习了每个构建块、结构、指针、动态内存、链表、枚举，甚至带有函数指针的对象样式设计。是时候将它们组合成一个真正的迷你项目了：<strong>微型图书馆系统</strong>。这将是一个完整的、可运行的 C 程序，可以使用你迄今为止学到的所有内容来管理书籍、作者和借阅记录。</p>
+<p>这个<strong>小型图书管理系统</strong>会用到前面学过的结构体、指针、动态内存、链表和枚举，也会用函数指针组织行为。完成后，你会得到一个能管理图书、作者和借阅记录的 C 程序。</p>
 <section id="goal-1" class="level4">
 <h4 class="anchored" data-anchor-id="goal-1">目标</h4>
 <p>实施一个最小系统，可以：</p>
@@ -6134,7 +6134,7 @@ The C Programming Language | Kernighan &amp; Ritchie | 1988 | Available
 <h1>第 5 章 输入、输出与文件</h1>
 <section id="standard-io-and-printfscanf" class="level3">
 <h3 class="anchored" data-anchor-id="standard-io-and-printfscanf">41. 标准 I/O：printf 与 scanf</h3>
-<p>输入和输出是程序与外界对话的方式。在 C 中，几乎所有内容都经过 <strong> 标准 I/O 库 </strong>，在 <code>&lt;stdio.h&gt;</code> 中定义。你已经在“Hello, C World”中遇到了<code>printf()</code>，现在你将了解所有这些函数如何组合在一起、它们如何工作以及如何安全使用它们。</p>
+<p>程序通过输入和输出与外界交互。本节介绍通过 <code>&lt;stdio.h&gt;</code> 声明的<strong>标准 I/O 库接口</strong>。你在第一个程序里已经用过 <code>printf()</code>，接下来会了解它与其他 I/O 函数怎样配合，以及使用时需要注意什么。</p>
 <section id="the-standard-streams" class="level4">
 <h4 class="anchored" data-anchor-id="the-standard-streams">标准流</h4>
 <p>每个 C 程序都以<strong>开头，三个标准流</strong>自动打开：</p>
@@ -6305,7 +6305,7 @@ Hi Alice! You are about 25 years old.</code></pre>
 </section>
 <section id="why-it-matters-38" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-38">为什么重要</h4>
-<p><code>printf()</code> 和 <code>scanf()</code> 是 <strong>控制台 I/O 的主力</strong>。他们教你：</p>
+<p><code>printf()</code> 和 <code>scanf()</code> 是<strong>控制台 I/O 的常用函数</strong>。通过它们可以学到：</p>
 <ul>
 <li>数据如何在内存和流之间移动。</li>
 <li>如何控制数字精度和布局。</li>
@@ -6327,8 +6327,8 @@ Hi Alice! You are about 25 years old.</code></pre>
 </section>
 <section id="file-pointers-and-fopen-fclose" class="level3">
 <h3 class="anchored" data-anchor-id="file-pointers-and-fopen-fclose">42. 文件指针：<code>fopen</code> 与 <code>fclose</code></h3>
-<p>文件让你的 C 程序记住运行时之外的事情。与程序结束时消失的标准输入和输出不同，文件提供 <strong> 持久存储 </strong>，你可以在运行之间读取和写入数据。</p>
-<p>本节介绍 C 语言中的关键文件处理 API： <code>fopen()</code>、 <code>fclose()</code>、 <code>fprintf()</code>、 <code>fscanf()</code> 及其相关 API。</p>
+<p>文件可以提供<strong>持久存储</strong>，让数据在一次运行结束后仍然可用，下一次运行时可以继续读写。</p>
+<p>本节介绍 C 中用于读写文件的主要接口，包括 <code>fopen()</code>、<code>fclose()</code>、<code>fprintf()</code> 和 <code>fscanf()</code>。</p>
 <section id="the-big-picture-1" class="level4">
 <h4 class="anchored" data-anchor-id="the-big-picture-1">大局观</h4>
 <p>C 中的文件 I/O 使用 <code>FILE *</code> 指针来表示打开的文件。你不直接操作磁盘，而是通过运行时管理的缓冲文件流进行读写。</p>
@@ -6355,7 +6355,7 @@ Hi Alice! You are about 25 years old.</code></pre>
 <tr class="even">
 <td><code>"w"</code></td>
 <td>写</td>
-<td>创建新的或截断现有的</td>
+<td>文件不存在时创建，已存在时截断。</td>
 </tr>
 <tr class="odd">
 <td><code>"a"</code></td>
@@ -6370,7 +6370,7 @@ Hi Alice! You are about 25 years old.</code></pre>
 <tr class="odd">
 <td><code>"w+"</code></td>
 <td>读/写</td>
-<td>如果存在则截断</td>
+<td>文件已存在时将其截断。</td>
 </tr>
 <tr class="even">
 <td><code>"a+"</code></td>
@@ -6460,8 +6460,8 @@ C makes you closer to the machine.</code></pre>
 7 + 9 = 16</code></pre>
 </section>
 <section id="file-position-and-rewinding" class="level4">
-<h4 class="anchored" data-anchor-id="file-position-and-rewinding">文件位置和倒带</h4>
-<p>你可以使用以下方法移动文件：</p>
+<h4 class="anchored" data-anchor-id="file-position-and-rewinding">文件位置与回到文件开头</h4>
+<p>可以用下面的函数调整文件位置：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb348"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb348-1"><a href="#cb348-1" aria-hidden="true" tabindex="-1"></a>fseek<span class="op">(</span>fp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> SEEK_SET<span class="op">);</span>  <span class="co">// go to beginning</span></span>
 <span id="cb348-2"><a href="#cb348-2" aria-hidden="true" tabindex="-1"></a>fseek<span class="op">(</span>fp<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> SEEK_END<span class="op">);</span>  <span class="co">// go to end</span></span>
 <span id="cb348-3"><a href="#cb348-3" aria-hidden="true" tabindex="-1"></a>rewind<span class="op">(</span>fp<span class="op">);</span>              <span class="co">// reset to start</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
@@ -6491,17 +6491,17 @@ C makes you closer to the machine.</code></pre>
 <h4 class="anchored" data-anchor-id="try-it-yourself-40">动手练习</h4>
 <ol type="1">
 <li>编写一个程序，询问你的姓名并将其保存到 <code>user.txt</code>。</li>
-<li>每次程序运行时附加一个时间戳。</li>
+<li>每次程序运行时追加一个时间戳。</li>
 <li>读取所有行并计算程序已执行的次数。</li>
 <li>修改示例以反转从文件读取的所有行。</li>
-<li>使用 <code>perror()</code> 优雅地处理丢失的文件。</li>
+<li>用 <code>perror()</code> 处理文件不存在的情况，并给出清楚的错误信息。</li>
 </ol>
 <p>你现在知道如何安全地打开、读取和写入文本文件。接下来，你将深入了解 <strong> 二进制文件 </strong>，其中数据以原始字节移动，非常适合高效存储结构和数组。</p>
 </section>
 </section>
 <section id="reading-and-writing-binary-files" class="level3">
 <h3 class="anchored" data-anchor-id="reading-and-writing-binary-files">43. 读写二进制文件</h3>
-<p>文本文件易于阅读，但并不总是高效。另一方面，二进制文件完全按照内存中存在的方式存储原始字节，无需格式化，无需转换。它们非常适合保存数组、结构或任何必须快速写入和读回而不会丢失或舍入的数据。</p>
+<p>文本文件易于阅读。二进制文件可以按字节直接存储数据，省去文本格式化和重新解析的开销，也不会因文本格式引入舍入。但直接写入数组或结构体的内存表示时，读写两端需要约定相同的数据布局。</p>
 <section id="text-vs-binary" class="level4">
 <h4 class="anchored" data-anchor-id="text-vs-binary">文本与二进制</h4>
 <table class="caption-top table">
@@ -6597,7 +6597,7 @@ Read 5 integers:
 </section>
 <section id="writing-and-reading-structs" class="level4">
 <h4 class="anchored" data-anchor-id="writing-and-reading-structs">写作和阅读结构</h4>
-<p>你可以使用相同的模式直接存储整个结构。</p>
+<p>也可以按同样的方法直接存储整个结构体。只在读写双方的数据表示一致时，才能直接读回这些字节。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb355"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb355-1"><a href="#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb355-2"><a href="#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb355-3"><a href="#cb355-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -6646,7 +6646,7 @@ Read 5 integers:
 <span id="cb357-6"><a href="#cb357-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="appending-binary-data" class="level4">
-<h4 class="anchored" data-anchor-id="appending-binary-data">附加二进制数据</h4>
+<h4 class="anchored" data-anchor-id="appending-binary-data">追加二进制数据</h4>
 <p>你可以使用模式 <code>"ab"</code> 附加更多记录：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb358"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb358-1"><a href="#cb358-1" aria-hidden="true" tabindex="-1"></a>Book b3 <span class="op">=</span> <span class="op">{</span><span class="dv">3</span><span class="op">,</span> <span class="fl">21.75</span><span class="op">,</span> <span class="st">"Advanced C"</span><span class="op">};</span></span>
 <span id="cb358-2"><a href="#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="dt">FILE</span> <span class="op">*</span>fp <span class="op">=</span> fopen<span class="op">(</span><span class="st">"books.bin"</span><span class="op">,</span> <span class="st">"ab"</span><span class="op">);</span></span>
@@ -6711,8 +6711,8 @@ Read 5 integers:
 </section>
 <section id="working-with-stdin-stdout-and-stderr" class="level3">
 <h3 class="anchored" data-anchor-id="working-with-stdin-stdout-and-stderr">44. 标准输入、标准输出与标准错误（<code>stdin</code>、<code>stdout</code>、<code>stderr</code>）</h3>
-<p>每个 C 程序都会自动启动并连接到你的环境、键盘、终端屏幕和错误控制台的三个开放流。它们是 <strong> 标准 I/O 流 </strong>，使你的程序灵活且可编写脚本。</p>
-<p>理解这三个流对于编写可以与文件、管道和其他程序交互的工具至关重要，这也是 Unix 风格设计的本质。</p>
+<p>程序启动时已有三个打开的<strong>标准 I/O 流</strong>：标准输入、标准输出和标准错误。它们通常由运行环境连接到终端，也可以重定向到文件或管道，方便脚本调用。</p>
+<p>掌握这三个流，就能让命令行工具与文件、管道及其他程序配合，这也是 Unix 风格工具的基本做法。</p>
 <section id="the-three-standard-streams" class="level4">
 <h4 class="anchored" data-anchor-id="the-three-standard-streams">三种标准流</h4>
 <table class="caption-top table">
@@ -6860,7 +6860,7 @@ Note: This is an example error message.</code></pre>
 </section>
 <section id="flushing-buffers" class="level4">
 <h4 class="anchored" data-anchor-id="flushing-buffers">刷新缓冲区</h4>
-<p>输出流被 <strong> 缓冲 </strong>，直到缓冲区已满或刷新时才会写入数据。为了确保输出立即出现：</p>
+<p>输出流可能采用<strong>缓冲</strong>。全缓冲通常在缓冲区满或刷新时写出，行缓冲还会受到换行影响。需要立即将数据交给底层文件或设备时，可以显式刷新：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb374"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb374-1"><a href="#cb374-1" aria-hidden="true" tabindex="-1"></a>fflush<span class="op">(</span>stdout<span class="op">);</span>  <span class="co">// flush output buffer</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>这对于交互式程序很有用。</p>
 </section>
@@ -6888,8 +6888,8 @@ Note: This is an example error message.</code></pre>
 </section>
 <section id="buffered-io-with-fgets-and-fputs" class="level3">
 <h3 class="anchored" data-anchor-id="buffered-io-with-fgets-and-fputs">45. 使用 <code>fgets</code> 和 <code>fputs</code> 进行缓冲 I/O</h3>
-<p>当你的程序读写数据时，它并不总是直接进入磁盘或终端，而是使用 <strong> 缓冲区 </strong>。缓冲区是临时保存数据的小内存块，通过减少系统执行缓慢 I/O 操作的频率来提高性能。</p>
-<p>C 的标准 I/O 库 ( <code>&lt;stdio.h&gt;</code> ) 会自动为你处理这个问题。在本节中，你将了解缓冲的工作原理以及如何使用 <code>fgets</code>、 <code>fputs</code> 和相关函数来有效管理它。</p>
+<p>程序读写数据时，可以先经过<strong>缓冲区</strong>。缓冲区在内存中暂存数据，把多次较小的读写合并起来，以减少磁盘或终端 I/O 的开销。</p>
+<p>C 的标准 I/O 库会自动处理缓冲，本节使用 <code>&lt;stdio.h&gt;</code> 中声明的 <code>fgets</code>、<code>fputs</code> 等函数，看看如何利用缓冲和控制它的行为。</p>
 <section id="what-is-buffered-io" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-buffered-io">什么是缓冲 I/O？</h4>
 <p>C 库不是一次读取或写入一个字符，而是：</p>
@@ -6898,7 +6898,7 @@ Note: This is an example error message.</code></pre>
 <li>收集一批字符（用于输出）</li>
 </ul>
 <p>当缓冲区已满或刷新时，数据在程序和文件或终端之间移动。</p>
-<p>这就是为什么有时 <code>printf()</code> 输出不会立即出现，它会在缓冲区中等待，直到发生换行或刷新。</p>
+<p>所以 <code>printf()</code> 的输出有时不会立刻出现，而会暂存在缓冲区。行缓冲可能在换行时写出，也可以显式刷新。</p>
 </section>
 <section id="input-fgets" class="level4">
 <h4 class="anchored" data-anchor-id="input-fgets">输入：<code>fgets()</code></h4>
@@ -6955,7 +6955,7 @@ fgets and fputs are line-based tools.</code></pre>
 <ul>
 <li><code>fgets()</code> 尊重缓冲区边界</li>
 <li>它正确读取空格和制表符</li>
-<li>它可以防止未定义行为溢出</li>
+<li>它能防止整数溢出引起的未定义行为。</li>
 </ul>
 <p>避免这种情况：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb382"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb382-1"><a href="#cb382-1" aria-hidden="true" tabindex="-1"></a>scanf<span class="op">(</span><span class="st">"</span><span class="sc">%s</span><span class="st">"</span><span class="op">,</span> buffer<span class="op">);</span> <span class="co">// stops at first space and may overflow</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
@@ -7016,7 +7016,7 @@ fgets and fputs are line-based tools.</code></pre>
 </section>
 <section id="buffer-flushing" class="level4">
 <h4 class="anchored" data-anchor-id="buffer-flushing">刷新缓冲区</h4>
-<p>有时你需要手动刷新输出：</p>
+<p>有时需要显式刷新输出缓冲区：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb388"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb388-1"><a href="#cb388-1" aria-hidden="true" tabindex="-1"></a>fflush<span class="op">(</span>stdout<span class="op">);</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>这对于必须立即显示消息的交互式程序非常有用。</p>
 <p>要完全禁用缓冲（例如，用于日志记录）：</p>
@@ -7039,15 +7039,15 @@ fgets and fputs are line-based tools.</code></pre>
 <li>计算 EOF 之前你读了多少行。</li>
 <li>使用 <code>fgets</code> 和 <code>printf</code> 打印每一行的行号。</li>
 <li>试验缓冲区大小，尝试 16 与 256 字节并注意性能差异。</li>
-<li>在交互式日志程序的每一行之后刷新输出。</li>
+<li>为交互式日志程序写完每行后都刷新输出。</li>
 </ol>
 <p><code>fgets</code> 和 <code>fputs</code> 为你提供安全的、基于行的文件和控制台 I/O 基础。接下来，你将学习如何使用 <code>errno</code>、 <code>perror</code> 和 <code>strerror</code> 正确处理错误 <strong> </strong>，这是用 C 语言编写可靠系统程序的基本工具。</p>
 </section>
 </section>
 <section id="error-checking-with-errno-and-perror" class="level3">
 <h3 class="anchored" data-anchor-id="error-checking-with-errno-and-perror">46. 用 <code>errno</code> 和 <code>perror</code> 检查错误</h3>
-<p>即使写得最好的 C 程序也可能会遇到错误、文件丢失、权限问题、被零除或内存分配失败。与某些抛出异常的语言不同，C 使用返回值和名为 <strong> <code>errno</code> </strong> 手动报告错误 <strong> </strong>。</p>
-<p>了解如何使用 <code>errno</code>、 <code>perror()</code> 和 <code>strerror()</code> 对于编写 <strong> 健壮、生产级 </strong> C 程序至关重要，这些程序可以优雅地失败并提供信息。</p>
+<p>程序可能遇到文件不存在、权限不足或分配失败等问题。C 没有异常机制，通常用返回值显式报告失败。部分函数失败时还会用宏 <strong><code>errno</code></strong> 报告错误状态，由调用方<strong>主动检查</strong>。整数除零则是未定义行为，应在求值前检查除数。</p>
+<p>掌握 <code>errno</code>、<code>perror()</code> 和 <code>strerror()</code> 的用法，就能让程序在出错时给出清楚的诊断，帮助写出<strong>可稳健处理失败的</strong> C 程序。</p>
 <section id="the-idea-behind-errno" class="level4">
 <h4 class="anchored" data-anchor-id="the-idea-behind-errno"><code>errno</code>背后的想法</h4>
 <p><code>errno</code> 是一个全局整数（在 <code>&lt;errno.h&gt;</code> 中声明），每当库函数失败时，它会存储 <strong> 错误代码 </strong>。</p>
@@ -7223,7 +7223,7 @@ fopen failed: No such file or directory</code></pre>
 </section>
 <section id="why-it-matters-43" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-43">为什么重要</h4>
-<p><code>errno</code> 及其助手（<code>perror</code>、<code>strerror</code>）使你的程序在出现问题时<em> 自我解释</em>。这对于以下方面至关重要：</p>
+<p><code>errno</code> 及相关接口（<code>perror</code>、<code>strerror</code>）能帮程序在出错时<em>说明失败原因</em>。这些信息常用于：</p>
 <ul>
 <li>必须报告特定错误原因的系统工具</li>
 <li>调试生产代码</li>
@@ -7240,12 +7240,12 @@ fopen failed: No such file or directory</code></pre>
 <li>使用循环和 <code>strerror()</code> 打印所有已知的错误代码和消息。</li>
 <li>编写一个小的“safe_open”函数，将 <code>fopen</code> 包装起来并报告错误。</li>
 </ol>
-<p>掌握错误处理后，你现在知道如何使 C 程序既丰富又可靠。接下来，你将探索 <strong> 命令行参数（<code>argc</code>、<code>argv</code>）</strong>，这是构建动态处理用户输入的灵活、可编写脚本的工具的门户。</p>
+<p>掌握错误处理后，程序能在失败时给出有用的信息。下一节介绍<strong>命令行参数（<code>argc</code>、<code>argv</code>）</strong>，让工具能接收来自用户或脚本的参数。</p>
 </section>
 </section>
 <section id="command-line-arguments-argc-argv" class="level3">
 <h3 class="anchored" data-anchor-id="command-line-arguments-argc-argv">47. 命令行参数（<code>argc</code>、<code>argv</code>）</h3>
-<p>每个 C 程序都可以直接从 <strong> 命令行 </strong> 接收输入，没有 <code>scanf</code>，没有 <code>fgets</code>，只是运行可执行文件时传递的参数。这就是专业 C 工具（如 <code>gcc</code>、 <code>ls</code> 和 <code>grep</code>）接收文件名、选项和标志的方式。</p>
+<p>启动可执行文件时，可以从<strong>命令行</strong>把参数传给程序，无需等待 <code>scanf</code> 或 <code>fgets</code> 读取输入。<code>gcc</code>、<code>ls</code> 和 <code>grep</code> 等工具就是这样接收文件名和选项的。</p>
 <section id="the-function-signature" class="level4">
 <h4 class="anchored" data-anchor-id="the-function-signature">函数签名</h4>
 <p>你的 <code>main</code> 函数可以采用 <strong> 两个参数 </strong>：</p>
@@ -7429,8 +7429,8 @@ argv[3] = 123</code></pre>
 </section>
 <section id="reading-configuration-files" class="level3">
 <h3 class="anchored" data-anchor-id="reading-configuration-files">48. 读取配置文件</h3>
-<p>随着 C 程序的增长，文件路径、阈值或用户首选项等硬编码设置变得有限。配置文件允许你的程序在运行时读取设置，这是工具、服务器和嵌入式系统的关键功能。</p>
-<p>你将学习如何使用标准 I/O 和字符串处理来读取和解析配置文件。</p>
+<p>随着程序变大，把文件路径、阈值或用户偏好写死在代码里就不方便了。配置文件让工具、服务或嵌入式程序在运行时读取这些设置。</p>
+<p>本节用标准 I/O 和字符串处理函数读取并解析配置文件。</p>
 <section id="the-goal" class="level4">
 <h4 class="anchored" data-anchor-id="the-goal">目标</h4>
 <p>配置文件可能如下所示：</p>
@@ -7580,8 +7580,8 @@ Log file: /tmp/server.log</code></pre>
 </section>
 <section id="serializing-structs-to-disk" class="level3">
 <h3 class="anchored" data-anchor-id="serializing-structs-to-disk">49. 将结构体序列化到磁盘</h3>
-<p>到目前为止，你已经使用了文本文件、配置文件和基本二进制数据。现在是时候将这些想法结合成更强大的东西了，<strong>序列化</strong>：将完整的 C 结构保存到磁盘并稍后恢复它们，就像它们在内存中一样。</p>
-<p>这是操作系统和游戏中数据库、缓存和持久状态的基础。</p>
+<p>前面读写过文本、配置和基本二进制数据。接下来练习<strong>序列化</strong>：把结构体写入磁盘，再读回并还原数据。这里先演示按内存表示读写的办法。</p>
+<p>持久化数据的基本思路也适用于数据库、缓存，以及操作系统和游戏保存的状态。</p>
 <section id="what-is-serialization" class="level4">
 <h4 class="anchored" data-anchor-id="what-is-serialization">什么是序列化？</h4>
 <p><strong>序列化</strong>是指将内存中的数据转换为可以存储或传输的格式（如文件）。 <strong> 反序列化 </strong> 则相反：从文件中重建该数据。</p>
@@ -7708,7 +7708,7 @@ Loaded 3 products:
 <h4 class="anchored" data-anchor-id="step-6.-portability-considerations">步骤 6 · 可移植性考虑因素</h4>
 <p>像这样的序列化是 <strong> 机器相关的 </strong> 因为：</p>
 <ul>
-<li><strong> Endianness </strong>（整数/浮点数的字节序）</li>
+<li><strong>字节序</strong>（多字节整数或浮点数的字节排列方式）</li>
 <li><strong> 结构填充 </strong>（编译器对齐）</li>
 <li><strong> 数据类型大小 </strong></li>
 </ul>
@@ -7736,7 +7736,7 @@ Loaded 3 products:
 </section>
 <section id="why-it-matters-46" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-46">为什么重要</h4>
-<p>序列化使你的 C 程序 <em> 有状态 </em>，它们可以保存进度、存储数据或重新启动后恢复。它的基础是：</p>
+<p>序列化让 C 程序可以<em>保存和恢复状态</em>，包括运行进度和其他数据。常见用途包括：</p>
 <ul>
 <li>数据库和键值存储</li>
 <li>在游戏中保存文件</li>
@@ -7748,7 +7748,7 @@ Loaded 3 products:
 <section id="try-it-yourself-47" class="level4">
 <h4 class="anchored" data-anchor-id="try-it-yourself-47">动手练习</h4>
 <ol type="1">
-<li>添加一个函数 <code>add_product()</code> 可以安全地附加新记录。</li>
+<li>添加函数 <code>add_product()</code>，把新记录安全地追加到文件末尾。</li>
 <li>实现 <code>list_products()</code> 打印文件中的所有产品。</li>
 <li>添加“按 id 删除”操作，将除一条记录之外的所有记录复制到新文件中。</li>
 <li>尝试结构填充（<code>sizeof(Product)</code>可能不是你所期望的）。</li>
@@ -7759,15 +7759,15 @@ Loaded 3 products:
 </section>
 <section id="practice-build-a-log-reader-and-writer" class="level3">
 <h3 class="anchored" data-anchor-id="practice-build-a-log-reader-and-writer">50. 练习：读写日志</h3>
-<p>你已经探索了文本和二进制 I/O、缓冲、错误处理和配置。现在是时候将所有内容整合到一个现实世界的实践项目中，即 C 语言的 <strong> 日志读取器和写入器 </strong>。</p>
-<p>该系统允许你将结构化日志写入文件，然后将其读回，这是服务器、守护程序和调试实用程序等工具的基础。</p>
+<p>这个<strong>日志读写</strong>练习会把文本和二进制 I/O、缓冲、错误处理与配置文件结合起来。</p>
+<p>程序会将结构化日志写入文件，再从文件中读取记录。这是编写服务、守护进程和调试工具的常用做法。</p>
 <section id="project-overview-1" class="level4">
 <h4 class="anchored" data-anchor-id="project-overview-1">项目概况</h4>
 <p>你将构建一个包含两个主要部分的最小日志系统：</p>
 <ol type="1">
 <li><p><strong> 记录器（写入器）：</strong></p>
 <ul>
-<li>将日志消息附加到带有时间戳和级别（INFO、WARN、ERROR）的文件。</li>
+<li>将日志消息连同时间戳和级别（INFO、WARN、ERROR）一起追加到文件。</li>
 <li>处理文件打开、写入和安全关闭。</li>
 </ul></li>
 <li><p><strong> 读者：</strong></p>
@@ -7932,13 +7932,13 @@ Only errors:
 <ul>
 <li>始终检查 <code>fopen</code>、 <code>fgets</code> 和 <code>fprintf</code> 的返回值。</li>
 <li>使用 <code>perror()</code> 进行系统级诊断。</li>
-<li>经常刷新或正确关闭以确保崩溃后日志仍然存在。</li>
+<li>定期刷新缓冲区或正常关闭文件，可以减少进程异常终止时丢失的日志。刷新标准 I/O 缓冲区本身不保证数据已经落盘。</li>
 </ul>
 </section>
 <section id="step-7.-optional-enhancements" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-optional-enhancements">步骤 7 · 可选增强功能</h4>
 <ul>
-<li>添加日志轮换（在 N 行后重命名或截断）。</li>
+<li>加入日志轮换功能：日志达到 N 行后，重命名旧文件或截断文件。</li>
 <li>添加日志级别（仅写入高于阈值的日志）。</li>
 <li>实现 <code>save_config()</code> 来定义配置文件中的日志文件路径和详细程度。</li>
 <li>添加 UTC 时间戳或毫秒时间戳以确保精度。</li>
@@ -7973,9 +7973,9 @@ Only errors:
 <h1>第 6 章 编译与构建</h1>
 <section id="from-source-to-executable-the-compilation-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="from-source-to-executable-the-compilation-pipeline">51. 从源代码到可执行文件</h3>
-<p>每次你跑步的时候</p>
+<p>每次执行下面的命令：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb451"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb451-1"><a href="#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> hello.c <span class="at">-o</span> hello</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>你正在启动一个复杂的多阶段过程，将人类可读的 C 代码转换为机器可执行的二进制文件。了解这个<strong>编译流程</strong>是成为真正的系统程序员的核心。</p>
+<p>这条命令启动了一系列转换，把人能读懂的 C 源代码变成机器能执行的二进制文件。本节会逐一拆开<strong>编译流程</strong>。</p>
 <p>让我们来解压 <code>.c</code> 文件和最终可执行文件之间发生的情况。</p>
 <section id="step-1.-the-four-stages" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-four-stages">步骤 1 · 四个阶段</h4>
@@ -8165,8 +8165,8 @@ call    puts</code></pre>
 </section>
 <section id="the-preprocessor-and-macros" class="level3">
 <h3 class="anchored" data-anchor-id="the-preprocessor-and-macros">52. 预处理器与宏</h3>
-<p>在编译 C 代码之前，它会经过一个强大的文本处理阶段，称为 <strong> 预处理器 </strong>。这是包含头文件、扩展宏和进行条件编译的地方。</p>
-<p>预处理器不“理解”C，它执行文本替换和文件包含，为编译器准备代码。</p>
+<p>编译前，源代码先经过<strong>预处理器</strong>。它负责包含头文件、展开宏，以及处理条件编译指令。</p>
+<p>预处理按预处理记号和指令工作，完成替换和文件包含。后面的编译阶段才会按 C 的语法和类型规则分析代码。</p>
 <section id="step-1.-what-the-preprocessor-does" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-the-preprocessor-does">步骤 1 · 预处理器的作用</h4>
 <p>以 <code>#</code> 开头的每一行都是一个 <strong> 预处理器指令 </strong>。常见的包括：</p>
@@ -8286,7 +8286,7 @@ Square of 5: 25</code></pre>
 </section>
 <section id="step-6.-header-guards" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-header-guards">步骤 6 · 接头护罩</h4>
-<p>通过使用预处理器防护来防止多次包含同一头文件：</p>
+<p>使用预处理器的包含保护，防止同一头文件被重复包含：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb483"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb483-1"><a href="#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef MY_HEADER_H</span></span>
 <span id="cb483-2"><a href="#cb483-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MY_HEADER_H</span></span>
 <span id="cb483-3"><a href="#cb483-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -8379,8 +8379,8 @@ Square of 5: 25</code></pre>
 </section>
 <section id="conditional-compilation-if-ifdef-ifndef" class="level3">
 <h3 class="anchored" data-anchor-id="conditional-compilation-if-ifdef-ifndef">53. 条件编译（<code>#if</code>、<code>#ifdef</code>、<code>#ifndef</code>）</h3>
-<p>条件编译可让你 <strong> 控制编译哪些代码 </strong>，不是在运行时，而是在编译时。这就是 C 程序如何适应不同的操作系统、体系结构或构建配置，而无需手动更改源文件。</p>
-<p>将其视为编译器 <em> 眼睛</em> 的逻辑。</p>
+<p>条件编译可以<strong>在编译前选定哪些代码会参与构建</strong>。同一份源代码因此可以适应不同的操作系统、硬件架构和构建配置。</p>
+<p>这些条件由<em>预处理器</em>求值，不会变成程序运行时的分支。</p>
 <section id="step-1.-why-conditional-compilation-exists" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-why-conditional-compilation-exists">步骤 1 · 为什么存在条件编译</h4>
 <p>大型 C 程序通常需要处理差异，例如：</p>
@@ -8636,8 +8636,8 @@ Result: 25</code></pre>
 </section>
 <section id="inline-functions-and-header-hygiene" class="level3">
 <h3 class="anchored" data-anchor-id="inline-functions-and-header-hygiene">54. 内联函数与头文件编写规范</h3>
-<p>在早期的 C 中，程序员经常依赖宏来提高性能和重用。但宏有很大的缺点，没有类型检查，没有调试符号，而且错误消息很混乱。</p>
-<p>引入了<strong>内联函数</strong>来解决这个问题。它们将宏的效率与实际函数的安全性结合起来。</p>
+<p>早期 C 程序常用函数式宏复用代码和减少调用开销。宏展开没有独立的形参类型检查，也没有普通函数那样的调试信息，报错位置有时难以对应回调用处。</p>
+<p><strong>内联函数</strong>具有普通函数的类型检查和参数求值规则，同时给编译器提供内联的机会。</p>
 <p>本节还涵盖 <strong> 头文件编写规范 </strong>，或如何编写干净、可重用的 <code>.h</code> 文件，以便跨大型项目安全扩展。</p>
 <section id="step-1.-what-does-inline-mean" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-does-inline-mean">步骤 1 · “内联”是什么意思？</h4>
@@ -8706,7 +8706,7 @@ Result: 25</code></pre>
 </section>
 <section id="step-4.-inline-and-the-compiler" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-inline-and-the-compiler">步骤 4 · 内联和编译器</h4>
-<p><code>inline</code> 是给编译器的 <em> 提示 </em>，而不是命令。编译器决定内联是否确实提高了性能。</p>
+<p><code>inline</code> 是给编译器的<em>内联建议</em>。编译器可以根据分析结果决定是否展开调用。</p>
 <p>你可以使用属性强制内联（不可移植）：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb511"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb511-1"><a href="#cb511-1" aria-hidden="true" tabindex="-1"></a>__attribute__<span class="op">((</span>always_inline<span class="op">))</span> <span class="kw">inline</span> <span class="dt">void</span> fast_add<span class="op">(</span><span class="dt">int</span> <span class="op">*</span>x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb511-2"><a href="#cb511-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>x <span class="op">+=</span> y<span class="op">;</span></span>
@@ -8851,8 +8851,8 @@ Sum = 7</code></pre>
 </section>
 <section id="makefiles-and-build-automation" class="level3">
 <h3 class="anchored" data-anchor-id="makefiles-and-build-automation">55. Makefile 与自动化构建</h3>
-<p>手动编译一两个 C 文件就可以了，但实际项目很快就会增长到数十或数百个文件。每次输入长 <code>gcc</code> 命令会变得乏味、容易出错并且在不同环境中不一致。</p>
-<p>这就是 <strong> Makefiles </strong> 的用武之地。它们自动化构建过程，跟踪依赖关系，并仅重建发生变化的内容。</p>
+<p>只有一两个源文件时，可以手工编译。文件增长到几十个甚至几百个后，每次输入整条 <code>gcc</code> 命令就费时易错，也难以在不同环境复现。</p>
+<p><strong>Makefile</strong>把构建命令和依赖关系写成规则，使构建可以自动进行，并只重新生成需要更新的目标。</p>
 <p>让我们全面了解如何使用 <code>make</code> 并编写简单但功能强大的 Makefile。</p>
 <section id="step-1.-what-is-make" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-make">步骤1.什么是<code>make</code>？</h4>
@@ -9001,7 +9001,7 @@ math.h</code></pre>
  ├── util.c
 include/
  ├── util.h</code></pre>
-<p>你可以像这样构造你的 Makefile：</p>
+<p>可以这样组织 Makefile：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb546"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb546-1"><a href="#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="dt">SRC</span> <span class="ch">=</span><span class="st"> src/main.c src/util.c</span></span>
 <span id="cb546-2"><a href="#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="dt">OBJ</span> <span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">SRC</span><span class="kw">:</span><span class="ss">.c</span><span class="kw">=</span><span class="ss">.o</span><span class="ch">)</span></span>
 <span id="cb546-3"><a href="#cb546-3" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS</span> <span class="ch">=</span><span class="st"> -Iinclude -Wall</span></span>
@@ -9066,7 +9066,7 @@ include/
 </section>
 <section id="linking-multiple-files" class="level3">
 <h3 class="anchored" data-anchor-id="linking-multiple-files">56. 链接多个源文件</h3>
-<p>当程序增长超过一个 <code>.c</code> 文件时，编译器必须将它们组合成一个可执行文件。这个过程，即 <strong> 链接 </strong>，将所有函数、变量和库引用连接到一个二进制文件中。</p>
+<p>程序拆成多个 <code>.c</code> 文件后，各源文件可以先分别编译。随后，<strong>链接</strong>负责合并目标文件，并解析对其他目标文件和库中符号的引用。</p>
 <p>你已经看过它的片段：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb551"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb551-1"><a href="#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> main.o math.o <span class="at">-o</span> app</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>但现在我们将更深入地了解 <em> </em> 链接的工作原理以及出现问题时会发生什么。</p>
@@ -9289,7 +9289,7 @@ cube(2) = 8</code></pre>
 <ul>
 <li><code>.o</code> 和 <code>.h</code> 文件如何交互</li>
 <li>库如何与你的二进制文件集成</li>
-<li>如何调试丢失的符号和多个定义</li>
+<li>怎样排查未解析的符号和重复定义</li>
 <li>模块化设计如何影响构建架构</li>
 </ul>
 <p>了解链接器对于构建可扩展的多文件系统（从小型实用程序到整个内核）至关重要。</p>
@@ -9308,8 +9308,8 @@ cube(2) = 8</code></pre>
 </section>
 <section id="static-and-shared-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="static-and-shared-libraries">57. 静态库与共享库</h3>
-<p>在大型 C 项目中，你通常希望在多个程序中 <strong> 重用代码 </strong>，而不是到处复制相同的 <code>.c</code> 文件。这正是 <strong> 库 </strong> 的用途。</p>
-<p><strong>库</strong>是打包在一起的预编译目标文件（<code>.o</code>）的集合。主要有两种：</p>
+<p>不同程序常常需要<strong>复用同一段代码</strong>。把实现做成<strong>库</strong>，就不必把相同的 <code>.c</code> 文件复制到每个项目。</p>
+<p><strong>库</strong>通常由已编译的目标代码组成，例如由 <code>.o</code> 文件打包而成的静态库。本节介绍两类库：</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
@@ -9556,8 +9556,8 @@ libmylib.so -&gt; libmylib.so.1.0.0  (symlink)</code></pre>
 </section>
 <section id="compiler-flags-and-optimization-levels" class="level3">
 <h3 class="anchored" data-anchor-id="compiler-flags-and-optimization-levels">58. 编译选项与优化级别</h3>
-<p>一旦你的程序正确编译和链接，下一步就是掌握 <strong> 编译选项 </strong>，即控制警告、调试信息、优化和性能的开关。</p>
-<p>使用正确的标志可以使你的 C 代码 <strong> 更安全 </strong>、<strong> 更快 </strong>、<strong> 更易于调试 </strong>。</p>
+<p>程序能编译并链接以后，就可以用<strong>编译选项</strong>控制警告、调试信息和优化，进而调整构建产物的性能和可调试性。</p>
+<p>选择合适的编译选项，可以<strong>更早发现错误</strong>、<strong>提高程序性能</strong>，也能让程序<strong>更便于调试</strong>。</p>
 <p>让我们来看看每个 C 开发人员都应该知道的基本 <code>gcc</code> 和 <code>clang</code> 选项。</p>
 <section id="step-1.-the-basic-compilation-command" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-basic-compilation-command">步骤1.基本编译命令</h4>
@@ -9690,7 +9690,7 @@ libmylib.so -&gt; libmylib.so.1.0.0  (symlink)</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb618"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb618-1"><a href="#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-O0</span> main.c <span class="at">-o</span> slow</span>
 <span id="cb618-2"><a href="#cb618-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-O2</span> main.c <span class="at">-o</span> fast</span>
 <span id="cb618-3"><a href="#cb618-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> slow fast</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>fast</code>将更小，运行速度更快，编译器重新排序代码，内联函数，并删除死逻辑。</p>
+<p><code>fast</code> 可能更小或更快。编译器可以重排代码、内联函数并移除无用计算，实际结果取决于程序和优化选项。</p>
 </section>
 <section id="step-5.-profiling-and-instrumentation-flags" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-profiling-and-instrumentation-flags">步骤 5 · 分析和检测标志</h4>
@@ -9932,12 +9932,12 @@ libmylib.so -&gt; libmylib.so.1.0.0  (symlink)</code></pre>
 <li>将 <code>-Wall -Wextra -Werror</code> 添加到你的 Makefile 并修复每个警告。</li>
 <li>探索 <code>gcc --help=optimizers</code> 查看所有可用的优化过程。</li>
 </ol>
-<p>接下来，你会看到 <strong>在目标文件本身内部</strong>，了解里面存储的内容 <code>.o</code> 二进制文件以及链接器如何将它们拼接在一起以形成完整的可执行文件。</p>
+<p>接下来会<strong>查看目标文件的内部结构</strong>，了解 <code>.o</code> 格式的文件保存了什么，以及链接器怎样用它们生成可执行文件。</p>
 </section>
 </section>
 <section id="understanding-the-object-file" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-object-file">59. 目标文件的组成</h3>
-<p>到现在为止，你已经看到了 <code>.o</code> 文件出现在每个构建步骤中，即源代码和可执行文件之间的中间产品。但到底是什么 <em>里面</em> 他们？</p>
+<p>构建过程中会生成 <code>.o</code> 文件，它们介于源代码和可执行文件之间。接下来看看这些文件<em>包含什么</em>。</p>
 <p>目标文件保存了机器代码、符号表和其他元数据。链接器读取这些信息，把多个目标文件链接成最终程序。检查目标文件有助于定位链接错误、分析性能，也能帮助你了解编译器生成了哪些指令。</p>
 <section id="step-1.-the-lifecycle-recap" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-lifecycle-recap">步骤 1 · 生存期回顾</h4>
@@ -9945,7 +9945,7 @@ libmylib.so -&gt; libmylib.so.1.0.0  (symlink)</code></pre>
 <pre><code>source.c ──&gt; preprocessor ──&gt; compiler ──&gt; assembler ──&gt; linker
      |                           |             |          |
      |                        hello.s        hello.o     a.out</code></pre>
-<p>在 <strong> 汇编 </strong> 之后，但在 <strong> 链接 </strong> 之前，你的 <code>.c</code> 文件将成为 <code>.o</code> 文件。</p>
+<p><code>.c</code> 文件经过<strong>汇编</strong>后生成 <code>.o</code> 文件，再进入<strong>链接</strong>阶段。</p>
 <p>每个<code>.o</code>都是独立的，它知道它定义了什么，它需要什么，以及它的代码位于内存中的位置。</p>
 </section>
 <section id="step-2.-object-file-formats" class="level4">
@@ -10119,7 +10119,7 @@ T mul</code></pre>
 </section>
 <section id="step-6.-inspecting-relocations" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-inspecting-relocations">步骤 6 · 检查搬迁</h4>
-<p>目标文件尚不知道最终地址，因此它们存储 <strong> 重定位条目 </strong>：链接器稍后必须填充的地址占位符。</p>
+<p>生成目标文件时，最终地址还未确定，因此文件包含<strong>重定位条目</strong>。链接器据此填写或调整用到这些地址的位置。</p>
 <p>检查它们：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb642"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb642-1"><a href="#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="ex">readelf</span> <span class="at">-r</span> main.o</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>输出：</p>
@@ -10139,7 +10139,7 @@ T mul</code></pre>
    0: 55                    push   %rbp
    1: 48 89 e5              mov    %rsp,%rbp
    4: b8 00 00 00 00        mov    $0x0,%eax</code></pre>
-<p>每条指令对应于已编译的 C 代码。这是验证优化、检查内联或研究生成的程序集的方式。</p>
+<p>反汇编可以帮助你观察编译器生成的机器指令，检查有没有进行内联，或了解优化改写了哪些操作。</p>
 </section>
 <section id="step-8.-mixing-object-files" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-mixing-object-files">步骤 8 · 混合目标文件</h4>
@@ -10204,8 +10204,8 @@ T mul</code></pre>
 </section>
 <section id="practice-write-your-own-makefile" class="level3">
 <h3 class="anchored" data-anchor-id="practice-write-your-own-makefile">60. 练习：编写自己的 Makefile</h3>
-<p>现在你已经了解了 C 构建过程的工作原理、预处理、编译、链接和库，是时候将所有内容 <strong> 与你自己的 <strong> Makefile </strong> 结合在一起 </strong> 了。</p>
-<p><code>make</code>是 C 语言开发中最古老、最强大的自动化工具之一。它监视文件时间戳，仅构建已更改的内容，并允许你以简洁的方式定义构建规则。</p>
+<p>这个练习会用自写的 <strong>Makefile</strong>，把预处理、编译、链接和库<strong>串成一套构建流程</strong>。</p>
+<p><code>make</code> 根据文件时间戳和依赖规则，判断哪些目标需要更新。它是 C 项目常用的构建自动化工具。</p>
 <p>通过编写自己的 Makefile，你将像专业人士一样自动化整个编译工作流程。</p>
 <section id="step-1.-create-the-project" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-create-the-project">步骤 1 · 创建项目</h4>
@@ -10434,8 +10434,8 @@ T mul</code></pre>
 <h1>第 7 章 系统编程</h1>
 <section id="system-calls-and-the-standard-library" class="level3">
 <h3 class="anchored" data-anchor-id="system-calls-and-the-standard-library">61. 系统调用与标准库</h3>
-<p>当你编写涉及文件、进程或设备的 C 程序时，你是在与 <strong> 操作系统 </strong> 对话，而不是直接与硬件对话。该通信通过 <strong> 系统调用 </strong> 进行。</p>
-<p>系统调用是用户空间程序和操作系统内核之间的最低级接口。 C 的 <strong> 标准库 (libc) </strong> 是构建在这些调用之上的一层薄薄的包装器，使它们更易于使用且更可移植。</p>
+<p>C 程序需要访问文件、进程或设备时，通常是向<strong>操作系统</strong>请求服务。用户态程序通过<strong>系统调用</strong>请内核执行相应操作。</p>
+<p>系统调用是用户态程序请求内核服务的底层接口。常见的 <strong>C 库（libc）</strong>既实现 C 标准库，也为许多操作系统接口提供便于调用的封装。</p>
 <p>让我们探讨一下它是如何工作的，以及如何直接从 C 代码使用系统调用。</p>
 <section id="step-1.-what-is-a-system-call" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-system-call">步骤 1 · 什么是系统调用？</h4>
@@ -10452,7 +10452,7 @@ T mul</code></pre>
 </section>
 <section id="step-2.-the-role-of-libc" class="level4">
 <h4 class="anchored" data-anchor-id="step-2.-the-role-of-libc">步骤 2 · libc 的作用</h4>
-<p>C 标准库（glibc、musl 等）围绕这些系统调用提供了 <em> 包装器 </em>。</p>
+<p>常见的 C 库实现（如 glibc、musl）为这些系统调用提供<em>封装接口</em>。</p>
 <p>示例：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb673"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb673-1"><a href="#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb673-2"><a href="#cb673-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -10645,13 +10645,13 @@ close(3) = 0</code></pre>
 <li>尝试使用无效的文件描述符并打印出 <code>errno</code>。</li>
 <li>构建仅使用原始系统调用的 <code>echo</code> 版本。</li>
 </ol>
-<p>接下来，你将更进一步：学习如何 <strong>创建和管理流程</strong> 与 <code>fork()</code> 和 <code>exec()</code>，Unix 多任务处理的核心。</p>
+<p>接下来会用 <code>fork()</code> 和 <code>exec()</code> <strong>创建和管理进程</strong>。这两类操作是 Unix 多任务处理的重要基础。</p>
 </section>
 </section>
 <section id="process-creation-fork-exec-wait" class="level3">
 <h3 class="anchored" data-anchor-id="process-creation-fork-exec-wait">62. 创建和管理进程（fork、exec、wait）</h3>
-<p>类 Unix 系统中的每个程序都在 <strong> 进程 </strong> 中运行，这是一个具有自己的内存、文件描述符和环境的程序的运行实例。当你输入 <code>ls</code> 或 <code>cat</code> 时，shell 不仅仅“跳转”到这些程序中。它<strong>创建一个新进程</strong>来运行它们。</p>
-<p>在 C 中，你可以做完全相同的事情，创建新进程，运行其他程序并同步它们。</p>
+<p>在类 Unix 系统中，<strong>进程</strong>是程序的一次运行实例，有自己的地址空间、文件描述符和环境。Shell 收到 <code>ls</code> 或 <code>cat</code> 这样的外部命令时，通常会<strong>创建一个新进程</strong>运行它。</p>
+<p>本节介绍如何在 C 中创建进程、运行其他程序并等待子进程结束。</p>
 <p>本节将向你介绍过程控制的三个基本构建块<strong> <code>fork()</code> </strong>、<strong> <code>exec()</code> </strong> 和 <strong> <code>wait()</code> </strong> 如何协同工作。</p>
 <section id="step-1.-the-idea-of-a-process" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-idea-of-a-process">步骤 1 · 流程的想法</h4>
@@ -10710,7 +10710,7 @@ Child process! PID = 5232</code></pre>
 </section>
 <section id="step-3.-independent-memory-after-fork" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-independent-memory-after-fork">步骤3.<code>fork()</code>后的独立记忆</h4>
-<p>每个进程都会获得父进程内存的<strong>副本</strong>。更改子级中的变量不会影响父级。</p>
+<p>子进程得到父进程地址空间的一份<strong>副本</strong>。子进程修改自己的普通变量，不会改变父进程中的变量。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb695"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb695-1"><a href="#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb695-2"><a href="#cb695-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
 <span id="cb695-3"><a href="#cb695-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -10812,7 +10812,7 @@ Child finished</code></pre>
 </section>
 <section id="step-7.-checking-exit-status" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-checking-exit-status">步骤 7 · 检查退出状态</h4>
-<p>你可以使用 <code>waitpid()</code> 获取孩子的 <strong> 退出代码 </strong>。</p>
+<p>子进程正常结束时，可以用 <code>waitpid()</code> 取得它的<strong>退出码</strong>。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb705"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb705-1"><a href="#cb705-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb705-2"><a href="#cb705-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;sys/wait.h&gt;</span></span>
 <span id="cb705-3"><a href="#cb705-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
@@ -10904,8 +10904,8 @@ Command finished</code></pre>
 <section id="try-it-yourself-60" class="level4">
 <h4 class="anchored" data-anchor-id="try-it-yourself-60">动手练习</h4>
 <ol type="1">
-<li>编写一个程序，分叉两个子进程，一个运行 <code>date</code>，一个运行 <code>whoami</code>。</li>
-<li>修改它以等待两个孩子完成。</li>
+<li>编写程序创建两个子进程，分别运行 <code>date</code> 和 <code>whoami</code>。</li>
+<li>修改程序，使它等待两个子进程都结束。</li>
 <li>创建一个分叉子进程的程序，但父进程立即退出（观察孤儿收养）。</li>
 <li>使用 <code>fork()</code>、 <code>execvp()</code> 和 <code>waitpid()</code> 编写你自己的 <code>run(command)</code> 函数。</li>
 <li>将所有这些组合到一个微型 shell 中，该 shell 接受命令并以交互方式执行它们。</li>
@@ -10915,11 +10915,11 @@ Command finished</code></pre>
 </section>
 <section id="file-descriptors-and-openreadwrite" class="level3">
 <h3 class="anchored" data-anchor-id="file-descriptors-and-openreadwrite">63. 文件描述符与 open、read、write</h3>
-<p>现在你可以创建和管理进程了，让我们探索这些进程<strong>如何通过<strong>文件描述符</strong>与文件、设备甚至彼此</strong>进行通信。</p>
+<p>接下来学习进程如何借助<strong>文件描述符</strong><strong>读写文件、访问设备或与其他进程通信</strong>。</p>
 <p>在 Unix 中，文件、管道、套接字和终端等 I/O 资源都可以用文件描述符（FD）引用。文件描述符是进程用来引用这些资源的小整数。掌握打开、读写和关闭的基本操作，就能用统一的接口处理多种 I/O 资源。</p>
 <section id="step-1.-what-is-a-file-descriptor" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-file-descriptor">步骤 1 · 什么是文件描述符？</h4>
-<p><strong> 文件描述符 </strong> 是一个整数，用于标识进程中的打开资源。默认情况下，每个进程都以三个打开描述符开始：</p>
+<p><strong>文件描述符</strong>是进程用来引用已打开资源的整数。进程启动时通常会继承三个描述符：</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -11052,7 +11052,7 @@ Command finished</code></pre>
 </section>
 <section id="step-7.-offsets-and-lseek" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-offsets-and-lseek">步骤 7 · 偏移量和 <code>lseek()</code></h4>
-<p>你可以使用 <code>lseek(fd, offset, whence)</code> 在文件内移动。</p>
+<p>可以用 <code>lseek(fd, offset, whence)</code> 在文件内定位。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb724"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb724-1"><a href="#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></span>
 <span id="cb724-2"><a href="#cb724-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
 <span id="cb724-3"><a href="#cb724-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -11166,8 +11166,8 @@ Command finished</code></pre>
 </section>
 <section id="pipes-and-redirection" class="level3">
 <h3 class="anchored" data-anchor-id="pipes-and-redirection">64. 管道与重定向</h3>
-<p>现在你可以使用文件描述符进行读写，你可以连接<strong>两个进程</strong>，以便一个进程的输出成为另一个进程的输入，就像shell中的<code>ls | grep c</code>一样。</p>
-<p>这种魔力是通过 <strong> 管道 </strong> 发生的，它是 Unix 最简单、最优雅的进程间通信 (IPC) 机制之一。</p>
+<p>有了文件描述符，就可以连接<strong>两个进程</strong>，让一个进程的输出成为另一个的输入，如同在 Shell 中执行 <code>ls | grep c</code>。</p>
+<p>这个连接靠<strong>管道</strong>实现。管道是 Unix 的一种基本进程间通信（IPC）机制。</p>
 <section id="step-1.-what-is-a-pipe" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-pipe">步骤 1 · 什么是管道？</h4>
 <p><strong>管道</strong>是两个文件描述符之间的单向数据通道，一个用于读取，一个用于写入。</p>
@@ -11232,7 +11232,7 @@ Command finished</code></pre>
 <p>你刚刚通过内存在两个文件描述符之间进行通信，没有文件，没有网络。</p>
 </section>
 <section id="step-4.-pipes-between-parent-and-child" class="level4">
-<h4 class="anchored" data-anchor-id="step-4.-pipes-between-parent-and-child">步骤 4 · 父级和子级之间的管道</h4>
+<h4 class="anchored" data-anchor-id="step-4.-pipes-between-parent-and-child">步骤 4 · 在父子进程之间建立管道</h4>
 <p>这就是它的强大之处：<strong>管道可以连接进程</strong>。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb738"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb738-1"><a href="#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
 <span id="cb738-2"><a href="#cb738-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -11265,7 +11265,7 @@ Command finished</code></pre>
 <section id="step-5.-redirecting-stdinstdout-to-a-pipe" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-redirecting-stdinstdout-to-a-pipe">步骤 5 · 将 STDIN/STDOUT 重定向到管道</h4>
 <p>你可以使用 <code>dup2()</code> 将管道直接连接到标准输入/输出。</p>
-<p>示例：将父级的写入端连接到子级的标准输入。</p>
+<p>示例：把父进程所用的管道写端与子进程的标准输入连起来。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb740"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb740-1"><a href="#cb740-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
 <span id="cb740-2"><a href="#cb740-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb740-3"><a href="#cb740-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -11289,8 +11289,8 @@ Command finished</code></pre>
 <pre><code>6</code></pre>
 <p>发生的情况如下：</p>
 <ul>
-<li>父级将数据写入管道。</li>
-<li>孩子的标准输入连接到该管道。</li>
+<li>父进程向管道写入数据。</li>
+<li>子进程的标准输入接到这个管道上。</li>
 <li><code>wc -w</code> 计算收到的字数。</li>
 </ul>
 <p>这正是 shell 实现像 <code>echo "hi" | wc -w</code> 这样的管道的方式。</p>
@@ -11390,7 +11390,7 @@ Command finished</code></pre>
 <li>通过文本流进行通信。</li>
 <li>通过链接简单的工具来组成复杂的工作流程。</li>
 </ul>
-<p>了解如何实现管道使你能够：</p>
+<p>掌握管道的实现后，就可以：</p>
 <ul>
 <li>构建你自己的 shell</li>
 <li>动态连接进程</li>
@@ -11411,8 +11411,8 @@ Command finished</code></pre>
 </section>
 <section id="signals-and-signal-handlers" class="level3">
 <h3 class="anchored" data-anchor-id="signals-and-signal-handlers">65. 信号与信号处理函数</h3>
-<p>当你按下 <strong> Ctrl+C </strong> 并且程序停止时，这并不神奇，这是一个 <strong> 信号 </strong>。信号是操作系统如何告诉你的进程发生了重要的事情。</p>
-<p>它们是来自内核或其他进程的异步、轻量级消息。你的 C 程序可以捕获、忽略或处理它们，从而使你可以完全控制关闭、中断和错误。</p>
+<p>在终端按下 <strong>Ctrl+C</strong> 时，前台程序通常会收到一个<strong>信号</strong>。信号让操作系统或其他进程通知目标进程发生了特定事件。</p>
+<p>信号可以异步到达。对允许捕获或忽略的信号，程序可以安装信号处理函数、忽略它，或沿用默认动作。</p>
 <section id="step-1.-what-is-a-signal" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-signal">步骤 1 · 什么是信号？</h4>
 <p><strong>信号</strong>是发送到进程以通知其事件的整数代码。</p>
@@ -11541,7 +11541,7 @@ Caught signal 2 (SIGINT). Exiting gracefully.</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb761"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb761-1"><a href="#cb761-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="at">-SIGUSR1</span> <span class="op">&lt;</span>pid<span class="op">&gt;</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>输出：</p>
 <pre><code>Caught signal</code></pre>
-<p>与 <code>signal()</code> 不同，此版本是 <strong> 可靠且可重入安全的 </strong> （你只能在处理程序内调用像 <code>write()</code> 这样的异步安全函数）。</p>
+<p>相比 <code>signal()</code>，这里使用的接口提供了<strong>更明确的信号处理语义</strong>。在信号处理函数内只能调用 <code>write()</code> 等异步信号安全的函数。</p>
 </section>
 <section id="step-5.-ignoring-and-resetting-signals" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-ignoring-and-resetting-signals">步骤 5 · 忽略并重置信号</h4>
@@ -11553,7 +11553,7 @@ Caught signal 2 (SIGINT). Exiting gracefully.</code></pre>
 </section>
 <section id="step-6.-sending-signals-to-other-processes" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-sending-signals-to-other-processes">步骤 6 · 向其他进程发送信号</h4>
-<p>示例：父母向其孩子发出信号。</p>
+<p>示例：父进程向子进程发送信号。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb765"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb765-1"><a href="#cb765-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;signal.h&gt;</span></span>
 <span id="cb765-2"><a href="#cb765-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
 <span id="cb765-3"><a href="#cb765-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -11696,8 +11696,8 @@ Timer expired!</code></pre>
 </section>
 <section id="memory-mapping-mmap" class="level3">
 <h3 class="anchored" data-anchor-id="memory-mapping-mmap">66. 使用 mmap 进行内存映射</h3>
-<p>在前面的部分中，你学习了如何使用 <code>read()</code> 和 <code>write()</code> 读取和写入文件。这些系统调用在 RAM 中的 <strong> 文件 </strong> 和 <strong> 用户空间缓冲区 </strong> 之间移动数据。</p>
-<p>但是，如果你可以将文件 <strong> 直接映射到内存 </strong>，然后将其视为进程地址空间的一部分呢？</p>
+<p>前面用 <code>read()</code> 和 <code>write()</code> 读写文件。这些调用在<strong>文件</strong>和内存里的<strong>用户态缓冲区</strong>之间传输数据。</p>
+<p>另一种做法是<strong>把文件映射到内存</strong>，再把映射区域当作进程地址空间的一部分访问。</p>
 <p>这正是<strong>内存映射</strong>（通过<code>mmap</code>）所做的，它更快、更灵活，并且构成了数据库、共享内存系统甚至虚拟内存本身的支柱。</p>
 <section id="step-1.-what-is-mmap" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-mmap">步骤1.什么是<code>mmap</code>？</h4>
@@ -11920,7 +11920,7 @@ Parent: shared = 1</code></pre>
 <h4 class="anchored" data-anchor-id="step-10.-why-it-matters-6">第 10 步：为什么它很重要</h4>
 <p><code>mmap</code> 打开了<strong>内存驱动文件访问</strong>的新世界：</p>
 <ul>
-<li>操作系统使用它来加载可执行文件、共享库和页面。</li>
+<li>操作系统靠它映射可执行文件、共享库和内存页。</li>
 <li>为数据库、编译器和搜索引擎提供支持。</li>
 <li>启用进程之间的共享内存。</li>
 <li>减少大文件的 I/O 开销。</li>
@@ -11936,12 +11936,12 @@ Parent: shared = 1</code></pre>
 <li>使用与页面大小对齐的偏移量仅映射文件的一部分。</li>
 <li>实现一个由 <code>mmap</code> 支持的小型内存键值存储。</li>
 </ol>
-<p>接下来，你将探索如何使用 <strong>C语言的时间和时钟</strong>、检索系统时间戳、测量持续时间并精确实施计时器。</p>
+<p>下一节介绍<strong>C 中的时间与时钟</strong>，包括获取系统时间戳、测量经过的时长和实现精确计时。</p>
 </section>
 </section>
 <section id="time-and-clock-apis" class="level3">
 <h3 class="anchored" data-anchor-id="time-and-clock-apis">67. 时间与时钟 API</h3>
-<p>时间是人类理解的最简单的事物之一，也是计算机正确处理的最棘手的事物之一。在 C 语言中，时间表示为 <strong>自 Unix 纪元（1970 年 1 月 1 日）以来的秒数</strong>，你可以在各个级别上使用它：挂钟时间、处理时间和高精度计时器。</p>
+<p>本节讨论三类时间：实时时钟、进程 CPU 时间和高精度计时。在 POSIX 系统中，日历时间通常以<strong>自 Unix 纪元（1970 年 1 月 1 日）起的秒数</strong>表示。</p>
 <p>下面来看看怎样用 C <strong>获取时间、格式化时间以及测量经过的时长</strong>。</p>
 <section id="step-1.-the-basics-time" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-basics-time">步骤 1 · 基础知识：<code>time()</code></h4>
@@ -12026,7 +12026,7 @@ Parent: shared = 1</code></pre>
 <span id="cb793-15"><a href="#cb793-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>输出：</p>
 <pre><code>Elapsed: 0.515421 seconds</code></pre>
-<p>这测量 <strong> 实际经过时间 </strong>，不受系统时钟变化的影响。</p>
+<p>这会测量<strong>实际经过的时长</strong>，结果不受系统日历时间调整影响。</p>
 </section>
 <section id="step-6.-sleeping-for-a-duration" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-sleeping-for-a-duration">步骤 6 · 睡眠一段时间</h4>
@@ -12132,8 +12132,8 @@ Time's up!</code></pre>
 </section>
 <section id="environment-variables" class="level3">
 <h3 class="anchored" data-anchor-id="environment-variables">68. 环境变量</h3>
-<p>Unix 中的每个程序都会继承一组 <strong> 一组键值对 </strong>，称为 <strong> 环境变量 </strong>。它们存储有关你的 shell、系统配置和运行时行为的信息，例如你的用户名、主目录和编译器路径。</p>
-<p>C 使你能够完全控制 <strong> 直接读取、修改和定义 </strong> 这些变量。</p>
+<p>在 Unix 中，程序通常继承一组称为<strong>环境变量</strong>的<strong>键值对</strong>。它们可以保存用户名、主目录或工具搜索路径等配置。</p>
+<p>C 程序可以<strong>读取、修改和设置</strong>进程环境中的变量。</p>
 <section id="step-1.-what-are-environment-variables" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-are-environment-variables">步骤 1 · 什么是环境变量？</h4>
 <p>环境变量是以下形式的字符串：</p>
@@ -12263,7 +12263,7 @@ VERSION=1.0</code></pre>
 <h4 class="anchored" data-anchor-id="step-9.-security-considerations">步骤 9 · 安全注意事项</h4>
 <p>环境变量是自动继承的，因此如果不小心处理它们可能会带来安全风险：</p>
 <ul>
-<li>避免信任环境变量进行身份验证。</li>
+<li>身份验证不能仅依赖环境变量的值。</li>
 <li>始终验证 <code>PATH</code>、 <code>HOME</code> 和 <code>TMPDIR</code>。</li>
 <li>对于敏感上下文（例如 setuid 程序）使用 <code>unsetenv()</code>。</li>
 </ul>
@@ -12311,11 +12311,11 @@ Updated PATH:
 </section>
 <section id="error-handling-and-return-codes" class="level3">
 <h3 class="anchored" data-anchor-id="error-handling-and-return-codes">69. 错误处理与返回码</h3>
-<p>每个 C 程序，从最小的脚本到 Linux 内核本身，都依赖 <strong> 错误代码 </strong> 和 <strong> 返回值 </strong> 来传达成功或失败。与高级语言不同，C 为你提供 <strong> 没有例外 </strong>，只有清晰、显式的状态代码和 <code>errno</code>。</p>
-<p>掌握这些模式将使你的程序健壮、可预测且专业。</p>
+<p>C 程序常用<strong>返回值</strong>和<strong>错误码</strong>报告成功或失败。语言本身<strong>没有异常机制</strong>，调用方需要检查明确的状态值，必要时读取 <code>errno</code>。</p>
+<p>熟悉这些约定，就能让程序准确报告失败并妥善处理错误。</p>
 <section id="step-1.-exit-codes-and-main" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-exit-codes-and-main">步骤 1 · 退出代码和 <code>main()</code></h4>
-<p>每个进程都会向操作系统返回一个整数退出代码。按照惯例：</p>
+<p>进程正常结束时会向操作系统返回一个整数退出码，通常遵循这些约定：</p>
 <ul>
 <li><code>0</code> → 成功</li>
 <li>非零 → 失败或特定错误</li>
@@ -12338,7 +12338,7 @@ Updated PATH:
 </section>
 <section id="step-2.-using-exit_success-and-exit_failure" class="level4">
 <h4 class="anchored" data-anchor-id="step-2.-using-exit_success-and-exit_failure">步骤 2 · 使用 <code>EXIT_SUCCESS</code> 和 <code>EXIT_FAILURE</code></h4>
-<p>使用 <code>&lt;stdlib.h&gt;</code> 中的标准宏代替硬编码数字：</p>
+<p>用 <code>&lt;stdlib.h&gt;</code> 中定义的标准宏替代写死的数字：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb823"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb823-1"><a href="#cb823-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb823-2"><a href="#cb823-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb823-3"><a href="#cb823-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -12431,7 +12431,7 @@ Updated PATH:
 </section>
 <section id="step-6.-returning-meaningful-codes" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-returning-meaningful-codes">步骤 6 · 返回有意义的代码</h4>
-<p>好的 C 程序 <strong> 将内部错误转换为有意义的退出代码 </strong>。</p>
+<p>可以把<strong>内部错误映射成有明确含义的退出码</strong>。</p>
 <p>示例：文件复制程序</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb829"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb829-1"><a href="#cb829-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb829-2"><a href="#cb829-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
@@ -12456,7 +12456,7 @@ Updated PATH:
 <span id="cb829-21"><a href="#cb829-21" aria-hidden="true" tabindex="-1"></a>    fclose<span class="op">(</span>dst<span class="op">);</span></span>
 <span id="cb829-22"><a href="#cb829-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb829-23"><a href="#cb829-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>现在，每个退出代码代表一种特定类型的故障。</p>
+<p>各退出码现在可以区分不同的失败原因。</p>
 </section>
 <section id="step-7.-resetting-and-checking-errno" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-resetting-and-checking-errno">步骤7.重置并检查<code>errno</code></h4>
@@ -12547,8 +12547,8 @@ Updated PATH:
 </section>
 <section id="practice-mini-shell-in-c" class="level3">
 <h3 class="anchored" data-anchor-id="practice-mini-shell-in-c">70. 练习：用 C 实现迷你 Shell</h3>
-<p>是时候将你迄今为止学到的所有内容，<strong>系统调用</strong>，<strong>流程创建</strong>，<strong>管道</strong>，<strong>重定向</strong>和<strong>信号处理</strong>，整合到一起具有凝聚力的项目。</p>
-<p>在本节中，你将构建一个 <strong> 最小交互式 shell </strong>，就像 <code>bash</code> 或 <code>zsh</code> 一样，但精简到了必需的部分。它将运行命令、处理输入/输出重定向，甚至支持管道。</p>
+<p>这个练习会把<strong>系统调用</strong>、<strong>进程创建</strong>、<strong>管道</strong>、<strong>重定向</strong>和<strong>信号处理</strong>组合起来。</p>
+<p>你将实现一个<strong>简单的交互式 Shell</strong>，类似 <code>bash</code> 或 <code>zsh</code> 的精简版。它能运行命令，处理输入输出重定向和管道。</p>
 <section id="step-1.-what-youll-build" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-youll-build">第 1 步：你将构建什么</h4>
 <p>你的迷你外壳将：</p>
@@ -12635,7 +12635,7 @@ $ exit</code></pre>
 <pre><code>$ xyz</code></pre>
 <p>输出：</p>
 <pre><code>execvp: No such file or directory</code></pre>
-<p>发生这种情况是因为程序使用 <code>perror()</code> 正确处理了 <code>execvp()</code> 故障，正如你在第 69 节中学到的那样。</p>
+<p>这说明程序用 <code>perror()</code> 处理了 <code>execvp()</code> 的失败情形，做法见第 69 节。</p>
 </section>
 <section id="step-4.-adding-signal-handling" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-adding-signal-handling">步骤 4 · 添加信号处理</h4>
@@ -12798,7 +12798,7 @@ $ exit</code></pre>
 <li>使用 <code>errno</code> 进行错误处理</li>
 <li>环境继承</li>
 </ul>
-<p>你刚刚构建了一个简化版本的核心 <strong>每个 Unix shell</strong>, 从 <code>bash</code> 到 <code>zsh</code> 到 <code>fish</code>.</p>
+<p>刚才实现的是<strong>Unix Shell 共用的核心机制</strong>的简化版，例如 <code>bash</code>、<code>zsh</code> 和 <code>fish</code> 都使用这套机制。</p>
 </section>
 <section id="try-it-yourself-68" class="level4">
 <h4 class="anchored" data-anchor-id="try-it-yourself-68">动手练习</h4>
@@ -12806,7 +12806,7 @@ $ exit</code></pre>
 <li>通过链接多个命令来添加对管道 ( <code>|</code> ) 的支持。</li>
 <li>使用 <code>&amp;</code> 实现后台进程。</li>
 <li>添加 <code>cd</code> 和 <code>pwd</code> 作为内置命令。</li>
-<li>在每个命令后显示退出代码。</li>
+<li>每条命令执行后显示它的退出码。</li>
 <li>处理多个空格和引用的参数。</li>
 </ol>
 <p>接下来，我们将进入 <strong> 第 8 章：调试、测试和分析 </strong>，从 <strong> gdb </strong> 开始，它是你理解和修复 C 程序最强大的盟友。</p>
@@ -12818,7 +12818,7 @@ $ exit</code></pre>
 <section id="debugging-with-gdb" class="level3">
 <h3 class="anchored" data-anchor-id="debugging-with-gdb">71. 使用 GDB 调试</h3>
 <p>写 C 时迟早会遇到段错误。这时可以用 GNU 调试器 <strong>GDB</strong> 暂停程序，检查运行状态，弄清崩溃前发生了什么。</p>
-<p>让我们学习如何使用 gdb <strong> 查找错误、检查内存、跟踪崩溃 </strong> 并真正理解你的代码。</p>
+<p>下面用 GDB 学习怎样<strong>查找错误、查看内存和追踪崩溃</strong>，观察程序真正执行了哪些操作。</p>
 <section id="step-1.-compiling-with-debug-information" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-compiling-with-debug-information">步骤 1 · 使用调试信息进行编译</h4>
 <p>在进行调试之前，需要告诉编译器包含<strong>符号信息</strong>（变量名、行号等）。使用 <code>-g</code> 标志：</p>
@@ -12853,7 +12853,7 @@ Breakpoint 1 at 0x40113b: file main.c, line 5.
 </section>
 <section id="step-4.-example-a-simple-bug" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-example-a-simple-bug">步骤 4 · 示例：一个简单的错误</h4>
-<p>这是一个存在经典段错误的程序。</p>
+<p>下面的程序演示一种常见的段错误。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb855"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb855-1"><a href="#cb855-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb855-2"><a href="#cb855-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb855-3"><a href="#cb855-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> buggy<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
@@ -13017,8 +13017,8 @@ Breakpoint 1 at 0x40113b: file main.c, line 5.
 </section>
 <section id="using-valgrind-for-memory-checking" class="level3">
 <h3 class="anchored" data-anchor-id="using-valgrind-for-memory-checking">72. 使用 Valgrind 检查内存问题</h3>
-<p>如果 gdb 帮助你 <em> 查看 </em> 程序如何运行，<strong> Valgrind </strong> 帮助你 <em> 查看它的泄漏位置 </em>。 C 为你提供了对内存的原始控制，这意味着你负责每次分配、释放和指针访问。</p>
-<p>当你需要找到以下内容时，Valgrind 是你最好的朋友：</p>
+<p>GDB 可以帮你<em>观察</em>程序怎么运行，<strong>Valgrind</strong>可以帮你<em>定位内存泄漏</em>。因为 C 允许直接管理内存，每次分配、释放和指针访问都需要正确配对或检查。</p>
+<p>Valgrind 可以帮助定位以下问题：</p>
 <ul>
 <li>内存泄漏（忘记了<code>free()</code>）</li>
 <li>无效读/写</li>
@@ -13032,7 +13032,7 @@ Breakpoint 1 at 0x40113b: file main.c, line 5.
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb870"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb870-1"><a href="#cb870-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install valgrind</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>在 macOS 上（使用 Homebrew）：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb871"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb871-1"><a href="#cb871-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install valgrind</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>编译你的程序 <strong>带有调试符号</strong>:</p>
+<p>编译时为程序<strong>保留调试符号</strong>：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb872"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb872-1"><a href="#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-g</span> memory.c <span class="at">-o</span> memory</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="step-2.-running-with-valgrind" class="level4">
@@ -13207,17 +13207,17 @@ Breakpoint 1 at 0x40113b: file main.c, line 5.
 <ol type="1">
 <li><p>编写一个分配多个块但忘记释放其中一个的程序。</p></li>
 <li><p>故意在 <code>malloc(10)</code> 块上使用 <code>p[10]</code>。</p></li>
-<li><p>触发释放后使用并在 Valgrind 中找到它。</p></li>
+<li><p>用示例重现释放后访问，再查看 Valgrind 如何报告它。</p></li>
 <li><p>使用<code>--track-origins=yes</code>来跟踪未初始化的数据。</p></li>
 <li><p>重构你的代码，直到 Valgrind 报告：</p>
 <pre><code>All heap blocks were freed -- no leaks are possible</code></pre></li>
 </ol>
-<p>接下来，你将探索 <strong>断言和防御性编程</strong>、捕获逻辑错误的技术 <em>之前</em> 他们达到运行时崩溃。</p>
+<p>接下来学习<strong>断言与防御性编程</strong>，在逻辑错误<em>导致程序崩溃之前</em>发现它们。</p>
 </section>
 </section>
 <section id="assertions-and-defensive-programming" class="level3">
 <h3 class="anchored" data-anchor-id="assertions-and-defensive-programming">73. 断言与防御性编程</h3>
-<p>错误是不可避免的，但崩溃不一定是这样。 C 赋予你对机器的直接权力，这意味着 <strong> 你必须保护自己的假设 </strong>。这就是<strong>断言</strong>和<strong>防御性编程</strong>的用武之地：它们帮助你尽早发现错误，快速失败，并使你的代码可预测。</p>
+<p>程序很难完全避免错误，但可以更早发现不符合预期的状态。C 给了你底层控制权，也要求你<strong>明确并验证程序前提</strong>。<strong>断言</strong>和<strong>防御性编程</strong>帮助你尽早发现错误，使程序行为更可预测。</p>
 <section id="step-1.-what-is-an-assertion" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-an-assertion">步骤 1 · 什么是断言？</h4>
 <p><strong> 断言 </strong> 是代码中内置的健全性检查。它测试你认为是真实的 <em> 是否实际上是 </em>。如果没有，程序会立即停止并显示错误消息，以免事情变得更糟。</p>
@@ -13381,14 +13381,14 @@ Breakpoint 1 at 0x40113b: file main.c, line 5.
 <li>将断言与日志记录结合起来以获得详细的错误报告。</li>
 <li>使用无效输入运行你的程序，看看断言检测问题的速度有多快。</li>
 </ol>
-<p>接下来，你将进入 <strong>C 语言的单元测试</strong>，构建小型自动化测试，以确保每个功能完全按照预期工作。</p>
+<p>接下来是<strong>C 的单元测试</strong>。写几项小型自动化测试，检查每个函数是否按预期工作。</p>
 </section>
 </section>
 <section id="unit-testing-in-c" class="level3">
 <h3 class="anchored" data-anchor-id="unit-testing-in-c">74. C 语言单元测试</h3>
-<p>测试不仅仅是你最后要做的事情，它是你如何在每一行代码中<strong>建立信心</strong>。单元测试意味着自动检查小的、孤立的部分（函数、模块），这样你就可以毫无恐惧地更改代码。</p>
-<p>C 没有内置的测试框架，但构建轻量级框架很容易，如果你想要更强大的功能，可以使用几个优秀的库。</p>
-<p>让我们来看看如何设计和运行 <strong>纯 C 语言的单元测试</strong>.</p>
+<p>测试贯穿开发过程，可以逐步<strong>建立对代码的信心</strong>。单元测试会自动检查独立的函数或模块，让你在修改实现后及时发现行为变化。</p>
+<p>C 没有内置测试框架，可以先实现一套轻量的测试工具，也可以使用现成的测试库。</p>
+<p>下面来看<strong>怎样用纯 C 设计并运行单元测试</strong>。</p>
 <section id="step-1.-what-is-unit-testing" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-unit-testing">步骤 1 · 什么是单元测试？</h4>
 <p><em> 单元测试 </em> 验证单个行为：</p>
@@ -13608,8 +13608,8 @@ All tests passed.</code></pre>
 </section>
 <section id="logging-systems" class="level3">
 <h3 class="anchored" data-anchor-id="logging-systems">75. 实现日志系统</h3>
-<p>随着程序的增长，<strong> printf 调试 </strong> 很快就会变得混乱。你需要一种方法来 <em> 查看程序内部 </em>，它在做什么，出了什么问题，以及为什么，而不用随机消息淹没你的终端。</p>
-<p>这就是 <strong> 日志系统 </strong> 的用武之地。良好的日志系统可以帮助你跟踪执行、记录错误并了解程序随时间的变化情况。</p>
+<p>程序一大，随手插入的<strong>printf 调试输出</strong>就容易淹没真正有用的信息。你需要一种能<em>观察程序内部状态</em>的方式，记录它做了什么、哪里出错以及可能的原因。</p>
+<p><strong>日志系统</strong>可以记录执行过程和错误，帮助你了解程序一段时间内的行为。</p>
 <section id="step-1.-what-is-logging" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-logging">步骤 1 · 什么是日志记录？</h4>
 <p>日志记录就像为你的程序写日记。你无需将所有内容打印到屏幕上，而是使用 <strong> 级别 </strong>（信息、警告、错误）和 <strong> 时间戳 </strong> 记录结构化消息。</p>
@@ -13799,13 +13799,13 @@ Thu Oct 16 23:41:10 2025: Action complete</code></pre>
 <li>为每个级别添加颜色。</li>
 <li>实施轮换文件日志系统，仅保持今天的文件处于活动状态。</li>
 </ol>
-<p>接下来，你将了解 <strong>用 gprof 进行性能分析</strong>，如何衡量程序在哪里花费了时间，以及如何使其更快。</p>
+<p>下一节介绍<strong>如何用 gprof 做性能分析</strong>。先测量程序把时间花在了哪里，再决定怎样优化。</p>
 </section>
 </section>
 <section id="profiling-with-gprof" class="level3">
 <h3 class="anchored" data-anchor-id="profiling-with-gprof">76. 使用 gprof 进行性能分析</h3>
-<p>当你的程序可以工作但感觉<em>慢</em>时，猜测是不够的，你需要<strong>测量</strong>。分析会向你显示 <em> 你的程序将时间花在哪里 </em>、哪些功能很热门以及哪些优化真正重要。</p>
-<p>C 为你提供了很多控制权，但是没有分析的性能调整就像蒙住眼睛开车一样。这就是我们使用 GNU 性能分析工具 <strong> gprof </strong> 的原因，该工具可以测量代码在每个函数中花费的时间。</p>
+<p>程序能运行却感觉<em>慢</em>时，可以先<strong>测量</strong>。性能分析会告诉你程序的时间花在<em>哪些地方</em>，哪些函数是热点，哪里值得优化。</p>
+<p>优化前先获取数据。本节使用 GNU 的性能分析工具 <strong>gprof</strong> 查看程序在各函数上花费的时间。</p>
 <section id="step-1.-what-is-profiling" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-profiling">步骤 1 · 什么是分析？</h4>
 <p><strong> 分析</strong> 是记录运行时统计信息的过程，例如：</p>
@@ -13829,7 +13829,7 @@ Thu Oct 16 23:41:10 2025: Action complete</code></pre>
 </section>
 <section id="step-3.-example-program" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-example-program">步骤 3 · 示例程序</h4>
-<p>这是一个演示分析的小示例：</p>
+<p>用一小段程序演示如何做性能分析：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb949"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb949-1"><a href="#cb949-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb949-2"><a href="#cb949-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb949-3"><a href="#cb949-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> slow_function<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
@@ -13969,13 +13969,13 @@ Each sample counts as 0.01 seconds.
 <li>使用 <code>gprof2dot</code> 可视化结果。</li>
 <li>确定一个瓶颈并修复它，然后重新分析以查看差异。</li>
 </ol>
-<p>接下来，你将探索 C 中的 <strong> 常见未定义行为 </strong>，这些无声错误可能会使你完美分析的程序意外崩溃。</p>
+<p>下一节介绍 C 中<strong>常见的未定义行为</strong>。这些问题可能在很久之后才表现为意外崩溃。</p>
 </section>
 </section>
 <section id="common-undefined-behaviors" class="level3">
 <h3 class="anchored" data-anchor-id="common-undefined-behaviors">77. 常见的未定义行为</h3>
 <p>C 让你自行控制资源，也要求你承担相应的<strong>责任</strong>。有些错误会触发<strong>未定义行为（UB）</strong>。此时 C 标准<em>不对程序结果作任何要求</em>：程序可能崩溃、卡住，也可能暂时看似正常。</p>
-<p>未定义行为使得 C 语言既强大又危险。让我们探讨一下它的原因、如何识别它以及如何编写永远不会陷入其陷阱的代码。</p>
+<p>本节介绍哪些动作会触发未定义行为、如何识别相关问题，以及如何在写代码时避免它们。</p>
 <section id="step-1.-what-is-undefined-behavior" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-undefined-behavior">步骤 1 · 什么是未定义行为？</h4>
 <p>在 C 标准中，<strong> 未定义行为 </strong> 表示“不适用任何规则”。如果你的程序做了语言未定义的事情，编译器可以假设它永远不会发生并自由优化。</p>
@@ -14052,7 +14052,7 @@ Each sample counts as 0.01 seconds.
 <h4 class="anchored" data-anchor-id="step-3.-out-of-bounds-access">步骤 3 · 越界访问</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb960"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb960-1"><a href="#cb960-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> arr<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
 <span id="cb960-2"><a href="#cb960-2" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> arr<span class="op">[</span><span class="dv">3</span><span class="op">]);</span>  <span class="co">// UB: index 3 is past the end</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>C 不检查边界，你要对此负责。你可能会打印垃圾、崩溃或意外覆盖另一个变量。</p>
+<p>C 不会替程序检查数组边界。越界访问可能输出无意义的值，也可能造成崩溃或修改了别处的数据。</p>
 <p>经常检查：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb961"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb961-1"><a href="#cb961-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>index <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> index <span class="op">&lt;</span> size<span class="op">)</span></span>
 <span id="cb961-2"><a href="#cb961-2" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"</span><span class="sc">%d\n</span><span class="st">"</span><span class="op">,</span> arr<span class="op">[</span>index<span class="op">]);</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
@@ -14133,7 +14133,7 @@ Each sample counts as 0.01 seconds.
 </section>
 <section id="why-it-matters-65" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-65">为什么重要</h4>
-<p>未定义行为是无声的腐败。它可以：</p>
+<p>未定义行为可能在没有明显提示的情况下破坏程序状态，也可能造成以下结果：</p>
 <ul>
 <li>在你的机器上工作但在其他地方失败。</li>
 <li>更改编译选项时中断。</li>
@@ -14155,8 +14155,8 @@ Each sample counts as 0.01 seconds.
 </section>
 <section id="crash-analysis-and-core-dumps" class="level3">
 <h3 class="anchored" data-anchor-id="crash-analysis-and-core-dumps">78. 崩溃分析与核心转储</h3>
-<p>即使进行了仔细的编码和测试，程序也会崩溃。在 C 语言中，崩溃是系统表达 <em>“你触及了不该触及的东西”的方式。 </em> 好消息是，你可以 <strong> 科学地使用 <strong> 核心转储 </strong> 分析崩溃 </strong>，即发生故障时程序内存的快照。</p>
-<p>学习如何阅读它们是每个系统程序员的一项基本技能。</p>
+<p>即使写了测试，程序仍可能崩溃。崩溃表明程序遇到了<em>无法继续执行的情况</em>。要<strong>分析崩溃原因</strong>，可以查看<strong>核心转储</strong>，其中保存了故障发生时的进程内存及相关状态。</p>
+<p>能读懂核心转储，是排查系统程序现场故障的一项基本技能。</p>
 <section id="step-1.-what-is-a-core-dump" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-core-dump">步骤 1 · 什么是核心转储？</h4>
 <p><strong>核心转储</strong>是一个捕获程序崩溃时的状态（栈、寄存器、内存）的文件。你可以稍后使用 <strong> gdb </strong> 等调试器检查它，看看出了什么问题。</p>
@@ -14301,7 +14301,7 @@ Aborted (core dumped)</code></pre>
 #2  0x00007f0a9a4b0246 in __assert_fail_base () from /lib64/libc.so.6
 #3  0x00007f0a9a4b02f2 in __assert_fail () from /lib64/libc.so.6
 #4  0x0000000000401136 in main () at assert_fail.c:5</code></pre>
-<p>你可以准确跟踪断言如何导致中止信号。</p>
+<p>可以沿着调用栈追踪断言失败是怎样触发中止信号的。</p>
 </section>
 <section id="why-it-matters-66" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-66">为什么重要</h4>
@@ -14322,13 +14322,13 @@ Aborted (core dumped)</code></pre>
 <li>再添加一层函数并检查调用链。</li>
 <li>尝试使用 <code>SIGFPE</code>（除以零）并查看核心转储有何不同。</li>
 </ol>
-<p>接下来，你将构建一个 <strong>C 项目的代码审查清单</strong>、习惯和原则有助于预防这些事故发生。</p>
+<p>接下来会总结一份<strong>C 项目的代码审查清单</strong>，借助这些检查项提前发现可能引起崩溃的问题。</p>
 </section>
 </section>
 <section id="code-review-checklist-for-c-projects" class="level3">
 <h3 class="anchored" data-anchor-id="code-review-checklist-for-c-projects">79. C 项目代码审查清单</h3>
-<p>在你的 C 程序投入生产之前（甚至是你提交的家庭作业），它应该通过最后一次测试，<strong>代码审查</strong>。你或你的队友在此处查看代码不仅是为了正确性，也是为了 <em> 清晰度、安全性和可维护性 </em>。</p>
-<p>将此视为起飞前你的个人飞行员清单。每个伟大的 C 程序员都有一个。</p>
+<p>程序上线或作业提交前，可以先做一次<strong>代码审查</strong>。除了核对正确性，还要检查代码是否<em>清楚、安全、易于维护</em>。</p>
+<p>可以把下面的清单当作提交前的最后一次检查。</p>
 <section id="step-1.-readability-and-structure" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-readability-and-structure">步骤 1 · 可读性和结构</h4>
 <ul>
@@ -14337,7 +14337,7 @@ Aborted (core dumped)</code></pre>
 <li>职能是否简短且重点突出（每个职能都有一个目的）？</li>
 <li>名称有意义吗（<code>count_users()</code> 比 <code>doit()</code> 更好）？</li>
 <li>缩进是否一致且可读？</li>
-<li>评论是否清晰且相关，而不仅仅是噪音？</li>
+<li>注释是否清楚，是否提供了代码本身看不出的信息？</li>
 </ul>
 <p><strong> 代码示例示例：</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1000"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1000-1"><a href="#cb1000-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad</span></span>
@@ -14424,7 +14424,7 @@ Aborted (core dumped)</code></pre>
 <section id="step-7.-portability" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-portability">步骤 7 · 可移植性</h4>
 <ul>
-<li>不要假设 <code>int</code> 是 32 位或 <code>char</code> 有符号。</li>
+<li>不能假定 <code>int</code> 一定是 32 位，也不能假定 <code>char</code> 一定是有符号类型。</li>
 <li>使用 <code>&lt;stdint.h&gt;</code> 类型（<code>int32_t</code>， <code>uint64_t</code>）。</li>
 <li>使用 <code>size_t</code> 来确定大小和索引。</li>
 <li>除非包装，否则避免使用特定于平台的 API。</li>
@@ -14434,7 +14434,7 @@ Aborted (core dumped)</code></pre>
 <section id="step-8.-testing-and-validation" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-testing-and-validation">步骤 8 · 测试和验证</h4>
 <ul>
-<li>每个可能失败的功能都必须至少进行一次测试。</li>
+<li>每个可能失败的函数至少应有一个测试。</li>
 <li>边缘情况：空输入、零值、大输入。</li>
 <li>测试应该自动运行：</li>
 </ul>
@@ -14514,7 +14514,7 @@ Aborted (core dumped)</code></pre>
 </section>
 <section id="practice-fix-memory-and-logic-bugs" class="level3">
 <h3 class="anchored" data-anchor-id="practice-fix-memory-and-logic-bugs">80. 练习：修复内存错误和逻辑错误</h3>
-<p>现在是时候将你所学到的一切（调试、测试、断言、日志记录和分析）应用到 <em> 已损坏的</em> 真实代码中。本节将引导你了解新程序员（甚至有经验的程序员）会遇到的一些常见的小 C 错误，并展示如何查找、理解和修复它们。</p>
+<p>本节把调试、测试、断言、日志和性能分析用在几段<em>确实有错误的代码</em>上。你会逐个定位、理解和修复这些新手和熟手都可能碰到的问题。</p>
 <section id="step-1.-bug-1-segmentation-fault-from-a-bad-pointer" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-bug-1-segmentation-fault-from-a-bad-pointer">步骤 1 · Bug #1，来自坏指针的段错误</h4>
 <p><strong> 错误代码：</strong></p>
@@ -14577,7 +14577,7 @@ Aborted (core dumped)</code></pre>
 <span id="cb1017-5"><a href="#cb1017-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span>  <span class="co">// ❌ should be &lt; 5</span></span>
 <span id="cb1017-6"><a href="#cb1017-6" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"</span><span class="sc">%d</span><span class="st"> "</span><span class="op">,</span> nums<span class="op">[</span>i<span class="op">]);</span></span>
 <span id="cb1017-7"><a href="#cb1017-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong> 症状：</strong> 有时会打印垃圾或段错误。</p>
+<p><strong>现象：</strong> 有时输出无意义的值，有时发生段错误。</p>
 <p><strong>修复：</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1018"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1018-1"><a href="#cb1018-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong> 课程：</strong> 差一错误是循环中最常见的错误。务必仔细检查边界条件。</p>
@@ -14729,8 +14729,8 @@ Aborted (core dumped)</code></pre>
 <h1>第 9 章 可移植性与现代 C</h1>
 <section id="the-c-standard-timeline-c89-to-c23" class="level3">
 <h3 class="anchored" data-anchor-id="the-c-standard-timeline-c89-to-c23">81. C 标准的演进（C89 至 C23）</h3>
-<p>C 语言已经存在了五十多年了，它的发展是缓慢而谨慎的。 C 标准的每个版本都改进了语言，同时保持了与数十年现有代码的向后兼容性。</p>
-<p>了解 C 标准 <strong> 时间表 </strong> 有助于你编写可移植的现代代码，并了解哪些功能可以在目标环境中安全使用。</p>
+<p>C 已经发展了五十多年。各版 C 标准逐步修订语言，同时尽量兼容已积累多年的代码。</p>
+<p>了解<strong>C 标准的演进顺序</strong>，可以判断目标平台支持哪些新特性，并据此编写可移植的代码。</p>
 <section id="step-1.-the-beginning-kr-c-19721989" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-beginning-kr-c-19721989">步骤 1 · 开始，K&amp;R C (1972–1989)</h4>
 <p>20 世纪 70 年代初，<strong>丹尼斯·里奇（Dennis Ritchie）</strong>在贝尔实验室开发了 C，用于 <strong>Unix</strong> 的系统编程。Kernighan 和 Ritchie 于 1978 年出版的<em>《C 程序设计语言》</em>给出了当时的非正式规范，也就是后来所称的 K&amp;R C。</p>
@@ -14750,7 +14750,7 @@ Aborted (core dumped)</code></pre>
 </section>
 <section id="step-2.-ansi-c-c89-c90" class="level4">
 <h4 class="anchored" data-anchor-id="step-2.-ansi-c-c89-c90">步骤 2 · ANSI C (C89 / C90)</h4>
-<p>1989 年，C 被 ANSI 标准化（1990 年被 ISO 标准化）。这个版本，<strong> C89/C90 </strong>，统一了编译器行为并使 C 可以跨系统移植。</p>
+<p>ANSI 于 1989 年发布 C 标准，ISO 于 1990 年采纳相应版本。<strong>C89/C90</strong>为不同编译器提供了共同规则，改善了跨系统的可移植性。</p>
 <p><strong> 主要特点：</strong></p>
 <ul>
 <li>函数原型 ( <code>int add(int, int);</code> )</li>
@@ -14758,7 +14758,7 @@ Aborted (core dumped)</code></pre>
 <li><code>void</code>关键字</li>
 <li>类型限定符： <code>const</code>、 <code>volatile</code></li>
 <li>新的库函数（<code>memcpy</code>、<code>qsort</code>、<code>assert</code>）</li>
-<li>正式化标准库</li>
+<li>确立了标准库规范</li>
 <li>仍然不支持单行注释（使用 <code>/* */</code>）</li>
 </ul>
 <p><strong> 代码示例：</strong></p>
@@ -14791,7 +14791,7 @@ Aborted (core dumped)</code></pre>
 <li>任何地方的变量声明</li>
 <li>内联函数</li>
 <li><code>long long</code>（64 位整数）</li>
-<li><code>stdbool.h</code> <code>bool</code> , <code>true</code> , <code>false</code></li>
+<li><code>stdbool.h</code> 用于 <code>bool</code>、<code>true</code> 和 <code>false</code>。</li>
 <li><code>stdint.h</code> 对于固定宽度整数 ( <code>int32_t</code> , <code>uint64_t</code> )</li>
 <li>指定初始化器与复合字面量</li>
 <li>灵活的数组成员</li>
@@ -14841,7 +14841,7 @@ Aborted (core dumped)</code></pre>
 <span id="cb1038-12"><a href="#cb1038-12" aria-hidden="true" tabindex="-1"></a>    thrd_create<span class="op">(&amp;</span>t<span class="op">,</span> run<span class="op">,</span> <span class="op">&amp;</span>id<span class="op">);</span></span>
 <span id="cb1038-13"><a href="#cb1038-13" aria-hidden="true" tabindex="-1"></a>    thrd_join<span class="op">(</span>t<span class="op">,</span> NULL<span class="op">);</span></span>
 <span id="cb1038-14"><a href="#cb1038-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>C11 使 C 更安全并且具有并发意识，尽管并非所有编译器都完全实现了<code>&lt;threads.h&gt;</code>。</p>
+<p>C11 加入并发支持和一些安全特性。不同编译器对 <code>&lt;threads.h&gt;</code> 的支持程度可能不同。</p>
 </section>
 <section id="step-6.-c17-a.k.a.-c18-the-refinement" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-c17-a.k.a.-c18-the-refinement">步骤 6 · C17（又名 C18），改进</h4>
@@ -14942,8 +14942,8 @@ Aborted (core dumped)</code></pre>
 </section>
 <section id="portability-and-endianness" class="level3">
 <h3 class="anchored" data-anchor-id="portability-and-endianness">82. 可移植性与字节序</h3>
-<p>可移植性意味着你的 C 程序在任何地方（Linux、Windows、ARM、x86，甚至微型微控制器）都以相同的方式运行。编写可移植代码是系统编程中最难也是最重要的技能之一。</p>
-<p>本节帮助你了解最大的低级陷阱：<strong>字节序</strong>，以及如何编写跨架构安全运行的代码。</p>
+<p>可移植代码换到另一种操作系统或硬件后，仍能按预期工作。Linux、Windows、ARM、x86 和微控制器的差异，正是系统编程中需要留心的地方。</p>
+<p>本节以<strong>字节序</strong>为例，说明同一份代码怎样正确处理不同架构的数据表示。</p>
 <section id="step-1.-what-is-portability" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-portability">步骤 1 · 什么是可移植性？</h4>
 <p><strong> 可移植 C 程序</strong> 是这样的：</p>
@@ -14994,7 +14994,7 @@ Aborted (core dumped)</code></pre>
 </tbody>
 </table>
 <p>Intel 和 ARM（在大多数模式下）是 <strong> 小端</strong>。许多较旧的 CPU（PowerPC、SPARC）都是 <strong> 大端 </strong>。</p>
-<p>C 没有定义字节序，它取决于平台。</p>
+<p>C 标准未统一规定多字节值的字节序，具体顺序取决于平台。</p>
 </section>
 <section id="step-4.-checking-endianness-at-runtime" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-checking-endianness-at-runtime">步骤 4 · 在运行时检查字节序</h4>
@@ -15174,8 +15174,8 @@ Aborted (core dumped)</code></pre>
 </section>
 <section id="inline-assembly-and-hardware-access" class="level3">
 <h3 class="anchored" data-anchor-id="inline-assembly-and-hardware-access">83. 内联汇编与硬件访问</h3>
-<p>C 可以让你精确控制内存和性能，但有时你需要更深入一层，直接到 <strong> CPU </strong>。这就是 <strong> 内联汇编 </strong> 的用武之地：将汇编语言嵌入到 C 代码中以优化性能或访问硬件级功能。</p>
-<p>本章将展示如何安全、可移植且有意义地混合 C 和汇编。</p>
+<p>C 已经能直接控制内存和许多性能细节。有时还要直接使用 <strong>CPU</strong> 指令，这时可以用<strong>内联汇编</strong>在 C 代码里嵌入汇编，用于访问特定硬件能力或优化关键路径。</p>
+<p>本节说明哪些场景适合把 C 与汇编混用，以及如何隔离平台相关的部分。</p>
 <section id="step-1.-what-is-inline-assembly" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-inline-assembly">步骤 1 · 什么是内联汇编？</h4>
 <p><strong> 内联汇编 </strong> 可让你将机器指令的小片段插入到 C 程序中。你可以用它来：</p>
@@ -15273,7 +15273,7 @@ Aborted (core dumped)</code></pre>
 <h4 class="anchored" data-anchor-id="step-7.-memory-barriers-and-cpu-fences">步骤 7 · 内存屏障和 CPU 围栏</h4>
 <p>使用并发或硬件时，你可能需要控制指令顺序。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1056"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1056-1"><a href="#cb1056-1" aria-hidden="true" tabindex="-1"></a>__asm__ __volatile__<span class="op">(</span><span class="st">"mfence"</span> <span class="op">:::</span> <span class="st">"memory"</span><span class="op">);</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>这告诉 CPU 和编译器不要重新排序内存操作，这对于在硬件级别编写线程安全或设备控制代码至关重要。</p>
+<p>这种内存屏障用于约束编译器或 CPU 对访存操作的重排，具体效果由指令和平台规定。跨线程代码还要遵守语言的同步规则，设备访问则应遵循硬件规范。</p>
 </section>
 <section id="step-8.-register-constraints" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-register-constraints">步骤 8 · 注册约束</h4>
@@ -15378,8 +15378,8 @@ Aborted (core dumped)</code></pre>
 </section>
 <section id="cross-compilation" class="level3">
 <h3 class="anchored" data-anchor-id="cross-compilation">84. 交叉编译</h3>
-<p>交叉编译意味着 <strong> 在一台机器上构建程序，以便它在另一台机器上运行 </strong>。如果你曾经在笔记本电脑上编译过 C 程序并将其部署到 Raspberry Pi、ESP32 板，甚至自定义 Linux 映像，那么你就已经完成了交叉编译。</p>
-<p>对于系统程序员、嵌入式开发人员以及任何为多种架构或操作系统进行构建的人来说，这是一项基本技能。</p>
+<p>交叉编译是在<strong>一台机器上构建面向另一种目标环境的程序</strong>。例如，在笔记本上构建运行于不同架构的树莓派、ESP32 或其他目标环境的 C 程序。</p>
+<p>系统和嵌入式开发，以及需要支持多种架构或操作系统的项目，经常用到交叉编译。</p>
 <section id="step-1.-what-is-a-cross-compiler" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-cross-compiler">步骤1.什么是交叉编译器？</h4>
 <p><strong> 交叉编译器 </strong> 是为不同于 <em> 主机平台 </em> 的 <em> 目标平台 </em> 生成可执行文件的编译器。</p>
@@ -15520,7 +15520,7 @@ Aborted (core dumped)</code></pre>
 </section>
 <section id="why-it-matters-72" class="level4">
 <h4 class="anchored" data-anchor-id="why-it-matters-72">为什么重要</h4>
-<p>交叉编译将你的笔记本电脑连接到你将要编程的所有其他设备。这就是内核模块、嵌入式系统甚至 Android 应用程序的构建方式。一旦你学会了它，你就可以构建 <strong>任何地方、任何事情</strong>.</p>
+<p>交叉编译能让你在自己的电脑上为其他环境构建程序。内核模块、嵌入式软件和 Android 应用都可能用到它。熟悉这套流程后，就能<strong>从一台开发机面向多种目标环境构建</strong>。</p>
 </section>
 <section id="try-it-yourself-82" class="level4">
 <h4 class="anchored" data-anchor-id="try-it-yourself-82">动手练习</h4>
@@ -15536,8 +15536,8 @@ Aborted (core dumped)</code></pre>
 </section>
 <section id="threading-with-pthreads" class="level3">
 <h3 class="anchored" data-anchor-id="threading-with-pthreads">85. 使用 POSIX 线程（pthreads）</h3>
-<p>现代计算机同时运行许多东西。你的网络浏览器、文本编辑器和编译器都通过 <strong> 线程 </strong> 共享 CPU 时间。在 C 语言中，最广泛使用的线程 API 是 <strong> POSIX 线程 </strong> 或 <strong> pthreads </strong>。它是低级的、可移植的，并为你提供对并行执行的细粒度控制。</p>
-<p>本节将教你如何安全地创建、管理和同步线程。</p>
+<p>浏览器、编辑器和编译器中的<strong>线程</strong>会共享 CPU 资源。在类 Unix 平台，C 程序常用<strong>POSIX 线程接口</strong>，也叫 <strong>pthreads</strong>。它提供了创建线程、等待完成和同步访问的底层控制。</p>
+<p>本节练习创建、管理和同步线程。</p>
 <section id="step-1.-what-is-a-thread" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-thread">步骤 1 · 什么是线程？</h4>
 <p><strong>线程</strong>是一个轻量级执行单元，与进程中的其他线程共享相同的内存空间。</p>
@@ -15638,7 +15638,7 @@ Main thread finished.</code></pre>
 </section>
 <section id="step-5.-race-conditions" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-race-conditions">步骤 5 · 竞态条件</h4>
-<p>当两个线程同时修改同一个变量时，就会发生不好的事情。这称为 <strong> 竞态条件 </strong>。</p>
+<p>两个线程未经同步就修改同一个非原子变量，会发生数据竞争。一种表现是两次更新互相覆盖，结果取决于运行顺序，形成<strong>竞态条件</strong>。</p>
 <p>示例（不安全）：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1081"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1081-1"><a href="#cb1081-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;pthread.h&gt;</span></span>
 <span id="cb1081-2"><a href="#cb1081-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -15662,7 +15662,7 @@ Main thread finished.</code></pre>
 <p>预期：<code>200000</code>实际：不可预测（例如<code>137421</code>），因为增量重叠。</p>
 </section>
 <section id="step-6.-using-mutexes-mutual-exclusion-locks" class="level4">
-<h4 class="anchored" data-anchor-id="step-6.-using-mutexes-mutual-exclusion-locks">步骤 6 · 使用互斥锁（互斥锁）</h4>
+<h4 class="anchored" data-anchor-id="step-6.-using-mutexes-mutual-exclusion-locks">步骤 6 · 使用互斥锁</h4>
 <p><strong> 互斥体 </strong> 确保一次只有一个线程修改共享数据。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1082"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1082-1"><a href="#cb1082-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;pthread.h&gt;</span></span>
 <span id="cb1082-2"><a href="#cb1082-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -15802,7 +15802,7 @@ Main thread finished.</code></pre>
 <li>使用 <code>pthread_attr_t</code> 创建分离的工作线程。</li>
 <li>随着线程数的增加，分析程序的性能。</li>
 </ol>
-<p>接下来，你将探索 <strong> 原子操作和内存模型 </strong>，现代 CPU 如何在多个线程共享无锁数据时确保一致性。</p>
+<p>下一节介绍<strong>原子操作和内存模型</strong>，解释多个线程如何访问共享数据，以及在没有显式加锁时还需要满足哪些同步条件。</p>
 </section>
 </section>
 <section id="atomic-operations-and-memory-models" class="level3">
@@ -15935,11 +15935,11 @@ Thread B: store(6)</code></pre>
 </tr>
 <tr class="odd">
 <td><code>memory_order_acquire</code></td>
-<td>防止加载前重新排序</td>
+<td>获取读约束后续操作，避免它们在同步意义上跑到这次读取之前。</td>
 </tr>
 <tr class="even">
 <td><code>memory_order_release</code></td>
-<td>防止商店后重新订购</td>
+<td>释放写约束此前操作，避免它们在同步意义上跑到这次写入之后。</td>
 </tr>
 <tr class="odd">
 <td><code>memory_order_acq_rel</code></td>
@@ -16033,8 +16033,8 @@ Thread B: store(6)</code></pre>
 </section>
 <section id="using-c-with-other-languages-ffi" class="level3">
 <h3 class="anchored" data-anchor-id="using-c-with-other-languages-ffi">87. 通过 FFI 与其他语言互操作</h3>
-<p>C通常被称为<em>通用汇编语言</em>，几乎所有现代语言都可以调用它。这是通过 <strong> 外部函数接口 (FFI) </strong> 实现的，它定义了不同语言如何与 C 代码交互。</p>
-<p>在本节中，你将学习如何将 C 函数公开给 Python、Rust 和 Go，以及如何从这些语言调用函数 <em>里面</em> C.</p>
+<p>C 常被称作<em>通用汇编语言</em>，很多语言都能调用 C 接口。<strong>外部函数接口（FFI）</strong>定义了跨语言调用时参数、返回值和其他接口细节怎样对应。</p>
+<p>本节从 Python、Rust 和 Go 调用 C 函数，也介绍怎样在 C <em>内部</em>调用由其他语言导出的函数。</p>
 <section id="step-1.-what-is-an-ffi" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-an-ffi">步骤 1 · 什么是 FFI？</h4>
 <p><strong> FFI（外部函数接口）</strong> 是一座桥梁，让用一种语言编写的程序可以使用另一种语言编写的代码。</p>
@@ -16059,7 +16059,7 @@ Thread B: store(6)</code></pre>
 </section>
 <section id="step-3.-exposing-c-functions-to-other-languages" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-exposing-c-functions-to-other-languages">步骤 3 · 将 C 函数公开给其他语言</h4>
-<p>你可以通过用 <code>extern "C"</code>（如果编译为 C++）标记 C 函数，使它们可由其他语言调用，或者仅标记常规 C 函数。</p>
+<p>使用 C++ 编译跨语言接口时，用 <code>extern "C"</code> 声明 C 链接属性。直接用 C 编译时，使用普通的 C 函数声明即可。</p>
 <p><strong> 代码示例：共享 C 库 </strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1097"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1097-1"><a href="#cb1097-1" aria-hidden="true" tabindex="-1"></a><span class="co">// file: mathlib.c</span></span>
 <span id="cb1097-2"><a href="#cb1097-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -16105,7 +16105,7 @@ Thread B: store(6)</code></pre>
 <span id="cb1101-10"><a href="#cb1101-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>编译：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1102"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1102-1"><a href="#cb1102-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rustc</span> main.rs <span class="at">-L</span> .</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Rust 强制执行<code>unsafe</code>，因为它无法验证 C 函数内部发生的情况。</p>
+<p>Rust 要求把该调用标为 <code>unsafe</code>，因为它无法验证 C 函数内部是否满足内存安全约束。</p>
 </section>
 <section id="step-6.-using-c-in-go" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-using-c-in-go">步骤 6 · 在 Go 中使用 C</h4>
@@ -16126,7 +16126,7 @@ Thread B: store(6)</code></pre>
 </section>
 <section id="step-7.-calling-foreign-code-from-c" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-calling-foreign-code-from-c">步骤 7 · 从 C 调用外部代码</h4>
-<p>你也可以采取另一种方式，从另一种语言调用函数 <em>里面C</em>.</p>
+<p>调用也可以反过来，从<em>C 内部</em>调用其他语言提供的函数。</p>
 <p><strong> 示例：C 调用 Python </strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1105"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1105-1"><a href="#cb1105-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Python.h&gt;</span></span>
 <span id="cb1105-2"><a href="#cb1105-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -16161,7 +16161,7 @@ Thread B: store(6)</code></pre>
 <span id="cb1108-3"><a href="#cb1108-3" aria-hidden="true" tabindex="-1"></a>    sprintf<span class="op">(</span>s<span class="op">,</span> <span class="st">"Hello from C!"</span><span class="op">);</span></span>
 <span id="cb1108-4"><a href="#cb1108-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s<span class="op">;</span></span>
 <span id="cb1108-5"><a href="#cb1108-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>然后调用者（例如Python）必须通过FFI调用<code>free()</code>以避免泄漏。永远不要假设另一种语言的垃圾回收器会清理 C 内存。</p>
+<p>之后调用方（例如 Python）必须通过 FFI 调用 <code>free()</code> 释放内存。另一种语言的垃圾回收器通常不会替你回收 C 分配的内存。</p>
 </section>
 <section id="step-10.-tiny-code-c-shared-library-python" class="level4">
 <h4 class="anchored" data-anchor-id="step-10.-tiny-code-c-shared-library-python">步骤 10 · 代码示例：C 共享库 + Python</h4>
@@ -16202,8 +16202,8 @@ Thread B: store(6)</code></pre>
 </section>
 <section id="safer-alternatives-bounds-checking-_static_assert-and-modern-c-safety-tools" class="level3">
 <h3 class="anchored" data-anchor-id="safer-alternatives-bounds-checking-_static_assert-and-modern-c-safety-tools">88. 提高 C 程序的安全性：边界检查、<code>_Static_assert</code> 与检测工具</h3>
-<p>C 赋予你权力和控制力，但也赋予你责任。由于 C 不会自动保护你免受内存错误、缓冲区溢出或类型误用的影响，因此你必须在语言和工具级别添加安全性。</p>
-<p>本节探讨 <strong> C11 到 C23 </strong> 中的现代安全功能，包括 <strong> 边界检查 </strong>、 <strong> 静态断言 </strong> 以及编写更安全的 C 的实际习惯。</p>
+<p>C 允许程序直接操作内存，因此要自己防范内存错误、缓冲区溢出和类型误用。语言提供了一些检查手段，构建和测试工具还能帮你发现更多问题。</p>
+<p>本节介绍 <strong>C11 到 C23</strong> 可用的<strong>边界检查</strong>、<strong>静态断言</strong>和其他安全做法。</p>
 <section id="step-1.-why-safety-matters-in-c" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-why-safety-matters-in-c">步骤 1 · 为什么 C 语言中的安全性很重要</h4>
 <p>C 之所以快，是因为它信任程序员。这意味着：</p>
@@ -16244,7 +16244,7 @@ Thread B: store(6)</code></pre>
 </section>
 <section id="step-4.-_static_assert-compile-time-checking" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-_static_assert-compile-time-checking">步骤 4 · <code>_Static_assert</code>：编译时检查</h4>
-<p>引入于 <strong>C11</strong>, <code>_Static_assert</code> 让你验证条件 <em>之前</em> 该程序甚至可以编译。</p>
+<p><code>_Static_assert</code> 由 <strong>C11</strong> 引入，可以<em>在编译阶段</em>验证条件。</p>
 <p>示例：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1118"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1118-1"><a href="#cb1118-1" aria-hidden="true" tabindex="-1"></a><span class="kw">_Static_assert</span><span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="op">==</span> <span class="dv">4</span><span class="op">,</span> <span class="st">"This code requires 32-bit int"</span><span class="op">);</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p>如果条件失败，编译将停止并显示一条明确的消息。</p>
@@ -16438,8 +16438,8 @@ Thread B: store(6)</code></pre>
 </section>
 <section id="modern-style-clean-and-readable-c" class="level3">
 <h3 class="anchored" data-anchor-id="modern-style-clean-and-readable-c">89. 编写简洁易读的 C 代码</h3>
-<p>C 语言已经存在了 50 多年，并且仍在不断发展。现代 C (C11–C23) 将低级编程的强大功能与更安全的语法、更简洁的习惯用法以及使代码更易于推理的新功能结合起来。</p>
-<p>本节将帮助你编写 <strong> 现代、可读且可维护的 C </strong>，一种感觉永恒的 C。</p>
+<p>C 已有五十多年历史，仍在演进。C11 到 C23 保留底层控制能力，也引入了更清晰的写法和一些便于分析代码的新特性。</p>
+<p>本节介绍怎样写出<strong>清楚、易读、便于维护的现代 C 代码</strong>。</p>
 <section id="step-1.-think-clarity-over-cleverness" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-think-clarity-over-cleverness">第一步：“清晰而非聪明”</h4>
 <p>现代 C 语言的黄金法则是：</p>
@@ -16593,8 +16593,8 @@ Thread B: store(6)</code></pre>
 </section>
 <section id="practice-portable-multithreaded-program" class="level3">
 <h3 class="anchored" data-anchor-id="practice-portable-multithreaded-program">90. 练习：编写可移植的多线程程序</h3>
-<p>是时候将你学到的所有内容（内存管理、线程、同步和可移植性）整合到一个有凝聚力的程序中了。</p>
-<p>在<strong>第9章</strong>的最后一节中，你将构建一个<strong>可移植多线程计数器</strong>，它可以跨架构、编译器和系统正确运行，在实践中展示干净、安全和现代的C。</p>
+<p>最后用一个完整程序，把内存管理、线程、同步和可移植性练习结合起来。</p>
+<p>作为<strong>第 9 章</strong>的收尾，你会实现一个<strong>可移植的多线程计数器</strong>，练习编写可以在不同架构、编译器和系统上正确工作的 C 程序。</p>
 <section id="step-1.-the-goal" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-goal">步骤 1 · 目标</h4>
 <p>我们将编写一个程序：</p>
@@ -16697,7 +16697,7 @@ Thread B: store(6)</code></pre>
 <p>预期输出：</p>
 <pre><code>Counter = 1000000 (expected 1000000)
 Elapsed time: 0.134 seconds</code></pre>
-<p>该程序以完美的准确性完成，没有竞态条件，并且可以跨平台运行。</p>
+<p>示例对共享计数的更新使用了同步，因此不会因数据竞争而丢失更新。在提供所需线程接口的平台上可以运行。</p>
 </section>
 <section id="step-6.-improving-portability" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-improving-portability">步骤 6 · 提高可移植性</h4>
@@ -16752,10 +16752,10 @@ Elapsed time: 0.134 seconds</code></pre>
 <h1>第 10 章 实战项目</h1>
 <section id="designing-small-c-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="designing-small-c-libraries">91. 设计小型 C 库</h3>
-<p>编写库可以让你的 C 代码可重用、模块化且易于维护。在本节中，你将学习如何设计和构建一个 <strong> 小型、可移植且文档齐全的 C 库 </strong>，这种库在实际系统中使用了数十年。</p>
+<p>把功能封装成库，可以让多个程序复用同一套代码，也更方便维护。本节设计一个<strong>小型、可移植且带文档的 C 库</strong>。</p>
 <section id="step-1.-what-is-a-library-in-c" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-what-is-a-library-in-c">步骤 1 · 什么是 C 语言库？</h4>
-<p>C 中的库是 <strong>函数和数据类型的集合</strong> 可以被多个程序使用。</p>
+<p>在 C 中，库把<strong>一组函数和数据类型</strong>组织在一起，供多个程序复用。</p>
 <p>有两种类型的库：</p>
 <ul>
 <li><strong>静态库</strong>（<code>.a</code>或<code>.lib</code>）——在构建时编译到最终程序中。</li>
@@ -16800,7 +16800,7 @@ Elapsed time: 0.134 seconds</code></pre>
 <span id="cb1152-17"><a href="#cb1152-17" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong> 注：</strong></p>
 <ul>
-<li>包括防护装置以防止双重包含。</li>
+<li>包含保护可以防止一个头文件在同一翻译单元内被重复包含。</li>
 <li><code>extern "C"</code> 允许在 C++ 项目中使用。</li>
 <li>前缀 ( <code>sm_</code> ) 可防止命名冲突。</li>
 </ul>
@@ -16930,12 +16930,12 @@ Error detected during division.</code></pre>
 <li>编写仅头文件版本（<code>static inline</code>函数）。</li>
 <li>使用版本控制和示例打包你的库。</li>
 </ol>
-<p>接下来，你将学习如何 <strong>用 C 构建完整的命令行工具 (92)</strong>，将可重用库连接到实用的、面向用户的应用程序。</p>
+<p>下一节将<strong>用 C 构建一个完整的命令行工具（第 92 节）</strong>，把可复用的库接到面向用户的应用上。</p>
 </section>
 </section>
 <section id="building-a-command-line-tool" class="level3">
 <h3 class="anchored" data-anchor-id="building-a-command-line-tool">92. 开发命令行工具</h3>
-<p>命令行工具是大多数 C 程序员开始构建 <em> 真实软件 </em> 的地方。它们快速、可移植并且能够与类 Unix 环境自然集成。在本节中，你将构建一个 <strong> 小型独立 CLI 工具 </strong>，用于处理输入参数、读取文件和输出结果，与 <code>grep</code>、 <code>cat</code> 和 <code>wc</code> 等工具使用的模式相同。</p>
+<p>许多 C 开发者从编写命令行工具开始接触<em>可实际使用的软件</em>。本节实现一个<strong>独立的小型命令行工具</strong>，处理参数、读取文件并输出结果。<code>grep</code>、<code>cat</code> 和 <code>wc</code> 等 Unix 工具也采用类似的组织方式。</p>
 <section id="step-1.-the-goal-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-goal-1">步骤 1 · 目标</h4>
 <p>我们将构建一个名为 <strong> linestat </strong> 的简单命令行工具：</p>
@@ -17049,7 +17049,7 @@ Chars: 430</code></pre>
 <section id="step-6.-breaking-down-the-code" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-breaking-down-the-code">第 6 步：分解代码</h4>
 <ul>
-<li><strong> 参数解析：</strong> 循环<code>argv</code> 检测标志。</li>
+<li><strong>解析参数：</strong> 遍历 <code>argv</code>，识别命令行选项。</li>
 <li><strong> 输入处理：</strong> 当未给出文件时从 <code>stdin</code> 读取。</li>
 <li><strong> 计数逻辑：</strong> 跟踪空格和字符之间的转换以计算单词数。</li>
 <li><strong> 优雅退出：</strong> 使用<code>fclose</code> 和<code>perror</code> 进行错误报告。</li>
@@ -17100,8 +17100,8 @@ Chars: 430</code></pre>
 </section>
 <section id="tiny-http-server-sockets-and-threads" class="level3">
 <h3 class="anchored" data-anchor-id="tiny-http-server-sockets-and-threads">93. 用套接字和线程实现小型 HTTP 服务器</h3>
-<p>现在你已经知道如何构建命令行工具了，是时候让你的程序与网络对话了。在本节中，你将构建一个 <strong> 微型多线程 HTTP 服务器 </strong>，这是一个小型的、最小的网络驱动的克隆。</p>
-<p>你将学习套接字、线程、请求解析和响应生成，所有这些都是从第一原理开始的。</p>
+<p>写完命令行工具后，接下来用网络收发数据。本节实现一个<strong>小型多线程 HTTP 服务器</strong>，观察 Web 服务最基本的工作过程。</p>
+<p>示例从套接字和线程开始，再处理请求解析和响应生成。</p>
 <section id="step-1.-the-goal-2" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-goal-2">步骤 1 · 目标</h4>
 <p>我们将创建一个简单的 HTTP 服务器：</p>
@@ -17299,8 +17299,8 @@ Chars: 430</code></pre>
 </section>
 <section id="simple-key-value-store" class="level3">
 <h3 class="anchored" data-anchor-id="simple-key-value-store">94. 实现简单的键值存储</h3>
-<p>在你自己构建数据库之前，数据库看起来很可怕。在本节中，你将编写一个小型的 <strong> 仅附加键值存储 </strong>，它将数据持久保存到磁盘、在启动时加载内存索引，并通过简单的 CLI 支持 <code>get</code> 和 <code>set</code>。</p>
-<p>你将学习文件、序列化、索引和碰撞安全基础知识。</p>
+<p>本节从一个<strong>仅追加的键值存储</strong>入手。数据写入磁盘，程序启动时重建内存索引，并通过命令行提供 <code>get</code> 和 <code>set</code> 两种操作。</p>
+<p>你会练习文件读写、序列化、索引和崩溃后恢复的基本做法。</p>
 <section id="step-1.-design-the-file-format" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-design-the-file-format">步骤1.设计文件格式</h4>
 <p>保持简单和二元化。每条记录仅附加：</p>
@@ -17320,7 +17320,7 @@ Chars: 430</code></pre>
 </section>
 <section id="step-3.-the-in-memory-index" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-the-in-memory-index">步骤 3 · 内存索引</h4>
-<p>启动时，扫描一次日志文件并构建最新记录的 key -&gt; 文件偏移量的哈希映射。为了清楚起见，我们将实现一个简单的开放寻址哈希表。</p>
+<p>启动时扫描一次日志，建立从键到最新记录文件偏移量的哈希索引。这里用一个简单的开放寻址哈希表实现。</p>
 <p>索引条目：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1177"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1177-1"><a href="#cb1177-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> <span class="op">{</span></span>
 <span id="cb1177-2"><a href="#cb1177-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint64_t</span> offset<span class="op">;</span>   <span class="co">// file position of record start</span></span>
@@ -17565,7 +17565,7 @@ kv &lt;file&gt; stats</code></pre>
 </section>
 <section id="step-10.-why-it-matters-9" class="level4">
 <h4 class="anchored" data-anchor-id="step-10.-why-it-matters-9">第 10 步：为什么它很重要</h4>
-<p>这个小商店教授核心数据库循环：</p>
+<p>这个小型存储示例展示了数据库的几个基本环节：</p>
 <ul>
 <li><strong> 日志结构化存储 </strong> 确保持久性</li>
 <li><strong> 内存索引 </strong> 提高速度</li>
@@ -17583,32 +17583,32 @@ kv &lt;file&gt; stats</code></pre>
 <li>将线性探测表替换为链式哈希或跳房子哈希。</li>
 <li>每条记录添加一个简单的校验和并在读取时进行验证。</li>
 </ol>
-<p>接下来，你将实现<strong> 95。实现自定义分配器</strong>，你将在其中学习<code>malloc</code>之类的系统如何管理堆，并编写一个可以放入小型 C 项目中的小型arena分配器。</p>
+<p>下一节是<strong>第 95 节：实现自定义内存分配器</strong>。你会了解 <code>malloc</code> 等系统如何管理堆，并实现一个能嵌入小型 C 项目的内存池分配器。</p>
 </section>
 </section>
 <section id="implementing-a-custom-allocator" class="level3">
 <h3 class="anchored" data-anchor-id="implementing-a-custom-allocator">95. 实现自定义内存分配器</h3>
-<p>每个 C 程序最终都会向操作系统请求内存，但 <code>malloc</code> 和 <code>free</code> 并不神奇——它们位于 <code>brk</code> 和 <code>mmap</code> 等系统调用之上。在本节中，你将构建自己的 <strong> 自定义内存分配器 </strong> — 一个简单的 arena 分配器，可以一次获取一大块内存并有效地将其分配出去。</p>
-<p>你将看到真正的分配器如何在内核、游戏和嵌入式系统中工作。</p>
+<p><code>malloc</code> 和 <code>free</code> 通常通过底层设施向操作系统获取内存，例如 <code>brk</code> 或 <code>mmap</code>。本节实现一个<strong>自定义内存分配器</strong>：先取得一大块内存，再从这块内存中按需划出小块。</p>
+<p>这种做法有助于理解内核、游戏和嵌入式系统中的分配策略。</p>
 <section id="step-1.-the-goal-3" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-goal-3">步骤 1 · 目标</h4>
-<p>我们将实现一个最小的<strong>竞技场分配器</strong>：</p>
+<p>下面实现一个最简<strong>内存池分配器</strong>，它具有以下特点：</p>
 <ul>
 <li>从预分配块中分配</li>
 <li>从不释放单个对象</li>
-<li>当竞技场被清除时立即重置所有内存</li>
+<li>重置内存池时一次性回收全部分配空间。</li>
 </ul>
 <p>该模型非常适合短期数据结构、解析和高性能应用程序。</p>
 </section>
 <section id="step-2.-design" class="level4">
 <h4 class="anchored" data-anchor-id="step-2.-design">步骤 2 · 设计</h4>
-<p>竞技场分配器跟踪：</p>
+<p>内存池分配器需要记录以下信息：</p>
 <ul>
 <li><strong>基指针</strong>（内存开始）</li>
 <li><strong>当前指针</strong>（下一个空闲位置）</li>
-<li><strong>容量</strong>（竞技场的总大小）</li>
+<li><strong>容量</strong>，即内存池的总大小</li>
 </ul>
-<p>当你分配时，它只是将指针向前移动。</p>
+<p>每次分配只需要把当前位置往前移。</p>
 <p>结构：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1184"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1184-1"><a href="#cb1184-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> <span class="op">{</span></span>
 <span id="cb1184-2"><a href="#cb1184-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">unsigned</span> <span class="dt">char</span> <span class="op">*</span>base<span class="op">;</span></span>
@@ -17617,7 +17617,7 @@ kv &lt;file&gt; stats</code></pre>
 <span id="cb1184-5"><a href="#cb1184-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> Arena<span class="op">;</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="step-3.-tiny-code-minimal-arena" class="level4">
-<h4 class="anchored" data-anchor-id="step-3.-tiny-code-minimal-arena">步骤 3 · 代码示例：最小竞技场</h4>
+<h4 class="anchored" data-anchor-id="step-3.-tiny-code-minimal-arena">步骤 3 · 代码示例：最简内存池</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1185"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1185-1"><a href="#cb1185-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1185-2"><a href="#cb1185-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
 <span id="cb1185-3"><a href="#cb1185-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></span>
@@ -17687,14 +17687,14 @@ kv &lt;file&gt; stats</code></pre>
 <ol type="1">
 <li><code>arena_create</code> 从 <code>malloc</code> 抓取一大块。</li>
 <li><code>arena_alloc</code> 通过增加偏移量来分配内存——没有每个对象的元数据。</li>
-<li><code>arena_reset</code> 倒带竞技场以立即重用内存。</li>
+<li><code>arena_reset</code> 将内存池的分配位置重置到起点，供后续分配复用内存。</li>
 <li><code>arena_free</code> 在一次调用中释放整个块。</li>
 </ol>
 <p>对于每个分配来说，这是 <em> O(1) </em>，零碎片。</p>
 </section>
 <section id="step-6.-adding-alignment" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-adding-alignment">步骤 6 · 添加对齐</h4>
-<p>有时分配必须对齐（例如，SIMD 的 16 字节对齐）。我们可以将偏移量四舍五入到最近的对齐边界。</p>
+<p>有些分配需要满足对齐要求，例如 SIMD 对象可能要求按 16 字节对齐。此时要把偏移量向上取整到下一个可用的对齐边界。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1187"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1187-1"><a href="#cb1187-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">size_t</span> align_up<span class="op">(</span><span class="dt">size_t</span> n<span class="op">,</span> <span class="dt">size_t</span> align<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb1187-2"><a href="#cb1187-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">(</span>n <span class="op">+</span> <span class="op">(</span>align <span class="op">-</span> <span class="dv">1</span><span class="op">))</span> <span class="op">&amp;</span> <span class="op">~(</span>align <span class="op">-</span> <span class="dv">1</span><span class="op">);</span></span>
 <span id="cb1187-3"><a href="#cb1187-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
@@ -17718,7 +17718,7 @@ kv &lt;file&gt; stats</code></pre>
 </section>
 <section id="step-8.-advanced-idea-nested-arenas" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-advanced-idea-nested-arenas">步骤 8 · 高级想法：嵌套竞技场</h4>
-<p>你可以为作用域内存创建 <strong> 子区域 </strong>：</p>
+<p>可以创建<strong>子内存池</strong>，让一组分配共享同一段生存期：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1189"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1189-1"><a href="#cb1189-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> <span class="op">{</span></span>
 <span id="cb1189-2"><a href="#cb1189-2" aria-hidden="true" tabindex="-1"></a>    Arena <span class="op">*</span>parent<span class="op">;</span></span>
 <span id="cb1189-3"><a href="#cb1189-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">size_t</span> start<span class="op">;</span></span>
@@ -17739,7 +17739,7 @@ kv &lt;file&gt; stats</code></pre>
 <ul>
 <li><code>malloc</code>和<code>free</code>如何管理元数据</li>
 <li>碎片是如何发生的</li>
-<li>专门的分配器（arena、pool、slab）如何实现速度和可预测性</li>
+<li>区域分配器、对象池和 slab 等专用分配器怎样降低开销，使性能更可预测</li>
 </ul>
 <p>游戏、Web 服务器和编译器都使用自定义分配器来控制生存期并避免开销。</p>
 </section>
@@ -17750,7 +17750,7 @@ kv &lt;file&gt; stats</code></pre>
 <li>为固定大小的对象实现一个 <strong> 池分配器 </strong> （例如 <code>struct Node</code>）。</li>
 <li>使用<code>mmap</code>直接从操作系统请求匿名内存。</li>
 <li>添加一个泄漏检测器，报告关闭时未释放的字节。</li>
-<li>将多个 arena 组合成一个分层分配器。</li>
+<li>把多个内存池组合成分层分配器。</li>
 </ol>
 <p>接下来，你将构建 <strong> 96。编写一个文本解析器 </strong>，在用纯 C 构建迷你词法分析器和解析器时，使用分配器来管理短期字符串和词法单元。</p>
 </section>
@@ -17801,7 +17801,7 @@ factor -&gt; INT | '(' expr ')'</code></pre>
 </section>
 <section id="step-5.-a-tiny-arena-for-nodes" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-a-tiny-arena-for-nodes">第 5 步：节点的小舞台</h4>
-<p>频繁使用 <code>malloc</code> 分配节点是有噪音的。使用一个小竞技场，这样每个节点都只是一个凹凸分配，当你完成后，所有东西都会立即释放。</p>
+<p>频繁用 <code>malloc</code> 分配节点会增加分配开销。小型内存池只需移动分配位置即可为新节点腾出空间，用完时可以统一释放。</p>
 </section>
 <section id="step-6.-error-handling-strategy" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-error-handling-strategy">步骤 6 · 错误处理策略</h4>
@@ -17809,7 +17809,7 @@ factor -&gt; INT | '(' expr ')'</code></pre>
 <ul>
 <li>如果出现意外标记，请打印一条包含该位置的消息。</li>
 <li>停止解析并返回 <code>NULL</code>。</li>
-<li>仅当树不是 <code>NULL</code> 时，格式化输出函数才会运行。</li>
+<li>只有语法树不为空（不等于 <code>NULL</code>）时，才会调用格式化输出函数。</li>
 </ul>
 </section>
 <section id="step-7.-pretty-printing-the-ast" class="level4">
@@ -18141,7 +18141,7 @@ factor -&gt; INT | IDENT | '(' expr ')'</code></pre>
 </section>
 <section id="step-7.-tiny-code-evaluator-minimal-repl" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-tiny-code-evaluator-minimal-repl">步骤 7 · 代码示例：评估器 + 最小 REPL</h4>
-<p>下面是一个基于早期解析器的紧凑解释器。为了简洁起见，词法分析器和 arena 被修剪为仅你需要的新位。</p>
+<p>下面的解释器基于前面写过的解析器。为了便于阅读，词法分析器和内存池仅保留这个示例需要的部分。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1198"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1198-1"><a href="#cb1198-1" aria-hidden="true" tabindex="-1"></a><span class="co">// file: tiny_interp.c</span></span>
 <span id="cb1198-2"><a href="#cb1198-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define _POSIX_C_SOURCE </span><span class="dv">200809</span><span class="bu">L</span></span>
 <span id="cb1198-3"><a href="#cb1198-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
@@ -18370,12 +18370,12 @@ factor -&gt; INT | IDENT | '(' expr ')'</code></pre>
 </section>
 <section id="interfacing-with-sqlite-or-leveldb" class="level3">
 <h3 class="anchored" data-anchor-id="interfacing-with-sqlite-or-leveldb">98. 在 C 中使用 SQLite 或 LevelDB</h3>
-<p>是时候将 C 程序连接到实际数据了。在本节中，你将讨论两种流行的嵌入式数据库：</p>
+<p>前面的程序已经可以处理结构化数据。本节会从 C 调用两种常用的嵌入式数据库：</p>
 <ul>
 <li><strong> SQLite </strong>：单个文件中的关系、SQL 查询、ACID 事务</li>
 <li><strong> LevelDB </strong>：键值存储，按键排序，快速读写</li>
 </ul>
-<p>你将编写使用两个引擎插入和查询数据的小程序。</p>
+<p>我们各写一个小程序，练习向两种数据库写入和查询数据。</p>
 <section id="step-1.-when-to-choose-which" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-when-to-choose-which">步骤 1 · 何时选择</h4>
 <ul>
@@ -18478,7 +18478,7 @@ factor -&gt; INT | IDENT | '(' expr ')'</code></pre>
 <section id="step-4.-sqlite-best-practices-in-c" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-sqlite-best-practices-in-c">步骤 4 · C 语言中的 SQLite 最佳实践</h4>
 <ul>
-<li>始终使用 <strong> 准备好的语句 </strong> 和 <code>?</code> 占位符</li>
+<li>使用<strong>预编译语句</strong>，并通过<code>?</code>占位符传值。</li>
 <li>始终在语句上调用 <code>sqlite3_finalize</code></li>
 <li>将批次包装在 <code>BEGIN</code> 和 <code>COMMIT</code> 中以提高速度</li>
 <li>检查每个返回码并在错误时打印 <code>sqlite3_errmsg(db)</code></li>
@@ -18607,7 +18607,7 @@ factor -&gt; INT | IDENT | '(' expr ')'</code></pre>
 <section id="try-it-yourself-89" class="level4">
 <h4 class="anchored" data-anchor-id="try-it-yourself-89">自己尝试一下</h4>
 <ol type="1">
-<li>使用 <code>BEGIN</code> 和 <code>COMMIT</code> 围绕 10000 次插入的循环扩展 SQLite 演示并测量时间。</li>
+<li>扩展 SQLite 示例：用 <code>BEGIN</code> 和 <code>COMMIT</code> 把循环插入 10,000 条记录的操作放在一个事务里，再测量耗时。</li>
 <li>在<code>age</code>上添加索引并比较查询性能。</li>
 <li>在 LevelDB 演示中添加一个插入 1000 个顺序键的写入批处理。</li>
 <li>在两个系统中存储二进制 blob 并将其读回。</li>
@@ -18618,7 +18618,7 @@ factor -&gt; INT | IDENT | '(' expr ')'</code></pre>
 </section>
 <section id="packaging-versioning-and-documentation" class="level3">
 <h3 class="anchored" data-anchor-id="packaging-versioning-and-documentation">99. 打包、版本管理与编写文档</h3>
-<p>你已经编写了真正的 C 程序 - 现在是时候像专业人士一样对它们进行 <strong> 打包、版本和文档 </strong> 了。这就是使你的代码可供其他人使用并可供未来的你维护的原因。</p>
+<p>现在有了能运行的 C 程序，接下来为它<strong>打包、管理版本并编写文档</strong>。这样其他人能安装和使用，你以后也能继续维护。</p>
 <section id="step-1.-the-goal-of-packaging" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-the-goal-of-packaging">步骤1. 包装的目标</h4>
 <p>打包的目的是让你的项目易于：</p>
@@ -18769,7 +18769,7 @@ doxygen -g</code></pre>
 <ul>
 <li><strong> MIT 许可证</strong>：简单、宽松</li>
 <li><strong> Apache 2.0 </strong>：增加专利保护</li>
-<li><strong> GPLv3 </strong>：确保衍生品保持开放</li>
+<li><strong>GPLv3</strong>：要求分发衍生作品时延续相同的开放许可。</li>
 </ul>
 <p>源文件的 MIT 许可证头文件示例：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1220"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1220-1"><a href="#cb1220-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* </span></span>
@@ -18807,8 +18807,8 @@ doxygen -g</code></pre>
 </section>
 <section id="practice-build-your-own-mini-project" class="level3">
 <h3 class="anchored" data-anchor-id="practice-build-your-own-mini-project">100. 练习：完成自己的小项目</h3>
-<p>你已经了解了 C 的所有基本层、语法、内存、数据结构、文件 I/O、编译、调试，甚至打包。现在，你将通过从头开始构建一个完整的迷你项目来将所有内容整合在一起。</p>
-<p>最后一部分是一个综合：用纯 C 语言规划、设计、实现、测试和记录一个小型的、有用的系统。</p>
+<p>前面已经学习了语法、内存、数据结构、文件 I/O、构建、调试和打包。现在从零写一个完整的小项目，把这些知识串起来。</p>
+<p>最后的练习包括选题、设计、实现、测试和编写文档，目标是用纯 C 完成一个小而实用的程序。</p>
 <section id="step-1.-choose-your-project-scope" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-choose-your-project-scope">步骤 1 · 选择你的项目范围</h4>
 <p>选择足够小的内容来完成但足够丰富的内容来触及多个主题。这里有三个不错的选择：</p>
@@ -18929,7 +18929,7 @@ Added note 2: Write clear code
 <p>添加这些小改进：</p>
 <ul>
 <li><code>tinynotes delete &lt;id&gt;</code> 按索引删除注释</li>
-<li>商店创建时间 ( <code>time_t</code> )</li>
+<li>记录创建时间（<code>time_t</code>）。</li>
 <li>保存到用户特定的目录 ( <code>~/.tinynotes/</code> )</li>
 <li>在写入之前使用 XOR 或 AES 加密笔记（可选）</li>
 <li>使用 <code>fprintf</code> 添加 JSON 导出</li>
@@ -19015,45 +19015,45 @@ Added note 2: Write clear code
 </section>
 <section id="epilogue.-the-spirit-of-c" class="level2">
 <h2 class="anchored" data-anchor-id="epilogue.-the-spirit-of-c">尾声：C 语言的精神</h2>
-<p>C 不仅仅是语法、指针或编译器。这是一种心态，教你思考 <strong> 机器实际上是如何工作的 </strong>。</p>
-<p>当你用 C 语言编写时，你就是在说计算机的母语。你逐字节地告诉处理器要做什么，你和硬件之间不会产生任何错觉。</p>
-<p>你已经了解到：</p>
+<p>学习 C 会接触语法、指针和编译器，也会训练一种思考方式：追问<strong>机器实际是怎样工作的</strong>。</p>
+<p>写 C 时，你可以贴近机器组织数据和操作，甚至逐字节地安排内存里的内容，更容易看清代码与硬件之间的联系。</p>
+<p>回顾这本书，你已经看到：</p>
 <ul>
-<li>每个变量在内存中都有一个精确的位置</li>
-<li>每个函数调用都会在栈上产生成本</li>
-<li>每一个指针都是一个小心的承诺</li>
-<li>你编写的每一行都会转化为指令和数据</li>
+<li>变量怎样存放在内存中</li>
+<li>函数调用可能占用栈空间</li>
+<li>使用指针时要留意它指向什么、何时有效</li>
+<li>源代码怎样在构建过程中变成指令和数据</li>
 </ul>
-<p>C奖励那些深入思考的人，惩罚那些猜测的人。但当你掌握它时，你就会获得一种很少有语言可以比拟的自由。</p>
+<p>写 C 要把条件想清楚，不能靠猜测。掌握这些细节后，你就能更自由地决定程序怎样使用底层资源。</p>
 </section>
 <section id="the-path-beyond" class="level2">
 <h2 class="anchored" data-anchor-id="the-path-beyond">接下来怎么学</h2>
-<p>现在你可以自信地用 C 语言编写代码，接下来的步骤自然如下：</p>
-<p><strong> 1. 系统编程 </strong> 探索 Linux 内部结构、系统调用和内核模块。像 <em> Linux 编程接口 </em> 这样的书或者你未来的“C 系统编程小书”都是完美的伴侣。</p>
-<p><strong> 2. 编译器和语言工具 </strong> 编写自己的解析器或字节码解释器。 C 使你能够精确地从头开始构建新语言。</p>
-<p><strong> 3. 操作系统和嵌入式</strong> 尝试构建一个微型操作系统（如<em> xv6 </em>），或使用裸机 C 编程微控制器。你将看到 C 如何塑造固件世界。</p>
-<p><strong> 4. 库和开源 </strong> 为用 C 编写的开源项目做出贡献，从 SQLite 到 Redis 再到 Git。你将阅读世界一流的 C 语言并通过示例学习设计。</p>
-<p><strong> 5. 用 C 构建你自己的 X </strong> 你可以构建自己的数据库、HTTP 服务器、shell 或编译器。每一次都是一次重新应用你在这里学到的知识的新机会。</p>
+<p>已经能够用 C 写程序后，可以继续尝试这些方向：</p>
+<p><strong>1. 系统编程</strong>。了解 Linux 内部机制、系统调用和内核模块。<em>《Linux/UNIX 系统编程手册》</em>可以作为参考，你也可以把练习整理成自己的《C 系统编程小书》。</p>
+<p><strong>2. 编译器和语言工具</strong>。写一个解析器或字节码解释器，试着用 C 从头实现一门小语言。</p>
+<p><strong>3. 操作系统与嵌入式开发</strong>。试着实现一个类似 <em>xv6</em> 的小型操作系统，或用裸机 C 为微控制器编程，了解固件怎样工作。</p>
+<p><strong>4. 库与开源项目</strong>。参与 SQLite、Redis 或 Git 等用 C 编写的开源项目，从它们的代码和设计中学习。</p>
+<p><strong>5. 用 C 做一个自己的项目</strong>。数据库、HTTP 服务器、Shell 或编译器都可以。每个项目都是一次重新运用本书知识的机会。</p>
 </section>
 <section id="a-note-from-the-author" class="level2">
 <h2 class="anchored" data-anchor-id="a-note-from-the-author">作者的话</h2>
-<p>当 Dennis Ritchie 在 20 世纪 70 年代设计 C 语言时，他不仅仅是发明一种语言。他正在发明一种同时思考<strong>数据、控制和抽象</strong>的方式。</p>
-<p>五十年后，同样的清晰度仍然很重要。 C 是永恒的，因为它接近真理。</p>
-<p>你分配的每个字节，你编写的每个循环，你修复的每个段错误，这一切都教会你计算机<em>真正如何</em>工作。</p>
-<p>所以继续尝试吧。打破东西。修复它们。重建。</p>
-<p>这就是每个系统工程师的起点。</p>
+<p>20 世纪 70 年代，丹尼斯·里奇设计了 C，也提供了一种把<strong>数据、控制和抽象</strong>放在一起思考的方式。</p>
+<p>五十年后，这种清晰的思考方式仍然重要。C 经久不衰，正因为它能让人看清程序实际做了什么。</p>
+<p>每分配一个字节、写一个循环、修复一次段错误，都能让你更清楚地看到计算机<em>究竟</em>是怎样工作的。</p>
+<p>继续试验吧。让程序出错，找到原因，修好它，再重新构建。</p>
+<p>这就是学习系统编程的起点。</p>
 </section>
 <section id="final-exercise" class="level2">
 <h2 class="anchored" data-anchor-id="final-exercise">最后练习</h2>
-<p>在离开本书之前，请编写最后一个 C 程序。它不需要做任何花哨的事情，只是提醒你为什么喜欢从第一原则构建东西。</p>
+<p>合上这本书之前，再写一个 C 程序。做一件简单的事就够了，借此回味从基本原理出发、亲手完成程序的乐趣。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1231"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1231-1"><a href="#cb1231-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1231-2"><a href="#cb1231-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1231-3"><a href="#cb1231-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb1231-4"><a href="#cb1231-4" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"I learned to think in C.</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
 <span id="cb1231-5"><a href="#cb1231-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb1231-6"><a href="#cb1231-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
-<p>编译它。运行它。微笑。你现在可以说机器的语言了。</p>
-<p><strong> C小书</strong><em>卷末</em></p>
+<p>编译它，运行它，看看结果。现在，你已经能用机器听得懂的方式表达自己的想法了。</p>
+<p><strong>C 语言小书</strong> <em>全书完</em></p>
 
 
 </section>
