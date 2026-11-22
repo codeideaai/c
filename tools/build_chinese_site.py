@@ -304,7 +304,7 @@ def build():
         options.text = json.dumps(config, ensure_ascii=False, indent=2)
         main = document.find(".//main")
         main.insert(0, html.fragment_fromstring(
-            '<p class="small text-body-secondary">简体中文机器翻译 · 原著 Duc-Tam Nguyen · '
+            '<p class="small text-body-secondary">简体中文译本（机器初译，经术语与文字校订） · 原著 Duc-Tam Nguyen · '
             '<a href="https://github.com/little-book-of/c">英文原作</a> · '
             '<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>'))
 
