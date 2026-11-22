@@ -1,6 +1,8 @@
 # The Little Book of C
 
-This is _The Little Book of C_ 
+This is _The Little Book of C_.
+
+[English website](https://codeideaai.github.io/c/) · [简体中文版](https://codeideaai.github.io/c/zh/)
 
 ## Formats
 
@@ -31,6 +33,9 @@ quarto render --to pdf      # docs/book.pdf
 quarto render --to epub     # docs/book.epub
 quarto render --to latex    # docs/book-latex/book.tex
 ```
+
+After rendering the English HTML, [rebuild the Chinese website](books/zh-CN/README.md)
+to restore the language switch and update the bilingual Pages output.
 
 ## Contributing
 
